@@ -20,6 +20,16 @@
         <div id="header">
             <div id="header-top">
                 <p id="name" class="name">SULLY & BAG</p>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function(){
+                        var nameLogo = document.getElementById('name');
+                        if (nameLogo) { 
+                            nameLogo.addEventListener('click', function(){
+                                window.location.href = '/user/index.html';
+                            });
+                        }
+                    });
+                </script>
                 <input class="search" type="text" placeholder=" 🔍Tìm kiếm sản phẩm"> 
                 <img class="icon" src="images/heart.png"/>
                 <img id="cart" class="icon" src="images/bag.png" alt="Giỏ hàng"/>

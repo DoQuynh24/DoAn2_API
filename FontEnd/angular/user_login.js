@@ -40,36 +40,51 @@ app.controller('loginCtrl', function ($scope, $http) {
 
     // Hàm lưu thông tin người dùng sau khi thay đổi
     $scope.saveUser = function () {
-        const perId = localStorage.getItem("PerID");
-        if (!perId) {
-            alert("Không tìm thấy thông tin người dùng. Vui lòng đăng nhập lại!");
-            return;
+        // Kiểm tra thông tin nhập vào
+    if (!$scope.hoten || !$scope.diachi || !$scope.gioitinh || !$scope.ngaysinh) {
+        alert("Vui lòng điền đầy đủ thông tin!");
+        return;
+    }
+
+    const perId = localStorage.getItem("PerID"); // Lấy PerID từ localStorage
+    if (!perId) {
+        alert("Vui lòng đăng nhập lại!");
+        console.log("PerID:", perId);
+        return;
+    }
+
+    // Chuẩn bị dữ liệu để gửi lên API
+    var formData = new FormData();
+    
+    formData.append("PerID", perId); // PerID lấy từ localStorage
+    formData.append("TaiKhoan", $scope.taikhoan); // Tài khoản readonly
+    formData.append("MatKhau", $scope.matkhau); // Mật khẩu có thể để trống nếu không thay đổi
+    formData.append("HoTen", $scope.hoten);
+    const localDate = new Date($scope.ngaysinh);
+    localDate.setMinutes(localDate.getMinutes() - localDate.getTimezoneOffset());
+    formData.append("NgaySinh", localDate.toISOString().split('T')[0]);
+    formData.append("GioiTinh", $scope.gioitinh);
+    formData.append("DiaChi", $scope.diachi);
+
+    $http({
+        method: 'PUT',
+        url: `${current_url}/api/User/update-user`, // URL API cập nhật
+        headers: {
+            'Content-Type': undefined // Gửi dữ liệu dưới dạng FormData
+        },
+        data: formData
+    }).then(function (response) {
+        if (response.data && response.data.success) {
+            alert("Cập nhật thông tin thành công!");
+            // Có thể reload hoặc cập nhật giao diện tùy ý
+            $scope.loadUserInfo(); // Gọi lại hàm tải thông tin
+        } else {
+            alert("Không thể cập nhật thông tin. Vui lòng thử lại sau!");
         }
-    
-        const userData = {
-            PerID: perId,
-            TaiKhoan: $scope.taikhoan,
-            MatKhau: $scope.matkhau,   
-            HoTen: $scope.hoten,
-            GioiTinh: $scope.gioitinh,
-            DiaChi: $scope.diachi,
-            NgaySinh: $scope.ngaysinh ? $scope.ngaysinh.toISOString().split('T')[0] : null ,
-            Role: $scope.role,
-        };
-    
-        $http({
-            method: 'PUT',
-            url: `${current_url}/api/User/update-user/${perId}`,
-            data: userData,
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        }).then(function (response) {
-            alert("Thông tin đã được cập nhật thành công!");
-        }).catch(function (error) {
-            console.error("Lỗi khi cập nhật thông tin:", error);
-            alert("Có lỗi xảy ra khi cập nhật thông tin. Vui lòng thử lại!");
-        });
+    }).catch(function (error) {
+        console.error("Lỗi khi cập nhật thông tin:", error);
+        alert("Đã xảy ra lỗi khi cập nhật thông tin. Vui lòng thử lại sau!");
+    });
     };
     
     // Gọi hàm loadUserInfo để tải thông tin khi trang được tải
