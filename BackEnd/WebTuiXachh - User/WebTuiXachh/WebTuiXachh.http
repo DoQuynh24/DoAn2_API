@@ -1,0 +1,6 @@
+@WebTuiXachh_HostAddress = http://localhost:5297
+
+GET {{WebTuiXachh_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

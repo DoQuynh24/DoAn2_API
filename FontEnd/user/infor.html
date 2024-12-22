@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin tài khoản</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../userStyle/checkout.css">
+    <script src="/userJs/main.js" defer></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="images/logo.png">
+   
+
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular/script.js"></script>
+    <script src="/angular/global.js"></script>
+    <script src="/angular/user_login.js"></script>
+
+    <script src="/js/admin.js" defer></script>
+    <script src="/userJs/login.js" defer></script>
+</head>
+<body ng-app="AppLogin" ng-controller="loginCtrl">
+    <div id="main">
+        <div id="header">
+            <div id="header-top">
+                <p id="name" class="name"> SULLY & BAG</p>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function(){
+                        var nameLogo = document.getElementById('name');
+                        if (nameLogo) { 
+                            nameLogo.addEventListener('click', function(){
+                                window.location.href = '/user/index.html';
+                            });
+                        }
+                    });
+                </script>
+               <p style="margin-top: 35px; margin-left: 200px; cursor: pointer; color: gray">Trợ giúp</p>
+            </div>
+        </div>
+        <div id="content">   
+            <div class="tabs">
+                <div class="tab active" id="account-tab">TÀI KHOẢN</div>
+                <div class="tab" id="order-tab">ĐƠN MUA</div>
+            </div>
+
+            <!-- Tab contents -->
+            <div id="account-info" class="tab-content active">
+                <p style="font-size: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 130px;">Hồ sơ của tôi</p>
+            <p class="lable1">Quản lý thông tin hồ sơ để bảo mật tài khoản.</p>
+                <form class="form-container">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taikhoan">Tài khoản</label>
+                            <input ng-model="taikhoan" type="text" id="taikhoan" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu</label>
+                            <div class="input-container" style="position: relative;">
+                                <input ng-model="matkhau" type="password" id="matkhau" class="form-control" placeholder="Nhập mật khẩu" required>
+                                <button type="button" id="toggle-password" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none;">
+                                    <img id="eye-icon" src="images/eye.png" alt="eye" style="width: 20px; height: 20px;">
+                                </button>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hoten">Họ Tên</label>
+                            <input ng-model="hoten" type="text" id="hoten">
+                        </div>
+                        <div class="form-group">
+                            <label for="gioitinh">Giới tính:</label>
+                            <select ng-model="gioitinh" id="gioitinh" class="form-control">
+                                <option value="Nam">Nam</option>
+                                <option value="Nữ">Nữ</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="diachi">Địa chỉ</label>
+                            <input ng-model="diachi" type="text" id="diachi" >
+                        </div>
+                        <div class="form-group">
+                            <label for="ngaysinh">Ngày sinh:</label>
+                            <input ng-model="ngaysinh" type="date" id="ngaysinh" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-row" >    
+                        <button class="save-btn" ng-click="saveUser()" >Lưu thay đổi</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="order-info" class="tab-content">
+                    
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Tab switching -->
+    <script>
+        document.getElementById('account-tab').addEventListener('click', function() {
+            document.getElementById('account-info').classList.add('active');
+            document.getElementById('order-info').classList.remove('active');
+            document.getElementById('account-tab').classList.add('active');
+            document.getElementById('order-tab').classList.remove('active');
+        });
+
+        document.getElementById('order-tab').addEventListener('click', function() {
+            document.getElementById('order-info').classList.add('active');
+            document.getElementById('account-info').classList.remove('active');
+            document.getElementById('order-tab').classList.add('active');
+            document.getElementById('account-tab').classList.remove('active');
+        });
+    </script>
+</body>
+</html>

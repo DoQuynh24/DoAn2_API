@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SULLY & BAG | Việt Nam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../userStyle/index.css">
+    <script src="/userJs/main.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="images/logo.png">
+    <script src="/angular/script.js"></script>
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular/global.js"></script>
+    <script src="/angular/user_login.js"></script>
+</head>
+<body ng-app="AppLogin" ng-controller="loginCtrl" >
+    <div id="main">
+        <div id="header">
+            <div id="header-top">
+                <p id="name" class="name"> SULLY & BAG</p>
+                <input class="search" type="text" placeholder=" 🔍Tìm kiếm sản phẩm"> 
+                <img class="icon" src="images/heart.png"/>
+                <img id="cart" class="icon" src="images/bag.png"/>
+                <img id="user-icon" style="width:30px; height:30px; margin-top: 20px; cursor: pointer;" src="images/use.png"/>
+
+                <div id="user-dropdown" class="dropdown-content">
+                    <a href="/user/infor.html">Thông tin tài khoản</a>
+                    <a href="#" id="logout-btn">Đăng xuất</a>
+                </div>
+                <span ng-if="HoTen" style="margin-left: 10px; margin-top: 30px;">{{ HoTen }}</span>
+               
+            </div>
+                <!-- Form đăng nhập -->
+                <div id="login-form" class="login-form">
+                    <p style="text-align: center; font-size: 20px; font-weight: bold;">ĐĂNG NHẬP</p>
+                    <br/>
+                    <label for="username">Số điện thoại hoặc Email</label>
+                    <input type="text" id="username" placeholder="Vd: 0123456789">
+                    <span class="error" id="username-error"></span>
+                    <br/>
+                    
+                    <label for="password">Mật khẩu</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Nhập mật khẩu">
+                        <span id="toggle-password" class="toggle-password">
+                            <img id="eye-icon" src="images/eye.png" alt="Show/Hide Password" />
+                        </span>
+                    </div>
+                    <span class="error" id="password-error"></span> 
+                    <br/>
+
+                    <p><a href="#">Bạn quên mật khẩu?</a></p>
+                    <br/>
+                    <button type="submit" id="login-btn">Đăng nhập</button>
+                    <br/><br/><br/><hr/>
+                    <p style="text-align: center; margin-top: 5px;">Bạn chưa có tài khoản? <a href="/user/account.html">Đăng ký ngay</a></p>
+                </div>
+
+            <div id="header-center">
+                
+                <p > Đổi trả dễ dàng trong vòng 3 ngày kể từ khi mua sản phẩm</p>
+                <p > Miễn phí vận chuyển cho khách hàng mới</p>
+                <p > Giảm giá 15% cho đơn hàng đầu tiên</p>
+
+            </div>
+           
+            <div id="header-bottom">
+                <button class="menu" id="new-arrivals">Hàng mới</button>
+                <button class="menu" id="product-menu">Sản phẩm</button> 
+                <button class="menu" id="collection-menu">Bộ sưu tập</button>
+                <button class="menu">Fashion talks</button>
+                <button class="menu" id="notifivstion-menu">Thông báo</button>
+                <button class="menu" id="shop-menu">Cửa hàng</button>
+            </div>
+            <script>document.addEventListener('DOMContentLoaded', function(){
+                var nameLogo = document.getElementById('product-menu');
+                if (nameLogo) { 
+                    nameLogo.addEventListener('click', function(){
+                        window.location.href = '/user/product.html';
+                    });
+                }
+            });</script>
+
+              <script>document.addEventListener('DOMContentLoaded', function(){
+                var nameLogo = document.getElementById('shop-menu');
+                if (nameLogo) { 
+                    nameLogo.addEventListener('click', function(){
+                        window.location.href = '/user/shop.html';
+                    });
+                }
+            });</script>
+             
+            <div id="product-dropdown" class="dropdown-content">
+                <div class="dropdown-column">
+                    <h3>TÚI XÁCH</h3>
+                    <ul>
+                        <li><a href="#">Hàng mới</a></li>
+                        <li><a href="#">Túi xách tay</a></li>
+                        <li><a href="#">Túi Tote</a></li>
+                        <li><a href="#">Túi mini</a></li>
+                        <li><a href="#">Túi đeo chéo & Túi đeo vai</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown-column">
+                    <h3>PHỤ KIỆN DA NHỎ</h3>
+                    <ul>
+                        <li><a href="#">Hàng mới</a></li>
+                        <li><a href="#">Ví</a></li>
+                        <li><a href="#">Túi cầm tay</a></li>
+                        <li><a href="#">Hộp đựng thẻ & Phụ kiện nhỏ</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown-column">
+                    <h3>PHỤ KIỆN TÚI XÁCH</h3>
+                    <ul>
+                        <li><a href="#">Dây đeo thay thế</a></li>
+                        <li><a href="#">Khóa và móc túi</a></li>
+                        <li><a href="#">Charm trang trí túi</a></li>
+                        <li><a href="#">Miếng lót và bảo vệ túi</a></li>
+                        <li><a href="#">Túi bảo quản & Vệ sinh túi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="text-indent: 100px;">LADY DIOR ROSALÍA</h3>
+                    <img style="margin-left: 100px;" class="img-product" src="images/prd1.png"/>
+                    <img class="img-product" src="images/prd2.png"/>
+                </div>   
+            </div>
+            <!-- Danh sách hiện ra khi trỏ chuột vào Bộ sưu tập -->
+            <div id="collection-dropdown" class="dropdown-content">
+                <div class="dropdown-column">
+                    <h3>BST Mùa Xuân</h3>
+                    <ul>
+                        <li><a href="#">Xu hướng mới</a></li>
+                        <li><a href="#">Trang phục thường ngày</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown-column">
+                    <h3>BST Mùa Hè</h3>
+                    <ul>
+                        <li><a href="#">Trang phục đi biển</a></li>
+                        <li><a href="#">Phụ kiện</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown-column">
+                    <h3>BST Mùa Thu</h3>
+                    <ul>
+                        <li><a href="#">Áo len mỏng</a></li>
+                        <li><a href="#">Trang phục dạo phố</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown-column">
+                    <h3>BST Mùa Đông</h3>
+                    <ul>
+                        <li><a href="#">Áo khoác</a></li>
+                        <li><a href="#">Giày & Túi xách</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Danh sách hiện ra khi trỏ chuột vào Thông báo -->
+            <div id="notifivstion-dropdown" class="dropdown-content">
+                <div class="dropdown-column">
+                    <ul style=" font-size: 17px;">
+                        <li><a href="news.html#khuyenmai">Khuyến mãi</a></li>
+                        <li><a href="news.html#taitro">Tài trợ</a></li>
+                        <li><a href="news.html#tintuc">Tin tức</a></li>
+                        <li><a href="news.html#thongbao">Thông báo</a></li>
+                        <li><a href="#">Tuyển dụng</a></li>
+                    </ul>
+                </div>
+                <img style="width: 550px; height: 200px" src="images/news0.png"/>
+                <img style="width: 580px; height: 200px" src="images/news13.png"/>
+            </div>
+            <hr/>
+        </div>
+    
+
+        <div id="content">
+            <div id="content-highlight">
+                <div>
+                <img id="content-highlight-left" src="images/poster1.png"/>
+                </div>
+                <div style="width: 650px;">
+                    <br/><br/><br/><br/><br/><br/>
+                <span style="margin-left: 60px; font-size: 18px; color: gray;">Iconic</span>
+                <br/><br/>
+                <span  style="margin-left: 60px; font-size: 28px; font-family: Georgia, 'Times New Roman', Times, serif;">Medium Lady Sully Bag</span>
+                <br/><br/>
+                <p style="margin-left: 60px; font-size: 15px; color:gray;">Chiếc túi Lady Sully là hình ảnh thu nhỏ của tầm nhìn về sự sang trọng.
+                     Kiểu dáng đẹp và tinh tế, phong cách vượt, thời gian
+                    nhưng phù hợp được chế tác bằng da bê màu đen sáng chế với đường khâu Cannada...</p>
+                <br/>
+                <u style="margin-left: 60px; cursor: pointer;"> Xem chi tiết sản phẩm</u>
+                </div>
+                <div id="image-list">
+                    <img class="scroll-image" src="images/poster3.png"/>
+                    <img class="scroll-image" src="images/poster4.png"/>
+                    <img class="scroll-image" src="images/poster2.png"/>
+                    <img class="scroll-image" src="images/poster5.png"/>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div>
+                <img style="width: 100%; height: 100px; cursor: pointer;" src="images/banner1.png"/>
+            </div>
+            <div id="content-top">
+                <div id="content-top-left">
+                    <h2 style=" margin-top: 60px;"> Sản phẩm mới</h2>
+                    <span >Chọn lựa những thiết kế hợp xu hướng nhất</span>
+                    <button id="new-arrivalss" style="padding: 15px 80px; margin-top: 40px; cursor: pointer; font-size: 15px; background-color: #FFF;"> Xem thêm...</button>
+                </div>
+               
+                <div id="content-top-right" ng-init="LoadLatestProducts()">
+                    <div id="details" ng-repeat="product in randomProducts"  data-id="{{product.maSp}}" ng-click="viewProductDetails(product)">
+                        <img class="details-img" ng-src="{{getImageUrl(product.hinhAnh)}}" />
+                        <p>{{product.tenSp}}</p>
+                    </div>
+
+                   
+                </div>
+                
+            </div>
+           
+            <div>
+                <img style="width: 100%; height: 100px; cursor: pointer;" src="images/banner2.png"/>
+            </div>
+            <div>
+                <p style="text-align: center; margin-top: 20px; font-size: 27px; font-weight: bold; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"> SULLY & BAG Spotlight</p>
+                <p style="text-align: center; font-size: 17px;">Đồng hành cùng người yêu thời trang</p>
+                <br/>
+                
+            </div>
+            <div id="content-buttom">
+                <div class="side-image">
+                    <img src="images/image1.png" alt="Image 1" class="bottom-image" />
+                </div>
+                <div class="video-container">
+                    <video controls style="width: 100%; height: auto;"  autoplay muted loop>
+                        <source src="images/video.mp4" type="video/mp4">
+                    </video>
+                    <br/>
+                    <p style="text-align: center; margin-top: 10px; font-weight: bold;">KÍCH CỠ TÚI SULLY BOOK NÀO PHÙ HỢP CHO BẠN?</p>
+                    <p style="text-align: center; margin-top: 10px;">Chiếc Sully Book Tote mang tính biểu tượng, được thiết kế bởi Maria Grazia Chiuri.
+
+                         
+                    </p>
+                    <p style="text-align: center;"> Khám phá hình mẫu lý tưởng của bạn!</p><br/>
+                    <u style="margin-left: 275px;cursor: pointer;">Hướng dẫn chọn size túi</u>
+                </div>
+                <div class="side-image">
+                    <img src="images/image2.png" alt="Image 2" class="bottom-image" />
+                </div>
+            </div>
+            <br/><br/><hr/>
+            
+            
+
+        </div>
+
+        <div id="footer">
+            <br/>
+            <div>  
+                <ul class="link">
+                    <li><a href="https://www.facebook.com/ddquynh.24"> Facebook </a></li>
+                    <li><a href="#"> Instagram </a></li>
+                    <li><a href="#"> Tiktok </a></li>
+                    <li><a>x</a></li>
+                    <li><a href="#"> Spotyfy </a></li>
+                    <li><a href="#"> Threads </a></li>
+                    <li><a href="#"> Zalo </a></li>
+                </ul>
+            </div>
+            
+            <span><b>THAM GIA BẢN TIN CỦA CHÚNG TÔI</b></span>
+            <span style="margin-left: 700px; font-size: 12px;">TIẾNG VIỆT | ENGLISH     </span>
+            <span style="font-size: 12px; color:gray;margin-left:  20px;">© ALL RIGHTS RESERVED</span>
+            <br/>
+            <br/>
+            <input class="search" type="text" placeholder="NHẬP ĐỊA CHỈ EMAIL VÀO ĐÂY"> 
+            <br/>
+            
+            <div class ="lienhe" >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>CÔNG TY </b></li> 
+                    <br/>
+                    <li><a href="#"> Giới thiệu về chúng tôi </a></li>
+                    <li >268Đ, Quận Cầu Giấy, Hà Nội, Vietnam </li> 
+					<li >0364554001 - Thứ 2 - Chủ nhật: 9:00 - 18:00 </li> 
+					<li >sullybagVN.vn@gmail.com </li> 
+                </ul>
+            </div>
+            
+            <div class ="lienhe">
+                <ul class="noidung" >
+                    <li style="font-size: 15px"> <b>THEO DÕI CHÚNG TÔI </b></li> 
+                    <br/>
+                    <li><a href="https://www.facebook.com/ddquynh.24"> Facebook </a></li>
+                    <li><a href="#"> Instagram </a></li>
+                    <li><a href="#"> Tiktok </a></li>
+                    <li><a>x</a></li>
+                    <li><a href="#"> Spotyfy </a></li>
+                    <li><a href="#"> Threads </a></li>
+                    <li><a href="#"> Zalo </a></li>
+                </ul>
+            </div>
+            
+            <div class ="lienhe"  >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>CHÍNH SÁCH</b></li>
+                    <br/>
+                    <li><a href="#"> Chính sách bảo mật </a></li>
+                    <li><a href="#"> Điều kiện mua hàng </a></li>
+                    <li><a href="#"> cài đặt Coockie </a></li>
+                </ul>
+            </div>
+            
+            <div class ="lienhe"  >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>KẾT NỐI VỚI SULLY & BAG </b></li> 
+                    <br/>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=260px&height=200px&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="260px" height="200px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </ul>
+            </div>
+        </div>
+    </div>  
+
+</body>
+</html>

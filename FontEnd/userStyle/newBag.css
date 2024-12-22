@@ -1,0 +1,395 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+#main{
+    width: 100%;
+    background-color:  #FFF;
+}
+
+#header {
+    width: 100%;
+    height: 160px;
+
+}
+#header-top{
+    width: 100%;
+    height: 70px;
+    display: flex;
+}
+    .name {
+        width: 50%;
+        font-size: 65px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin-left: 40px;
+        color: black;
+        cursor: pointer;
+        
+    }
+    .icon{
+        width: 30px;
+        height: 30px; 
+        margin-top: 20px;
+        margin-right: 25px;
+        cursor: pointer; 
+        display: flex;
+
+    }
+        .login-form {
+            display: none; /* Ẩn form đăng nhập ban đầu */
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 400px;
+            z-index: 1000;
+            border-radius: 5px;
+        }
+       
+        .login-form input {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        
+        .login-form button {
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight:lighter;
+
+        }
+        
+        .login-form button:hover {
+            background-color: #333;
+        }
+        
+        .password-container {
+            position: relative;
+            width: 100%;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none; /* Ẩn lỗi ban đầu */
+        }
+        .password-container input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        
+        .toggle-password img {
+            width: 20px;
+            height: 20px;
+        }
+        
+        
+    .search{
+    width: 400px; 
+    height: 30px;
+    text-align: left;
+    font-size: 13px;
+    margin-top: 20px;
+    margin-right: 80px;
+    
+    }
+     /* Chỉnh sửa để ẩn menu dropdown mặc định */
+     #user-dropdown {
+        display: none;
+        position: absolute;
+        top: 60px; /* Điều chỉnh vị trí để nó xuất hiện dưới user-icon */
+        right: 0; /* Canh bên phải */
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+    }
+
+    /* Khi hover vào user-icon, hiển thị dropdown */
+    #user-icon:hover + #user-dropdown {
+        display: block;
+    }
+
+    /* Các liên kết trong dropdown */
+    #user-dropdown a {
+        padding: 10px;
+        text-decoration: none;
+        color: black;
+        display: block;
+    }
+
+    #user-dropdown a:hover {
+        background-color: #f1f1f1;
+    }
+
+#headerNewBag-center {
+        width: 100%;
+        height: 40px;
+        background-color: rgba(128, 128, 128, 0.582);
+        text-align: center;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: #FFF;
+        overflow: hidden; /* Giới hạn vùng hiển thị */
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+    
+    #headerNewBag-content {
+        display: inline-flex; /* Sắp xếp các phần tử ngang nhau */
+        white-space: nowrap; /* Giữ văn bản trên một hàng */
+        animation: scroll 50s linear infinite; /* Cuộn liên tục */
+    }
+    
+    #headerNewBag-center p {
+        padding: 0 200px; /* Khoảng cách giữa các đoạn văn */
+    }
+    
+    @keyframes scroll {
+        0% {
+            transform: translateX(100%); /* Bắt đầu từ ngoài màn hình bên phải */
+        }
+        100% {
+            transform: translateX(-100%); /* Di chuyển ra ngoài bên trái */
+        }
+    }
+#header-bottom{
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+#content-newbag{
+    width: 100%;
+    height: 1800px;
+    
+}
+.tab-content {
+    display: none; /* Ẩn tất cả nội dung tab mặc định */
+}
+
+.tab-content.active {
+    display: block; /* Hiển thị tab khi active */
+}
+#new-in-content {
+    display: block;
+}
+
+#new-collection-content {
+    display: none;
+}
+
+/* Tùy chỉnh khoảng cách và độ dài của gạch chân */
+.tab-link {
+    display: inline-block;
+    padding: 0px 20px; /* Khoảng cách bên trong giữa các tab */
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+    position: relative;
+    text-align: center;
+}
+
+.tab-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Gạch chân sẽ nằm sát dưới tên tab */
+    left: 50%; /* Canh giữa gạch chân theo tab */
+    transform: translateX(-50%); /* Đưa về giữa */
+    width: 80%; /* Tùy chỉnh độ dài gạch chân (50% độ dài của text) */
+    border-bottom: 2px solid black; /* Độ dày và màu sắc gạch chân */
+}
+/* Căn chỉnh tab */
+.tab {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+#content-newbag-1 {
+    width: 98%;
+    height: 450px;
+    display: flex;
+    gap: 15px;
+    margin-left: 20px;    
+   
+}
+
+.newbag {
+    width: 24%; 
+    cursor: pointer; 
+}
+
+.img-newbag {
+    width: 100%;
+    height: 400px;
+}
+
+
+.product-price {
+    margin-top: 5px;
+    text-align: center;
+    color: #5d6165; 
+   
+}
+
+
+
+.product-price {
+  
+    color: #5d6165; /* Màu sắc cho giá tiền */
+   
+}
+.product-info {
+    display: flex; /* Sử dụng Flexbox để căn chỉnh */
+    justify-content:space-around; /* Căn giữa các phần tử */
+    font-weight: bold;
+    width: 100%; 
+    margin-top: 10px; 
+}
+#content-newbag-2 {
+    width: 100%; /* Trừ đi 40px để chừa khoảng cách 20px mỗi bên */
+    height: 500px;
+    display: flex;
+    margin-left: 10px; /* Cách lề trái */
+  
+    box-sizing: border-box; /* Bao gồm cả padding và border trong chiều rộng/tổng kích thước */
+}
+#content-newbag-2left {
+    width: 40%;
+    height: 500px;
+    background-color: #FFF;
+    box-sizing: border-box;
+}
+    .large-bag-info {
+        margin-left: 20px;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+    }
+
+    .large-bag-name {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .large-bag-price {
+        color: #5d6165;
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 100px;
+    }
+#content-newbag-2right {
+    width: 50%;
+    height: 500px;
+    background-color: #e67e22;
+    box-sizing: border-box;
+}
+#image-baglist {
+    display: flex;
+    margin-left: 40px;
+    margin-top: 50px;
+}
+
+    .bag-item {
+        text-align: center; 
+        margin-right: 40px;
+    }
+
+    .img-bag {
+        width: 350px;
+        height: 330px;
+        transition: all 0.5s ease;
+    }
+
+    .color-name {
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 10px;
+        text-align: center; 
+    }
+
+    .bag-name {
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+        
+   
+#footer{
+        width: 90%;
+        height: 500px;
+        margin: 0px auto;
+}
+#footer-admin{
+        width: 90%;
+        height: 400px;
+        margin: 0px auto;
+        margin-top: 320px;
+}
+    ul.link {
+        list-style-type: none; /* Loại bỏ dấu chấm tròn */
+        display: flex; /* Để các liên kết nằm trên cùng một dòng */
+        padding-left: 400px;
+        margin: 0;
+        text-transform: uppercase; /* Tất cả các chữ sẽ in hoa */
+        font-size: 14px;
+        
+    }
+    ul.link li {
+        margin-right: 20px; 
+        line-height: 40px;
+    }
+    ul.link li a {
+        color: gray; 
+        text-decoration: none;
+    }
+    .lienhe{
+        width:25%; 
+        height: 75%; 
+        padding: 30px 0px; 
+        float: left;
+    
+    }
+    .noidung{
+        list-style: none;
+        font-size: 12px;
+        text-transform: uppercase;
+        color: gray;
+       
+    }
+    .noidung li a {
+        text-decoration: none; /* Loại bỏ gạch dưới */
+        color: gray; 
+    }
+    ul.noidung li {
+        margin-top: 10px;
+    }
+

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SULLY & BAG | Việt Nam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="../userStyle/account.css">
+    <script src="/userJs/main.js" defer></script>
+    <link rel="icon" href="images/logo.png">
+
+    <script src="/angular/script.js"></script>
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular/global.js"></script>
+    <script src="/angular/user_login.js"></script>
+
+
+</head>
+<body ng-app="AppLogin" ng-controller="loginCtrl">
+    <div id="main">
+        <div id="header">
+            <div id="header-top">
+                <p id="name" class="name"> SULLY & BAG</p>
+                <script>     
+                    document.addEventListener('DOMContentLoaded', function(){
+                        var nameLogo = document.getElementById('name');
+                        if (nameLogo) { 
+                            nameLogo.addEventListener('click', function(){
+                                window.location.href = '/user/index.html';
+                            });
+                        }
+                    });
+
+                </script>
+               <p style="margin-top: 35px; margin-left: 50px; cursor: pointer;;color: gray">Trợ giúp</p>
+            </div>
+        </div>
+        <hr/>
+        <div id="content-account-wrapper">
+            <div id="content-account">
+                <!-- Tabs Đăng nhập và Đăng ký -->
+                <div class="tab">
+                    <label id="login-tab" class="tab-link" ng-click="showForm('login-form')">Đăng nhập</label>
+                    <label id="register-tab" class="tab-link" ng-click="showForm('register-form')">Đăng ký</label>
+                </div>
+                <!-- Form Đăng nhập -->
+                <div id="login-form" class="form-content" ng-show="showLoginForm">
+                    <form action="" method="POST">
+                        <div class="form-group">
+                            <label for="username">Email hoặc Số điện thoại*</label>
+                            <input type="text" id="username" placeholder="Vd: 0123456789" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Mật khẩu*</label>
+                            <input type="password" id="password" placeholder="*********" required>
+                           
+                        </div>
+                        <br/>
+                        <a style="color: gray; " href="#"> Bạn quên mật khẩu? </a>
+                       
+                        <div class="form-group">
+                            <button type="button" id="login-btn" ng-click="login()" >Đăng nhập</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Form Đăng ký -->
+                <div id="register-form" class="form-content" ng-show="showRegisterForm">
+                    <br/>
+                    <p>Trở thành thành viên Sully & Bag để nhận ưu đãi độc quyền và thanh toán nhanh hơn</p>
+                    <form>
+                        <div class="form-group">
+                            <label for="taikhoan">Số điện thoại hoặc Email*</label>
+                            <input type="text" id="taikhoan" ng-model="taikhoan" placeholder="Vd: 0123456789" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="hoten">Họ và tên*</label>
+                            <input type="text" id="hoten" ng-model="hoten" placeholder="Vd: Nguyễn Văn A" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="matkhau">Mật khẩu*</label>
+                            <input type="password" id="matkhau" ng-model="matkhau" placeholder="*********" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" id="agree" ng-model="agree">
+                            <label for="agree" class="checkbox-label">Tôi đồng ý với các mục và chính sách dưới đây</label>
+                        </div>
+
+                        <div class="form-group">
+                            <a href="#" class="form-link">Điều khoản & Điều kiện</a> và <a href="#" class="form-link">Chính sách Quyền riêng tư</a>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="button" ng-click="registerUser()">Đăng ký</button>
+                        </div>
+
+                        <div ng-if="errorMessage" class="error-message">
+                            <p>{{ errorMessage }}</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+
+        // Hàm hiển thị form
+        function showForm(form) {
+            loginForm.style.display = form === 'login-form' ? 'block' : 'none';
+            registerForm.style.display = form === 'register-form' ? 'block' : 'none';
+
+            loginTab.classList.toggle('active', form === 'login-form');
+            registerTab.classList.toggle('active', form === 'register-form');
+        }
+
+        // Gán sự kiện khi nhấn vào các tab
+        loginTab.addEventListener('click', function() {
+            showForm('login-form');
+        });
+
+        registerTab.addEventListener('click', function() {
+            showForm('register-form');
+        });
+        showForm('register-form');
+    });
+
+    </script>
+</body>
+</html>

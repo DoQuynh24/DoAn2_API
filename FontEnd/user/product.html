@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SULLY & BAG | Việt Nam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../userStyle/product.css">
+    <script src="/userJs/main.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="images/logo.png">
+
+    <script src="/angular/script.js"></script>
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular/global.js"></script>
+    <script src="/angular/user_login.js"></script>
+</head>
+<body ng-app="AppLogin" ng-controller="loginCtrl" >
+    <div id="main">
+        <div id="header">
+            <div id="header-top">
+                <p id="name" class="name"> SULLY & BAG</p>
+                <script>document.addEventListener('DOMContentLoaded', function(){
+                    var nameLogo = document.getElementById('name');
+                    if (nameLogo) { 
+                        nameLogo.addEventListener('click', function(){
+                            window.location.href = '/user/index.html';
+                        });
+                    }
+                });</script>
+                <input class="search" type="text" placeholder=" 🔍Tìm kiếm sản phẩm"> 
+                <img class="icon" src="images/heart.png"/>
+                <img id="cart" class="icon" src="images/bag.png"/>
+                <script>document.addEventListener("DOMContentLoaded", function() {
+                    var cartIcon = document.getElementById("cart");
+                    cartIcon.addEventListener("click", function() {
+                        window.location.href = "/user/cart.html";
+                    });
+                });
+                </script>
+                
+                <img id="user-icon" style="width:30px; height:30px; margin-top: 20px; cursor: pointer;" src="images/use.png"/>
+                <div id="user-dropdown" class="dropdown-content">
+                    <a href="/user/infor.html">Thông tin tài khoản</a>
+                    <a href="#" id="logout-btn">Đăng xuất</a>
+                </div>
+
+                <span ng-if="HoTen" style="margin-left: 10px; margin-top: 30px;">{{ HoTen }}</span>
+
+               
+            </div>
+                <!-- Form đăng nhập -->
+                <div id="login-form" class="login-form">
+                    <p style="text-align: center; font-size: 20px; font-weight: bold;">ĐĂNG NHẬP</p>
+                    <br/>
+                    <label for="username">Số điện thoại hoặc Email</label>
+                    <input type="text" id="username" placeholder="Vd: 0123456789">
+                    <span class="error" id="username-error"></span> 
+                    <br/>
+                    
+                    <label for="password">Mật khẩu</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Nhập mật khẩu">
+                        <span id="toggle-password" class="toggle-password">
+                            <img id="eye-icon" src="images/eye.png" alt="Show/Hide Password" />
+                        </span>
+                    </div>
+                    <span class="error" id="password-error"></span> 
+                    <br/>
+
+                    <p><a href="#">Bạn quên mật khẩu?</a></p>
+                    <br/>
+                    <button type="submit" id="login-btn">Đăng nhập</button>
+                    <br/><br/><br/><hr/>
+                    <p style="text-align: center; margin-top: 5px;">Bạn chưa có tài khoản? <a href="/user/account.html">Đăng ký ngay</a></p>
+                </div>
+
+            <div id="header-center">
+                
+                <p > Đổi trả dễ dàng trong vòng 3 ngày kể từ khi mua sản phẩm</p>
+                <p > Miễn phí vận chuyển cho khách hàng mới</p>
+                <p > Giảm giá 15% cho đơn hàng đầu tiên</p>
+            </div>
+
+            <div id="header-bottom">
+                <p style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">ALL BAGS</p>
+            </div>
+        </div>
+        <div id="content">
+            <p style="text-align: center;color:gray">Designed to be essential in every woman's collection, Dior Women's designer bags </p>
+            <p style="text-align: center;color:gray">combine the vision of Maria Grazia Chiuri with the timeless elegance of the House.</p>
+            <div id="content-menu">
+                <div id="category-menu" style=" margin-left: 80px;" class="menu" >
+                    <p>Category <span class="arrow"></span></p>
+                    <div id="category-dropdown" class="dropdown-content" ng-init="loadCategories()">
+                        <div class="dropdown-column" ng-repeat="group in categories">
+                            <ul style="font-size: 15px;">
+                                <li ng-repeat="category in group">
+                                    <a href="#">{{ category.tenDanhMuc }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="color-menu" class="menu">
+                    <p style="margin-left: 15px;">Color <span class="arrow"></span></p>
+                    <div id="color-dropdown" class="dropdown-content" ng-init="loadColor()">
+                        <div class="dropdown-column" ng-repeat="group in colors">
+                            <ul style="font-size: 15px;">
+                                <li ng-repeat="color in group" style="display: flex; align-items: center; margin-bottom: 10px;">
+                                    <div ng-style="{'background-color': colorMap[color.tenMau] || '#CCCCCC'}" style="width: 20px; height: 20px; border: 1px solid #ccc; margin-right: 10px;"></div>
+
+                                    <span>{{ color.tenMau }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="material-menu" class="menu">
+                    <p>Size <span class="arrow"></span></p>
+                    <div id="material-dropdown" class="dropdown-content" ng-init="loadSize()">
+                        <div class="dropdown-column" ng-repeat="size in sizes">
+                            <ul style="font-size: 15px;">
+                                <li><a href="#"> {{ size.maSize }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style=" margin-left: 830px;" class="menu">
+                    <p style="color: gray;">{{ listProduct.length }} Items</p>
+                </div>
+                <div id="color-menu" class="menu">
+                    <p style="margin-left: 25px;">Sort by <span class="arrow"></span></p>
+                    <div id="color-dropdown" class="dropdown-content">
+                        <div class="dropdown-column">
+                            <ul style="font-size: 15px;">
+                                <li><a href="#">Sản phẩm mới</a></li>
+                                <li><a href="#">Giá từ thấp đến cao</a></li>
+                                <li><a href="#">Giá từ cao đến thấp</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="content-newbag-1" ng-init="LoadProduct()">
+                <!-- Chia hàng với ng-repeat -->
+                <div class="row" ng-repeat="row in paginatedProducts()"  >
+                    <div class="newbag" ng-repeat="product in row" data-id="{{product.maSp}}"  ng-click="viewProductDetails(product)">
+                        <img class="img-newbag" ng-src="{{ getImageUrl(product.hinhAnh) }}" />
+                        <h4 style="text-align: center;">{{product.tenSp}}</h4>
+                        <p class="product-price">{{product.giaBan | number:0}}₫</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Phân trang -->
+            <div class="pagination">
+                <button ng-repeat="page in [].constructor(totalPages()) track by $index"
+                        ng-class="{'active': currentPage === $index + 1}"
+                        ng-click="setPage($index + 1)">
+                    {{ $index + 1 }}
+                </button>
+            </div>
+        <hr/> 
+        <div id="footer">
+            <br/>
+            <div>  
+                <ul class="link">
+                    <li><a href="https://www.facebook.com/ddquynh.24"> Facebook </a></li>
+                    <li><a href="#"> Instagram </a></li>
+                    <li><a href="#"> Tiktok </a></li>
+                    <li><a>x</a></li>
+                    <li><a href="#"> Spotyfy </a></li>
+                    <li><a href="#"> Threads </a></li>
+                    <li><a href="#"> Zalo </a></li>
+                </ul>
+            </div>
+            
+            <span><b>THAM GIA BẢN TIN CỦA CHÚNG TÔI</b></span>
+            <span style="margin-left: 700px; font-size: 12px;">TIẾNG VIỆT | ENGLISH     </span>
+            <span style="font-size: 12px; color:gray;margin-left:  20px;">© ALL RIGHTS RESERVED</span>
+            <br/>
+            <br/>
+            <input class="search" type="text" placeholder="NHẬP ĐỊA CHỈ EMAIL VÀO ĐÂY"> 
+            <br/>
+            
+            <div class ="lienhe" >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>CÔNG TY </b></li> 
+                    <br/>
+                    <li><a href="#"> Giới thiệu về chúng tôi </a></li>
+                    <li >268Đ, Quận Cầu Giấy, Hà Nội, Vietnam </li> 
+					<li >0364554001 - Thứ 2 - Chủ nhật: 9:00 - 18:00 </li> 
+					<li >sullybagVN.vn@gmail.com </li> 
+                </ul>
+            </div>
+            
+            <div class ="lienhe">
+                <ul class="noidung" >
+                    <li style="font-size: 15px"> <b>THEO DÕI CHÚNG TÔI </b></li> 
+                    <br/>
+                    <li><a href="https://www.facebook.com/ddquynh.24"> Facebook </a></li>
+                    <li><a href="#"> Instagram </a></li>
+                    <li><a href="#"> Tiktok </a></li>
+                    <li><a>x</a></li>
+                    <li><a href="#"> Spotyfy </a></li>
+                    <li><a href="#"> Threads </a></li>
+                    <li><a href="#"> Zalo </a></li>
+                </ul>
+            </div>
+            
+            <div class ="lienhe"  >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>CHÍNH SÁCH</b></li>
+                    <br/>
+                    <li><a href="#"> Chính sách bảo mật </a></li>
+                    <li><a href="#"> Điều kiện mua hàng </a></li>
+                    <li><a href="#"> cài đặt Coockie </a></li>
+                </ul>
+            </div>
+            
+            <div class ="lienhe"  >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>KẾT NỐI VỚI SULLY & BAG </b></li> 
+                    <br/>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=260px&height=200px&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="260px" height="200px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var productElements = document.querySelectorAll('.newbag');
+    
+            productElements.forEach(function(product) {
+                product.addEventListener('click', function() {
+                    var productId = this.getAttribute('data-id');
+                    // Điều hướng sang trang details.html và truyền productId qua URL
+                    window.location.href = 'details.html?id=' + productId;
+                });
+            });
+        });
+    </script>
+</body>

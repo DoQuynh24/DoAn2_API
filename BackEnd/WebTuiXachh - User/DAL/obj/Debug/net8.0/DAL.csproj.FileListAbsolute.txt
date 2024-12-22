@@ -1,0 +1,30 @@
+D:\API\WebTuiXachh\DAL\bin\Debug\net8.0\DAL.deps.json
+D:\API\WebTuiXachh\DAL\bin\Debug\net8.0\DAL.dll
+D:\API\WebTuiXachh\DAL\bin\Debug\net8.0\DAL.pdb
+D:\API\WebTuiXachh\DAL\bin\Debug\net8.0\Model.dll
+D:\API\WebTuiXachh\DAL\bin\Debug\net8.0\Model.pdb
+D:\API\WebTuiXachh\DAL\obj\Debug\net8.0\DAL.csproj.AssemblyReference.cache
+D:\API\WebTuiXachh\DAL\obj\Debug\net8.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\API\WebTuiXachh\DAL\obj\Debug\net8.0\DAL.AssemblyInfoInputs.cache
+D:\API\WebTuiXachh\DAL\obj\Debug\net8.0\DAL.AssemblyInfo.cs
+D:\API\WebTuiXachh\DAL\obj\Debug\net8.0\DAL.csproj.CoreCompileInputs.cache
+D:\API\WebTuiXachh\DAL\obj\Debug\net8.0\DAL.csproj.Up2Date
+D:\API\WebTuiXachh\DAL\obj\Debug\net8.0\DAL.dll
+D:\API\WebTuiXachh\DAL\obj\Debug\net8.0\refint\DAL.dll
+D:\API\WebTuiXachh\DAL\obj\Debug\net8.0\DAL.pdb
+D:\API\WebTuiXachh\DAL\obj\Debug\net8.0\ref\DAL.dll
+D:\API\WebTuiXachh - User\DAL\bin\Debug\net8.0\DAL.deps.json
+D:\API\WebTuiXachh - User\DAL\bin\Debug\net8.0\DAL.dll
+D:\API\WebTuiXachh - User\DAL\bin\Debug\net8.0\DAL.pdb
+D:\API\WebTuiXachh - User\DAL\bin\Debug\net8.0\Model.dll
+D:\API\WebTuiXachh - User\DAL\bin\Debug\net8.0\Model.pdb
+D:\API\WebTuiXachh - User\DAL\obj\Debug\net8.0\DAL.csproj.AssemblyReference.cache
+D:\API\WebTuiXachh - User\DAL\obj\Debug\net8.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+D:\API\WebTuiXachh - User\DAL\obj\Debug\net8.0\DAL.AssemblyInfoInputs.cache
+D:\API\WebTuiXachh - User\DAL\obj\Debug\net8.0\DAL.AssemblyInfo.cs
+D:\API\WebTuiXachh - User\DAL\obj\Debug\net8.0\DAL.csproj.CoreCompileInputs.cache
+D:\API\WebTuiXachh - User\DAL\obj\Debug\net8.0\DAL.csproj.Up2Date
+D:\API\WebTuiXachh - User\DAL\obj\Debug\net8.0\DAL.dll
+D:\API\WebTuiXachh - User\DAL\obj\Debug\net8.0\refint\DAL.dll
+D:\API\WebTuiXachh - User\DAL\obj\Debug\net8.0\DAL.pdb
+D:\API\WebTuiXachh - User\DAL\obj\Debug\net8.0\ref\DAL.dll

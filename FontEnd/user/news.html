@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SULLY & BAG | Việt Nam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../userStyle/news.css">
+    <script src="/userJs/main.js" defer></script>
+    <link rel="icon" href="images/logo.png">
+    <script src="/angular/script.js"></script>
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular/global.js"></script>
+    <script src="/angular/user_login.js"></script>
+</head>
+<body ng-app="AppLogin" ng-controller="loginCtrl" >
+    <div id="main">
+        <div id="header">
+            <div id="header-top">
+                <p id="name" class="name"> SULLY & BAG</p>
+                <script>document.addEventListener('DOMContentLoaded', function(){
+                    var nameLogo = document.getElementById('name');
+                    if (nameLogo) { 
+                        nameLogo.addEventListener('click', function(){
+                            window.location.href = '/user/index.html';
+                        });
+                    }
+                });</script>
+                <img class="icon" src="images/heart.png"/>
+                <img id="cart" class="icon" src="images/bag.png"/>
+                <img id="user-icon" style="width:30px; height:30px; margin-top: 20px; cursor: pointer;" src="images/use.png"/>
+                <div id="user-dropdown" class="dropdown-content">
+                    <a href="/user/infor.html">Thông tin tài khoản</a>
+                    <a href="#" id="logout-btn">Đăng xuất</a>
+                </div>
+                <span ng-if="HoTen" style="margin-left: 10px; margin-top: 30px;">{{ HoTen }}</span>
+
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Lấy tên người dùng từ localStorage
+                    var userName = localStorage.getItem('userName' );
+                    
+                    // Kiểm tra nếu có tên người dùng thì hiển thị
+                    if (userName) {
+                        // Tạo phần tử hiển thị tên người dùng
+                        var userNameDisplay = document.createElement('span');
+                        userNameDisplay.textContent = userName;
+                        userNameDisplay.style.marginLeft = '10px'; 
+                        userNameDisplay.style.marginTop = '30px'; 
+                        
+                        // Thêm tên người dùng vào bên cạnh biểu tượng người dùng
+                        var userIcon = document.getElementById('user-icon');
+                        userIcon.parentNode.appendChild(userNameDisplay);
+                    }
+                });
+             
+                </script>
+
+            </div>
+        </div>
+        <hr/>
+        <div id="content-news">
+            <h3 style="margin-top: 50px; margin-left: 35px;" id="khuyenmai">Khuyến mãi</h3>
+            <u class="xemthem"> Xem thêm</u>
+            <div id="news">
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news3.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;">RE-OPENING VASCARA HỘI AN - ƯU ĐÃI LỚN MỪNG KHAI TRƯƠNG</p>
+                        <p style="font-size: 17px; margin-top: 5px;"> Tưng bừng chào đón sự trở lại của một không gian mua sắm mới của Vascara tại Hội An! Vascara mang đến cho quý khách hàng những ưu đãi đặc biệt hấp dẫn. </p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 04/10/2024</p>
+                    </div>
+                </div>
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news2.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;">CLAIR DE LUNE - Món quà xinh yêu cho mùa trung thu ấm áp</p>
+                        <p style="font-size: 17px; margin-top: 5px;">Người bạn mới - Gấu Lucie & Maisie vừa là món phụ kiện vừa là món quà tặng mà Sully muốn gửi đến các bạn trong mùa Trung Thu này. Đến Sully mua sắm từ 14.09 đến 22.09 để nhận ngay món quà tặng xinh yêu này nhé!</p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 11/09/2024</p>
+                    </div>
+                </div>
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news1.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;">COUTURE QUEEN REWARDS - Thank you, my Dears! ❤️</p>
+                        <p style="font-size: 17px; margin-top: 5px;">Tháng 6 này, hãy để Sully gửi ngàn lời cảm ơn sâu sắc đến quý khách hàng đã gửi gắm niềm tin ở Vascara trên hành trình nâng tầm phong cách... </p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 18/06/2024</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 50px; margin-left: 35px;" id="thongbao">Thông báo</h3>
+            <u class="xemthem"> Xem thêm</u>
+            <div id="news">
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news4.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;">Global Fashion, UNICEF đồng hành cùng đồng bào miền Bắc khắc phục hậu quả siêu bão Yagi</p>
+                        <p style="font-size: 17px; margin-top: 5px;"> Dù siêu bão Yagi đã qua đi nhưng công tác hỗ trợ, khắc phục thiệt hại do trận bão gây ra ở các tỉnh miền Bắc. Chính vì thế Công ty Global Fashion và thương hiệu Sully xin được tiếp tục chung tay cùng các cơ quan Chính Phủ, tổ chức quốc tế cùng đồng bào miền Bắc vượt qua thời điểm khó khăn này.</p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 16/09/2024</p>
+                    </div>
+                </div>
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news5.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;">Tạm đóng cửa các cửa hàng khu vực miền bắc vì bão</p>
+                        <p style="font-size: 17px; margin-top: 5px;">Vì tình hình bão Yagi đang diễn biến phức tạp, được dự báo cường độ rất mạnh đang đổ bộ vào khu vực miền Bắc từ ngày 6 tới ngày 9 tháng 9, Sully thông báo tạm đóng cửa một sổ cửa hàng tại khu vực bị ảnh hưởng như sau:</p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 06/09/2024</p>
+                    </div>
+                </div>
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news6.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;">THÔNG BÁO TẠM NGỪNG HOẠT ĐỘNG CỬA HÀNG</p>
+                        <p style="font-size: 17px; margin-top: 5px;">Kính gửi quý khách hàng
+                            Sully xin gửi lời cảm ơn sâu sắc vì sự tin tưởng và gắn bó của quý khách trong suốt thời gian vừa qua. 
+                            Sully xin phép gửi đến khách hàng thông báo tạm ngưng hoạt động một số cửa hàng như sau:  </p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 09/10/2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 50px; margin-left: 35px;" id="taitro">Tài trợ</h3>
+            <u class="xemthem"> Xem thêm</u>
+            <div id="news">
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news7.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;"> SULLY GÓP MẶT TRONG "KIỆT TÁC CỦA NƯỚC" ĐẦY MÃN NHÃN CỦA NTK VÕ CÔNG KHANH MỞ MÀN VIFW24.</p>
+                        <p style="font-size: 17px; margin-top: 5px;"> Là nhà thiết kế mở đầu cho khuôn khổ Tuần lễ Thời trang Vietnam International Fashion Week (VIFW) 2024, NTK Võ Công Khanh đã mang đến cho người xem những cung bậc cảm xúc đặc biệt, đồng thời vẽ ra những "Kiệt Tác Của Nước" dưới góc nhìn đầy tính sáng tạo và nghệ thuật của mình.</p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 09/07/2024</p>
+                    </div>
+                </div>
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news9.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;">Các mẫu thiết kế Sully tỏa sáng trong BST xuân hè 2024 của nhà thiết kế Hà Thẩm Tiến</p>
+                        <p style="font-size: 17px; margin-top: 5px;">Bộ sưu tập với các mẫu thiết kế váy áo, đầm, suit mang phong cách tối giản đầy sang trọng, nhưng vẫn ẩn chứa nét đẹp nhẹ nhàng thanh thoát toát qua sự chỉn chu, tỉ mỉ trên trong từng chi tiết, chất liệu, cách bắt xếp, đường may,... </p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 30/03/2024</p>
+                    </div>
+                </div>
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news8.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;">Khoảnh khắc đánh dấu cái tôi thời trang tại show diễn Xuân Hè 2023 của thương hiệu Sully/p>
+                        <p style="font-size: 17px; margin-top: 5px;">Với đường băng độc đáo, SR Celebrating Local Pride Spring/Summer 2023 Powered by Vascara mang đến một show diễn thời trang độc đáo, tràn ngập những phút giây thời trang thăng hoa, những khoảnh khắc đầy mãn nhãn với ngôn ngữ THE EGO.</p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 26/06/2024</p>
+                    </div>
+                </div>
+            </div>
+         
+            <h3 style="margin-top: 50px; margin-left: 35px; " id="tintuc">Tin tức</h3>
+            <u class="xemthem"> Xem thêm</u>
+            <div id="news">
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news10.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;"> BÍ QUYẾT BẢO QUẢN TÚI XÁCH CHẤT LIỆU DA VÀO MÙA MƯA</p>
+                        <p style="font-size: 17px; margin-top: 5px;"> úi da luôn là món phụ kiện thời trang yêu thích của nhiều người, đặc biệt là phái đẹp. Những chiếc túi xách nữ bằng da không chỉ mang lại vẻ đẹp sang trọng, đẳng cấp mà còn giúp người sở hữu thể hiện phong cách riêng. Tuy nhiên vào mùa mưa, việc bảo quản túi da lại trở thành một thách thức lớn.</p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 10/10/2024</p>
+                    </div>
+                </div>
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news11.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;">ĐIỂM DANH BẢNG MÀU TRENDING MÙA THU 2024</p>
+                        <p style="font-size: 17px; margin-top: 5px;">Mùa thu đến mang theo một loạt sự chuyển giao của xu hướng và màu sắc để đa dạng sự chọn lựa cho những món phụ kiện trong tủ đồ của bạn. </p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 05/10/2024</p>
+                    </div>
+                </div>
+                <div id="detail-new">
+                    <div class="img-news">
+                        <img class="img-news"  src="images/news12.png"/>
+                    </div>
+                    <div class="content">
+                        <p style="font-weight: bold; font-size: 17px;">BAG CHARM: MÓN PHỤ KIỆN TRENDING KHÔNG THỂ THIẾU CHO CHIẾC TÚI XÁCH CỦA BẠN</p>
+                        <p style="font-size: 17px; margin-top: 5px;">Trong thế giới thời trang, mỗi chi tiết đều góp phần tạo nên tổng thể hoàn hảo. Và khi nói đến những phụ kiện trang trí cho túi xách, Bag Charm chính là món đồ nhỏ nhắn nhưng đầy sức hút, giúp biến chiếc túi của bạn thành một tác phẩm nghệ thuật mang đậm tính cá nhân hóa.</p>
+                        <p style="color: gray; margin-top: 7px;">Ngày 01/10/2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div id="footer">
+            <br/>
+            <div>  
+                <ul class="link">
+                    <li><a href="https://www.facebook.com/ddquynh.24"> Facebook </a></li>
+                    <li><a href="#"> Instagram </a></li>
+                    <li><a href="#"> Tiktok </a></li>
+                    <li><a>x</a></li>
+                    <li><a href="#"> Spotyfy </a></li>
+                    <li><a href="#"> Threads </a></li>
+                    <li><a href="#"> Zalo </a></li>
+                </ul>
+            </div>
+            
+            <span><b>THAM GIA BẢN TIN CỦA CHÚNG TÔI</b></span>
+            <span style="margin-left: 600px; font-size: 12px;">TIẾNG VIỆT | ENGLISH     </span>
+            <span style="font-size: 12px; color:gray;margin-left:  20px;">© ALL RIGHTS RESERVED</span>
+            <br/>
+            <br/>
+            <input class="search" type="text" placeholder="NHẬP ĐỊA CHỈ EMAIL VÀO ĐÂY"> 
+            <br/>
+            
+            <div class ="lienhe" >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>CÔNG TY </b></li> 
+                    <br/>
+                    <li><a href="#"> Giới thiệu về chúng tôi </a></li>
+                    <li >268Đ, Quận Cầu Giấy, Hà Nội, Vietnam </li> 
+					<li >0364554001 - Thứ 2 - Chủ nhật: 9:00 - 18:00 </li> 
+					<li >zaraVN.vnn@gmail.com </li> 
+                </ul>
+            </div>
+            
+            <div class ="lienhe">
+                <ul class="noidung" >
+                    <li style="font-size: 15px"> <b>THEO DÕI CHÚNG TÔI </b></li> 
+                    <br/>
+                    <li><a href="https://www.facebook.com/ddquynh.24"> Facebook </a></li>
+                    <li><a href="#"> Instagram </a></li>
+                    <li><a href="#"> Tiktok </a></li>
+                    <li><a>x</a></li>
+                    <li><a href="#"> Spotyfy </a></li>
+                    <li><a href="#"> Threads </a></li>
+                    <li><a href="#"> Zalo </a></li>
+                </ul>
+            </div>
+            
+            <div class ="lienhe"  >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>CHÍNH SÁCH</b></li>
+                    <br/>
+                    <li><a href="#"> Chính sách bảo mật </a></li>
+                    <li><a href="#"> Điều kiện mua hàng </a></li>
+                    <li><a href="#"> cài đặt Coockie </a></li>
+                </ul>
+            </div>
+            
+            <div class ="lienhe"  >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>KẾT NỐI VỚI ZARA </b></li> 
+                    <br/>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=260px&height=200px&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="260px" height="200px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>

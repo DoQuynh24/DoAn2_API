@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>NEWBAG | SULLY</title>
+        <link rel="stylesheet" href="../userStyle/newBag.css">
+        <script src="/userJs/main.js" defer></script>
+        <link rel="icon" href="images/logo.png">
+
+        <script src="/angular/script.js"></script>
+        <script src="/angular/angular.min.js"></script>
+        <script src="/angular/global.js"></script>
+        <script src="/angular/user_login.js"></script>
+    </head>
+    <body ng-app="AppLogin" ng-controller="loginCtrl" >
+        <div id="main">
+            <div id="header">
+                <div id="header-top">
+                    <p id="name" class="name"> SULLY & BAG</p>
+                    <script>
+                        
+                        document.addEventListener('DOMContentLoaded', function(){
+                            var nameLogo = document.getElementById('name');
+                            if (nameLogo) { 
+                                nameLogo.addEventListener('click', function(){
+                                    window.location.href = '/user/index.html';
+                                });
+                            }
+                        });
+
+                    </script>
+                    <input class="search" type="text" placeholder=" 🔍Tìm kiếm sản phẩm"> 
+                    <img class="icon" src="images/heart.png"/>
+                    <img id="cart" class="icon" src="images/bag.png"/>
+                    <script>document.addEventListener("DOMContentLoaded", function() {
+                        var cartIcon = document.getElementById("cart");
+                        cartIcon.addEventListener("click", function() {
+                            window.location.href = "/user/cart.html";
+                        });
+                    });
+                    </script>
+                    
+                    <img id="user-icon" style="width:30px; height:30px; margin-top: 20px; cursor: pointer;" src="images/use.png"/>
+                <div id="user-dropdown" class="dropdown-content">
+                    <a href="/user/infor.html">Thông tin tài khoản</a>
+                    <a href="#" id="logout-btn">Đăng xuất</a>
+                </div>
+                <span ng-if="HoTen" style="margin-left: 10px; margin-top: 30px;">{{ HoTen }}</span>
+
+                <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Lấy tên người dùng từ localStorage
+                    var userName = localStorage.getItem('userName' );
+                    
+                    // Kiểm tra nếu có tên người dùng thì hiển thị
+                    if (userName) {
+                        // Tạo phần tử hiển thị tên người dùng
+                        var userNameDisplay = document.createElement('span');
+                        userNameDisplay.textContent = userName;
+                        userNameDisplay.style.marginLeft = '10px'; 
+                        userNameDisplay.style.marginTop = '30px'; 
+                        
+                        // Thêm tên người dùng vào bên cạnh biểu tượng người dùng
+                        var userIcon = document.getElementById('user-icon');
+                        userIcon.parentNode.appendChild(userNameDisplay);
+                    }
+                });
+             
+                </script>
+                </div>
+                    <!-- Form đăng nhập -->
+                    <div id="login-form" class="login-form">
+                        <p style="text-align: center; font-size: 20px; font-weight: bold;">ĐĂNG NHẬP</p>
+                        <br/>
+                        <label for="username">Số điện thoại hoặc Email</label>
+                        <input type="text" id="username" placeholder="Vd: 0123456789">
+                        <span class="error" id="username-error"></span> <!-- Hiển thị lỗi cho username -->
+                        <br/>
+                        
+                        <label for="password">Mật khẩu</label>
+                        <div class="password-container">
+                            <input type="password" id="password" placeholder="Nhập mật khẩu">
+                            <span id="toggle-password" class="toggle-password">
+                                <img id="eye-icon" src="images/eye.png" alt="Show/Hide Password" />
+                            </span>
+                        </div>
+                        <span class="error" id="password-error"></span> <!-- Hiển thị lỗi cho password -->
+                        <br/>
+
+                        <p><a href="#">Bạn quên mật khẩu?</a></p>
+                        <br/>
+                        <button type="submit" id="login-btn">Đăng nhập</button>
+                        <br/><br/><br/><hr/>
+                        <p style="text-align: center; margin-top: 5px;">Bạn chưa có tài khoản? <a href="/user/account.html">Đăng ký ngay</a></p>
+                    </div>
+                <div id="headerNewBag-center">
+                    <div id="headerNewBag-content">
+                        <p>BỘ SƯU TẬP SẢN PHẨM MỚI CỦA SULLY & BAG</p>
+                        <p>Khám phá bộ sưu tập túi xách mới nhất với thiết kế sang trọng và hiện đại, phù hợp với mọi phong cách thời trang.</p>
+                        <p>Mua ngay để nhận ưu đãi đặc biệt: Giảm giá 10% cho các mẫu túi mới trong tuần lễ ra mắt. Đừng bỏ lỡ!</p>
+                        <p>Miễn phí vận chuyển toàn quốc cho mọi đơn hàng từ bộ sưu tập mới. Hãy tận hưởng trải nghiệm mua sắm tuyệt vời tại SULLY & BAG!</p>
+
+                    </div>
+                </div>
+                <div id="header-bottom">
+                    <label id="in-tab" class="tab-link active" onclick="showForm('in-form')">New In</label>
+                    <label id="collection-tab" class="tab-link" onclick="showForm('collection-form')">New Collection</label>
+
+                </div>
+            </div>
+          
+            <div id="content-newbag">
+              
+                <div id="new-in-content" class="tab-content">
+                    <p style="color: gray; margin-left: 30px; font-size: 18px;">Trang chủ - Sản phẩm mới của Sully & Bag</p>
+                    <img style="width: 96%; margin-left: 30px; margin-top: 20px;" src="images/newbag1.png"/>            
+                    <p style="text-align: center; font-size: 17px; margin-top: 20px; color:gray;"> New In</p><br/>
+                    <div id="content-newbag-1" ng-init="LoadLatestProducts()">
+                        <div class="newbag" ng-repeat="product in randomProducts" data-id="{{product.maSp}}" ng-click="viewProductDetails(product)">
+                            <img class="img-newbag" ng-src="{{getImageUrl(product.hinhAnh)}}" />
+                            <h4 style="text-align: center;">{{product.tenSp}}</h4>
+                            <p class="product-price">{{product.giaBan | currency:'₫':0}}</p>
+                        </div>
+                    </div>
+                    <br/><br/> 
+                    <div id="content-newbag-1" >
+                        <div class="newbag" data-id="1">
+                            <img id="bag" class="img-newbag" src="images/1.png" onmouseover="changeImageOnHover(this, 'images/1.1.png')" onmouseout="restoreImage(this)"/>
+                                <h4 style="text-align: center; ">Miss Dior Flap Bag</h4>
+                                <p class="product-price">95.000.000 ₫</p>
+                                
+                        </div>
+                        <div class="newbag" data-id="2">
+                            <img class="img-newbag" src="images/2.png" onmouseover="changeImageOnHover(this, 'images/2.1.png')" onmouseout="restoreImage(this)"/>
+                                <h4 style="text-align: center;">Dior Groove 20 Bag</h4>
+                                <p class="product-price">83.000.000 ₫</p>
+                        </div>
+                        <div class="newbag" data-id="3">
+                            <img class="img-newbag" src="images/5.png" onmouseover="changeImageOnHover(this, 'images/5.1.png')" onmouseout="restoreImage(this)"/>
+                                <h4 style="text-align: center;">Small 30 Montaigne Avenue Top Handle Bag</h4>
+                                <p class="product-price">89.000.000 ₫</p>
+                        </div>
+                        <div class="newbag" data-id="4">
+                            <img class="img-newbag" src="images/new1.png" onmouseover="changeImageOnHover(this, 'images/new2.png')" onmouseout="restoreImage(this)"/>
+                                <h4 style="text-align: center;">Medium Dior Toujours Bag</h4>
+                                <p class="product-price">100.000.000 ₫</p>
+                        </div>
+                    </div> 
+                    
+                </div>
+                
+                <div id="new-collection-content" class="tab-content" style="display:none;">
+                    <p style="color: gray; margin-left: 30px; font-size: 18px;">Trang chủ - Bộ sưu tập mới của Sully & Bag</p>
+                    <img style="width: 96%; margin-left: 30px; margin-top: 20px;" src="images/newbag.png"/>
+                    <p style="text-align: center; font-size: 17px; margin-top: 20px; color:gray;"> New Collection</p><br/>
+                    <!-- Nội dung sản phẩm cho New Collection -->
+                    <div id="content-newbag-1" ng-init="LoadLatestProducts()">
+                        <div class="newbag" ng-repeat="product in randomProducts" data-id="{{product.maSp}}" ng-click="viewProductDetails(product)">
+                            <img class="img-newbag" ng-src="{{getImageUrl(product.hinhAnh)}}" />
+                            <h4 style="text-align: center;">{{product.tenSp}}</h4>
+                            <p class="product-price">{{product.giaBan | currency:'₫':0}}</p>
+                        </div>
+                    </div> 
+                 <br/><br/>
+                    <div id="content-newbag-2">
+                        <div id="content-newbag-2left">
+                            <img style="width:80%; height: 500px; margin-left: 20px;" src="images/new4.png"/>
+                            <div class="large-bag-info">
+                                <p class="large-bag-name">Medium Dioriviera Book Tote <span class="large-bag-price">12.000.000 ₫</span></p>
+                            </div>
+                        </div>
+                        
+                        <div id="image-baglist">
+                            <div class="bag-item">
+                                    <img class="img-bag" src="images/7.png" onmouseover="changeImageOnHover(this, 'images/7.1.png')" onmouseout="restoreImage(this)"/>
+                                    <p class="color-name">Color: Navy blue</p>
+                            </div>
+                        
+                            <div class="bag-item">
+                                    <img class="img-bag" src="images/8.png" onmouseover="changeImageOnHover(this, 'images/8.2.png')" onmouseout="restoreImage(this)"/>
+                                    <p class="color-name">Color: Lemon Yellow</p>
+                            </div>
+    
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <hr/>
+               
+            </div>
+            <div id="footer">
+                <br/>
+                <div>  
+                    <ul class="link">
+                        <li><a href="https://www.facebook.com/ddquynh.24"> Facebook </a></li>
+                        <li><a href="#"> Instagram </a></li>
+                        <li><a href="#"> Tiktok </a></li>
+                        <li><a>x</a></li>
+                        <li><a href="#"> Spotyfy </a></li>
+                        <li><a href="#"> Threads </a></li>
+                        <li><a href="#"> Zalo </a></li>
+                    </ul>
+                </div>
+                
+                <span><b>THAM GIA BẢN TIN CỦA CHÚNG TÔI</b></span>
+                <span style="margin-left: 700px; font-size: 12px;">TIẾNG VIỆT | ENGLISH     </span>
+                <span style="font-size: 12px; color:gray;margin-left:  20px;">© ALL RIGHTS RESERVED</span>
+                <br/>
+                <br/>
+                <input class="search" type="text" placeholder="NHẬP ĐỊA CHỈ EMAIL VÀO ĐÂY"> 
+                <br/>
+                
+                <div class ="lienhe" >
+                    <ul class="noidung">
+                        <li style="font-size: 15px"> <b>CÔNG TY </b></li> 
+                        <br/>
+                        <li><a href="#"> Giới thiệu về chúng tôi </a></li>
+                        <li >268Đ, Quận Cầu Giấy, Hà Nội, Vietnam </li> 
+                        <li >0364554001 - Thứ 2 - Chủ nhật: 9:00 - 18:00 </li> 
+                        <li >sullybagVN.vn@gmail.com </li> 
+                    </ul>
+                </div>
+                
+                <div class ="lienhe">
+                    <ul class="noidung" >
+                        <li style="font-size: 15px"> <b>THEO DÕI CHÚNG TÔI </b></li> 
+                        <br/>
+                        <li><a href="https://www.facebook.com/ddquynh.24"> Facebook </a></li>
+                        <li><a href="#"> Instagram </a></li>
+                        <li><a href="#"> Tiktok </a></li>
+                        <li><a>x</a></li>
+                        <li><a href="#"> Spotyfy </a></li>
+                        <li><a href="#"> Threads </a></li>
+                        <li><a href="#"> Zalo </a></li>
+                    </ul>
+                </div>
+                
+                <div class ="lienhe"  >
+                    <ul class="noidung">
+                        <li style="font-size: 15px"> <b>CHÍNH SÁCH</b></li>
+                        <br/>
+                        <li><a href="#"> Chính sách bảo mật </a></li>
+                        <li><a href="#"> Điều kiện mua hàng </a></li>
+                        <li><a href="#"> cài đặt Coockie </a></li>
+                    </ul>
+                </div>
+                
+                <div class ="lienhe"  >
+                    <ul class="noidung">
+                        <li style="font-size: 15px"> <b>KẾT NỐI VỚI SULLY & BAG </b></li> 
+                        <br/>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=260px&height=200px&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="260px" height="200px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </body>
+</html>

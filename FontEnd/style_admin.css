@@ -1,0 +1,618 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+#main{
+    width: 100%;
+    background-color:  #FFF;
+    height: 90%;
+}
+
+#header{
+    width:100%;
+    height:65px;
+    display:flex;
+    background-color: rgba(128, 128, 128, 0.199);
+    
+}
+
+
+    #name{
+        width: 220px;
+        display:flex;
+        cursor: pointer;
+    }
+        .name{
+           
+            font-size: 43px; 
+            font-family: Georgia, 'Times New Roman', Times, serif; 
+        }
+       
+    #search{
+        width:950px;
+        display:flex;
+        cursor: pointer;
+        line-height: 20px;
+    }
+        .menu{
+            margin-top: 15px;
+            width:30px;
+            height:30px;
+            margin-left: 20px;
+           
+        }
+        
+    #text{
+        margin-top: 20px;
+        margin-left: 50px;
+        font-size: 20px;
+    } 
+    #avt{
+        display: flex;
+        cursor: pointer;
+    }
+    .avt{
+        width:50px;
+        height:45px;
+        border-radius: 100px;
+        margin-top: 10px;
+        
+    }
+    #content {
+        display: flex;
+        width: 100%;
+        height: 760px;
+        background-color: #f8f8f8;
+    }
+    
+    /* Sidebar (content-left) */
+    #content-left {
+        width: 230px;
+        background-color: rgba(128, 128, 128, 0.199);
+        padding: 20px;
+        height: 100%;
+    }
+    
+    .button {
+        width: 100%;
+        height: 45px;
+        background-color: #FFF;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        padding-left: 30px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .button:hover {
+        background-color: rgba(0, 0, 255, 0.205);
+    }
+    
+    .icon {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+    }
+    
+    #sub-products {
+        display: none;
+        padding-left: 20px;
+    }
+    
+    #sub-products .button {
+        background-color: #FFF;
+    }
+    
+    #sub-products .button:hover {
+        background-color: rgba(0, 0, 255, 0.205);
+    }
+    
+    /* Content-right */
+    #content-right {
+        flex-grow: 1;
+        background-color: #f8f8f8;
+        padding: 0px;
+    }
+    #content-right-admin {
+        padding: 0px;
+        background-color: #fff;
+    }
+    
+    #content-right-admin h1 {
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #333;
+        text-align: center;
+    }
+    
+    .stats {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+    
+    .stat-item {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+        width: 150px;
+        font-size: 14px;
+        cursor: pointer;
+   
+    }
+    
+    .stat-item h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    
+    .stat-item p {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .quick-actions {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .action-btn {
+        padding: 10px 15px;
+        background-color: #61abff;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    
+    .action-btn:hover {
+        background-color: rgba(0, 0, 255, 0.753);
+    }
+
+    /* style_admin.css */
+
+/* Ẩn tất cả các tab nội dung mặc định */
+.tab-content {
+    display: none;
+}
+
+/* Hiển thị tab nội dung khi được chọn */
+.tab-content.active {
+    display: block;
+}
+
+
+#content-left .button img.icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+
+#content-right {
+    flex-grow: 1;
+    background-color: white;
+}
+
+
+.add {
+    width: 30px;
+    height: 30px;
+    background-color: #f8f9fa;
+    }
+
+
+/* user*/
+
+.role{
+    width:120px;
+    height:30px;
+  
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+    
+    .search-container input {
+    width: 400px;
+    }
+    
+    .search-container button {
+    margin-left: 10px;
+    }
+    .product-table-user {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 5px;
+        
+    }
+    
+    .product-table-user thead th {
+        background-color: #2C3E50;
+        font-weight: bold;
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        white-space: nowrap; 
+    }
+    
+    .product-table-user tbody td {
+        border: 1px solid #dee2e6;
+        vertical-align: middle;
+        white-space: nowrap; 
+        text-align: center;
+    }
+    .product-table-user tbody td img {
+        width: 100px;
+        height: auto;
+        border-radius: 5px;
+    }
+    
+    .product-table-user tbody td button {
+        padding: 5px 5px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .product-table-user thead th:nth-child(1),
+    .product-table-user tbody td:nth-child(1) {
+        width: 10%; 
+    }
+    .product-table-user thead th:nth-child(2),
+    .product-table-user tbody td:nth-child(2) {
+        width: 20%; 
+    }
+    .product-table-user thead th:nth-child(4),
+    .product-table-user tbody td:nth-child(4) {
+        width: 20%; 
+    }
+    .product-table-user thead th:nth-child(6),
+    .product-table-user tbody td:nth-child(6) {
+        width: 10%; 
+    }
+
+    .edit-btn, .delete-btn {
+        background-color: #1ABC9C;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    .edit-btn:hover, .delete-btn:hover {
+        background-color: #16A085;
+    }
+    
+    .delete-btn {
+        background-color: #E74C3C;
+    }
+    
+    .delete-btn:hover {
+        background-color: #C0392B;
+    }
+ /* PRODUCT*/
+  
+ .product-header {
+    background-color: #f8f9fa;
+    padding: 10px;
+    padding-left: 30px;
+    height:40px;
+    margin-top: 5px;
+}
+.search-container-sanpham {
+    display: flex;
+    align-items: center;
+    background-color: #CCC;
+    margin-top: 10px;
+
+
+}
+.btn-add{
+    width: 30px;
+    height: 28px;
+    border: none;
+    background-color: #2C3E50;
+    border-radius: 7px;
+    color:#FFF ;
+ 
+}
+.filters .form-select, .filters .form-control {
+    width: 270px;
+    margin-left: 50px;
+    height: 30px;
+    font-size: 13px;
+}
+.icon-pencil{
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color: transparent;
+    }
+
+    .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 5px;
+ 
+        
+    }
+    
+    .product-table thead th {
+        background-color: #2C3E50;
+        font-weight: bold;
+        padding: 10px;
+        border: 1px solid #dee2e6;
+        white-space: nowrap; 
+    }
+    
+   
+    
+    .product-table tbody td {
+        border: 1px solid #dee2e6;
+        vertical-align: middle;
+        white-space: nowrap; 
+        text-align: center;
+    }
+    .product-table tbody td img {
+        width: 100px;
+        height: auto;
+        border-radius: 5px;
+    }
+    
+    .product-table tbody td button {
+        padding: 5px 5px;
+        margin: 0 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .product-table thead th:nth-child(1),
+    .product-table tbody td:nth-child(1) {
+        width: 10%; /* Cột ID */
+    }
+
+    .product-table thead th:nth-child(2),
+    .product-table tbody td:nth-child(2) {
+        width: 10%; /* Cột Loại Túi */
+    }
+
+    .product-table thead th:nth-child(3),
+    .product-table tbody td:nth-child(3) {
+        width: 30%; /* Cột Tên Túi Xách */
+    }
+    .product-table thead th:nth-child(6),
+    .product-table tbody td:nth-child(6) {
+        width: 5%; /* Cột Tên Túi Xách */
+    }
+        
+    .product-table tbody td button.edit-btn {
+        background-color: #ffc107;
+        color: #fff;
+    }
+    
+    .product-table tbody td button.delete-btn {
+        background-color: #dc3545;
+        color: #fff;
+    }
+    .pagination-container-price{
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+
+
+/* HÓA ĐƠN*/
+.header-hoadon {
+    width:100%;
+    height: 75px;
+}
+.search-container-hoadon {
+    display: flex;
+    align-items: center;
+    background-color: #CCC;
+    margin-top: 10px
+}
+
+.search-icon {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.search-icon img {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+}
+
+.search-container input {
+    border: none;
+    background-color: #CCC;
+    font-size: 14px;
+}
+
+#menu {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    border: 1px solid #CCC
+}
+
+.menu-item {
+    flex: 1;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.5s;
+}
+
+
+.menu-item.active {
+    font-weight: bold;
+    color: #FFF;
+    background-color: cadetblue;
+
+}
+.menu-item:hover{
+    background-color: cadetblue;
+}
+
+.see-btn-hoadon, .delete-btn-hoadon {
+    background-color: #1ABC9C;
+    color: white;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.see-btn-hoadon:hover, .delete-btn-hoadon:hover {
+    background-color: #16A085;
+}
+
+.delete-btn-hoadon {
+    background-color: #E74C3C;
+}
+
+.delete-btn-hoadon:hover {
+    background-color: #C0392B;
+}
+
+
+.trang-thai-dang-xu-ly {
+    color: #0000ff !important;  
+    font-weight: bold !important;
+}
+
+.trang-thai-dang-lay-hang {
+    color: #ffa500 !important; 
+    font-weight: bold !important; 
+}
+
+.trang-thai-cho-giao-hang {
+    color: #008000 !important;  
+    font-weight: bold !important;  
+}
+
+.trang-thai-hoan-thanh {
+    color: #800080 !important; 
+    font-weight: bold !important;  
+}
+
+.trang-thai-da-huy {
+    color: #ff0000 !important;  
+    font-weight: bold !important;  
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #f8f8f8;
+    
+    }
+    
+    table, th, td {
+    border: 1px solid #ddd;
+    
+    }
+    
+    th, td {
+    padding: 10px;
+    text-align: left;
+    }
+    
+    table th {
+        background-color: #2C3E50;
+        color: white;
+    }
+    
+    table td img {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .see-btn, .delete-btn {
+        background-color: #1ABC9C;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    .see-btn:hover, .delete-btn:hover {
+        background-color: #16A085;
+    }
+    
+    .delete-btn {
+        background-color: #E74C3C;
+    }
+    
+    .delete-btn:hover {
+        background-color: #C0392B;
+    }
+    
+    
+    .modal-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+    }
+    
+    .modal-body {
+        padding: 20px;
+    }
+    
+    .table th, .table td {
+        text-align: center;
+        vertical-align: middle;
+    }
+    .table th:nth-child(2), 
+    .table td:nth-child(2) {
+        width: 100px; 
+    }
+    .table th:nth-child(4), 
+    .table td:nth-child(4) {
+        width: 230px; 
+    }
+    .table th:nth-child(6), 
+    .table td:nth-child(6) {
+        width: 150px; 
+    }
+    .pagination {
+        justify-content: center;
+        margin-top: 10px;
+      }
+      
+      .pagination button {
+        margin: 0 5px;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        cursor: pointer;
+      }
+      
+      .pagination button:hover {
+        background-color: #ddd;
+      }
+      

@@ -1,0 +1,248 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+#main{
+    width: 100%;
+    background-color:  #FFF;
+}
+
+#header {
+    width: 100%;
+    height: 70px;
+
+}
+#header-top{
+    width: 100%;
+    height: 70px;
+    display: flex;
+}
+    .name {
+        width: 86%;
+        font-size: 65px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin-left: 40px;
+        color: black;
+        cursor: pointer;
+        
+    }
+    .icon{
+        width: 30px;
+        height: 30px; 
+        margin-top: 20px;
+        margin-right: 25px;
+        cursor: pointer; 
+        display: flex;
+      
+
+    }
+
+ 
+#content-account-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Sử dụng min-height thay vì height */
+}
+
+#content-account {
+    width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: white;
+    min-height: 400px; /* Đảm bảo chiều cao cho phần nội dung */
+}
+
+.form-content {
+    display: none;
+    min-height: 350px; /* Đặt chiều cao tối thiểu để các form có kích thước đồng đều */
+    
+}
+
+
+.form-content.active {
+    visibility: visible;
+    opacity: 1;
+    position: relative;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+
+.form-group label {
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 95%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.form-group input[type="checkbox"] {
+    width: auto;
+}
+
+.form-group .checkbox-label {
+    display: inline-block;
+    font-size: 14px;
+    color: #666;
+}
+.form-group .form-link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.form-group button {
+   
+        width: 100%;
+        padding: 15px;
+        font-size: 18px;
+        background-color: #000;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+}
+
+.form-group button:hover {
+    background-color: #333;
+}
+
+.tab-link.active {
+    font-weight: bold;
+    border-bottom: 2px solid black;
+    cursor: pointer;
+}
+.tab {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* Đảm bảo độ rộng của tab */
+}
+
+.tab-link {
+    width: 50%; /* Mỗi tab chiếm 50% chiều rộng */
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/*login */
+.login-container {
+    background-color: rgba(128, 128, 128, 0.041);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 100%;
+    margin:0px auto;
+    margin-top: 150px;
+}
+
+.login-form {
+    text-align: center;
+}
+
+.login-form h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.login-form input[type="text"], .login-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.toggle-password img {
+    width: 20px;
+    height: 20px;
+}
+.error {
+    color: red;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.forgot-password a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-login {
+    background-color: #333;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-login:hover {
+    background-color: #555;
+}
+
+.divider {
+    margin: 20px 0;
+    border-top: 1px solid #ddd;
+}
+
+.signup-prompt {
+    font-size: 14px;
+}
+
+.signup-prompt a {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signup-prompt a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SULLY & BAG | Việt Nam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../userStyle/details.css">
+    <script src="/userJs/main.js" defer></script>
+    <script src="/userJs/details.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="images/logo.png">
+
+    <script src="/angular/script.js"></script>
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular/global.js"></script>
+    <script src="/angular/user_login.js"></script>
+</head>
+<body ng-app="AppLogin" ng-controller="loginCtrl" >
+    <div id="main">
+        <div id="header">
+            <div id="header-top">
+                <p id="name" class="name"> SULLY & BAG</p>
+           
+                <input class="search" type="text" placeholder=" 🔍Tìm kiếm sản phẩm"> 
+                <img class="icon" src="images/heart.png"/>
+                <img id="cart" class="icon" src="images/bag.png"/>
+        
+                <img id="user-icon" style="width:30px; height:30px; margin-top: 20px; cursor: pointer;" src="images/use.png"/>
+                <div id="user-dropdown" class="dropdown-content">
+                    <a href="/user/infor.html">Thông tin tài khoản</a>
+                    <a href="#" id="logout-btn">Đăng xuất</a>
+                </div>
+                <span ng-if="HoTen" style="margin-left: 10px; margin-top: 30px;">{{ HoTen }}</span>
+
+                
+            </div>
+                <!-- Form đăng nhập -->
+                <div id="login-form" class="login-form">
+                    <p style="text-align: center; font-size: 20px; font-weight: bold;">ĐĂNG NHẬP</p>
+                    <br/>
+                    <label for="username">Số điện thoại hoặc Email</label>
+                    <input type="text" id="username" placeholder="Vd: 0123456789">
+                    <span class="error" id="username-error"></span> 
+                    <br/>
+                    
+                    <label for="password">Mật khẩu</label>
+                    <div class="password-container">
+                        <input type="password" id="password" placeholder="Nhập mật khẩu">
+                        <span id="toggle-password" class="toggle-password">
+                            <img id="eye-icon" src="images/eye.png" alt="Show/Hide Password" />
+                        </span>
+                    </div>
+                    <span class="error" id="password-error"></span> 
+                    <br/>
+
+                    <p><a href="#">Bạn quên mật khẩu?</a></p>
+                    <br/>
+                    <button type="submit" id="login-btn">Đăng nhập</button>
+                    <br/><br/><br/><hr/>
+                    <p style="text-align: center; margin-top: 5px;">Bạn chưa có tài khoản? <a href="/user/account.html">Đăng ký ngay</a></p>
+                </div>
+
+            <div id="header-center">
+                
+                <p > Đổi trả dễ dàng trong vòng 3 ngày kể từ khi mua sản phẩm</p>
+                <p > Miễn phí vận chuyển cho khách hàng mới</p>
+                <p > Giảm giá 15% cho đơn hàng đầu tiên</p>
+            </div>
+        </div>
+        <div id="content" >
+            <div id="content-1" ng-init="ProductDetails()">
+                <div id="content-left" >
+                    <img id="main-image" class="img-detail" ng-src="{{ getImageUrl(productDetails.hinhAnh) }}" />							
+                </div>
+                
+                 <div id="content-right" >        
+                    <p id="product-name"> {{productDetails.tenSp}}</p>
+                    <div id="menu">
+                        <div id="menu-name">
+                            <lable id="mausac" class="color-name"> {{productDetails.tenMau}} is the closest color to standard</lable> 
+                        </div>
+                        <div id="menu-price">
+                            <lable id="giaban" class="price">{{productDetails.giaBan | number:0}}₫</lable>
+                        </div>
+                    </div>
+                    <div id="menu">
+                        <div id="menu-name">
+                           
+                        </div>
+                        <div id="menu-price">
+                            <lable id="khuyenmai" style="margin-left: 330px; color: #7b8487;" >Khuyến mãi: {{productDetails.khuyenMai}} %</lable>
+                        </div>
+                    </div>
+                    <br/>
+                    <div style="text-align: center;">
+                        <lable id="tonkho" style="margin-bottom: 0px; font-size: 14px;"> {{productDetails.tonKho}} (sản phẩm)</lable> 
+                    </div>
+                    
+                    <button style=" margin-top: 15px ;background-color: #FFF;" id="add-to-cart-btn" class="button" ng-click="addToCart(product)">Thêm vào giỏ hàng</button>
+                    <button style="background-color: #33383c; color:#FFF" class="button">Mua ngay</button>
+                    <br/>
+                    <div>
+                        <label id="description" class="tab-link active" onclick="showForm('description-form')">Mô tả sản phẩm</label>
+                        <label id="size" class="tab-link" onclick="showForm('size-form')">Size & Fit</label>
+                        <label id="preserve" class="tab-link" onclick="showForm('preserve-form')">Hướng dẫn bảo quản</label>
+                    </div><br/>   
+                    <div style="width: 90%; margin-left: 50px;"><hr/></div>
+                    <div id="description-content" class="tab-content">
+                        <p id="description-text" style="margin-top: 20px; margin-left:50px; margin-right: 30px;">{{productDetails.moTa}}</p>
+                        <ul id="description-details" style="margin-left: 100px; margin-top: 20px; display: none;">
+                            <li>Main composition: calfskin</li>
+                            <li>Calfskin lining</li>
+                            <li>Miss Dior Graffiti signature enamel plate</li>
+                            <li>Magnetic flap closure</li>
+                            <li>Adjustable leather strap</li>
+                            <li>Made in Italy</li>
+                        </ul>
+                        <br/>
+                        <u id="description-toggle" style="margin-left: 50px; cursor: pointer;" onclick="toggleContent('description')">See more</u>
+                    </div>
+                    
+                    <div id="size-content" class="tab-content" style="display:none;">
+                        <ul style="margin-left: 100px; margin-top: 20px;">
+                            <li>Kích thước: {{productDetails.maSize}}</li>
+                            <li>Kích thước phù hợp để điện thoại, ví và son môi</li>
+                            <li>Chiều dài tay cầm trên cùng: 50 - 70 cm / 19,5 - 27,5 inch</li>
+                            <li>Chiều dài thả tay cầm trên cùng: 19- 30 cm / 7,5 - 12 inch</li>
+                            <li>Trọng lượng: 540g/19 ounce</li>
+                        </ul>
+                    </div>
+
+                    <div id="preserve-content" class="tab-content" style="display:none;">
+                        <div id="preserve-text" style="margin-top: 20px; margin-left:50px; margin-right: 30px;">
+                            <p>CHĂM SÓC<br/><br/>Chăm sóc đúng cách túi xách của mình tức là bạn đang bảo vệ môi trường.<br/><br/>Những thao tác đơn giản như lau chùi sản phẩm bằng khăn bông khô hoặc bàn chải mềm, tùy thuộc vào đặc tính của sản phẩm, cũng có thể giúp chúng ta chăm sóc chúng. Bất cứ khi nào có thể, hãy cố gắng sử dụng các sản phẩm thân thiện với môi trường.</p>
+                        </div>
+                        <ul id="preserve-details" style="margin-left: 100px; margin-top: 20px; display: none;">
+                            <li><img class="hd" src="images/hd1.jpg"/>Không giặt</li>
+                            <li><img class="hd" src="images/hd2.jpg"/>Không sử dụng nước tẩy/thuốc tẩy</li>
+                            <li><img class="hd" src="images/hd3.jpg"/>Không là</li>
+                            <li><img class="hd" src="images/hd4.jpg"/>Không giặt ướt/khô</li>
+                            <li><img class="hd" src="images/hd5.jpg"/>Không sử dụng máy sấy</li>
+                        </ul><br/>
+                        <u id="preserve-toggle" style="margin-left: 50px; cursor: pointer;" onclick="toggleContent('preserve')">See more</u>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="content-2">
+                <p style="font-size:30px; text-align: center;font-family: Georgia, 'Times New Roman', Times, serif;">You may also like</p><br/><br/><br/>
+                <div id="content-newbag-1" ng-init="LoadLatestProducts()"> 
+                    <div class="row" ng-repeat="product in randomProducts">
+                        <div class="newbag" data-id="{{product.maSp}}" ng-click="viewProductDetails(product)">
+                            <img class="img-newbag" ng-src="{{ getImageUrl(product.hinhAnh) }}" />
+                            <h4 style="text-align: center;">{{product.tenSp}}</h4>
+                            <p class="product-price">{{product.giaBan | number:0}}₫</p>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <div id="footer">
+            <br/>
+            <div>  
+                <ul class="link">
+                    <li><a href="https://www.facebook.com/ddquynh.24"> Facebook </a></li>
+                    <li><a href="#"> Instagram </a></li>
+                    <li><a href="#"> Tiktok </a></li>
+                    <li><a>x</a></li>
+                    <li><a href="#"> Spotyfy </a></li>
+                    <li><a href="#"> Threads </a></li>
+                    <li><a href="#"> Zalo </a></li>
+                </ul>
+            </div>
+            
+            <span><b>THAM GIA BẢN TIN CỦA CHÚNG TÔI</b></span>
+            <span style="margin-left: 700px; font-size: 12px;">TIẾNG VIỆT | ENGLISH     </span>
+            <span style="font-size: 12px; color:gray;margin-left:  20px;">© ALL RIGHTS RESERVED</span>
+            <br/>
+            <br/>
+            <input class="search" type="text" placeholder="NHẬP ĐỊA CHỈ EMAIL VÀO ĐÂY"> 
+            <br/>
+            
+            <div class ="lienhe" >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>CÔNG TY </b></li> 
+                    <br/>
+                    <li><a href="#"> Giới thiệu về chúng tôi </a></li>
+                    <li >268Đ, Quận Cầu Giấy, Hà Nội, Vietnam </li> 
+                    <li >0364554001 - Thứ 2 - Chủ nhật: 9:00 - 18:00 </li> 
+                    <li >sullybagVN.vn@gmail.com </li> 
+                </ul>
+            </div>
+            
+            <div class ="lienhe">
+                <ul class="noidung" >
+                    <li style="font-size: 15px"> <b>THEO DÕI CHÚNG TÔI </b></li> 
+                    <br/>
+                    <li><a href="https://www.facebook.com/ddquynh.24"> Facebook </a></li>
+                    <li><a href="#"> Instagram </a></li>
+                    <li><a href="#"> Tiktok </a></li>
+                    <li><a>x</a></li>
+                    <li><a href="#"> Spotyfy </a></li>
+                    <li><a href="#"> Threads </a></li>
+                    <li><a href="#"> Zalo </a></li>
+                </ul>
+            </div>
+            
+            <div class ="lienhe"  >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>CHÍNH SÁCH</b></li>
+                    <br/>
+                    <li><a href="#"> Chính sách bảo mật </a></li>
+                    <li><a href="#"> Điều kiện mua hàng </a></li>
+                    <li><a href="#"> cài đặt Coockie </a></li>
+                </ul>
+            </div>
+            
+            <div class ="lienhe"  >
+                <ul class="noidung">
+                    <li style="font-size: 15px"> <b>KẾT NỐI VỚI SULLY & BAG </b></li> 
+                    <br/>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=260px&height=200px&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="260px" height="200px" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,34 @@
+D:\API\WebTuiXachh\BLL\obj\Debug\net8.0\BLL.csproj.AssemblyReference.cache
+D:\API\WebTuiXachh\BLL\obj\Debug\net8.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\API\WebTuiXachh\BLL\obj\Debug\net8.0\BLL.AssemblyInfoInputs.cache
+D:\API\WebTuiXachh\BLL\obj\Debug\net8.0\BLL.AssemblyInfo.cs
+D:\API\WebTuiXachh\BLL\obj\Debug\net8.0\BLL.csproj.CoreCompileInputs.cache
+D:\API\WebTuiXachh\BLL\bin\Debug\net8.0\BLL.deps.json
+D:\API\WebTuiXachh\BLL\bin\Debug\net8.0\BLL.dll
+D:\API\WebTuiXachh\BLL\bin\Debug\net8.0\BLL.pdb
+D:\API\WebTuiXachh\BLL\bin\Debug\net8.0\DAL.dll
+D:\API\WebTuiXachh\BLL\bin\Debug\net8.0\Model.dll
+D:\API\WebTuiXachh\BLL\bin\Debug\net8.0\DAL.pdb
+D:\API\WebTuiXachh\BLL\bin\Debug\net8.0\Model.pdb
+D:\API\WebTuiXachh\BLL\obj\Debug\net8.0\BLL.csproj.Up2Date
+D:\API\WebTuiXachh\BLL\obj\Debug\net8.0\BLL.dll
+D:\API\WebTuiXachh\BLL\obj\Debug\net8.0\refint\BLL.dll
+D:\API\WebTuiXachh\BLL\obj\Debug\net8.0\BLL.pdb
+D:\API\WebTuiXachh\BLL\obj\Debug\net8.0\ref\BLL.dll
+D:\API\WebTuiXachh - User\BLL\bin\Debug\net8.0\BLL.deps.json
+D:\API\WebTuiXachh - User\BLL\bin\Debug\net8.0\BLL.dll
+D:\API\WebTuiXachh - User\BLL\bin\Debug\net8.0\BLL.pdb
+D:\API\WebTuiXachh - User\BLL\bin\Debug\net8.0\DAL.dll
+D:\API\WebTuiXachh - User\BLL\bin\Debug\net8.0\Model.dll
+D:\API\WebTuiXachh - User\BLL\bin\Debug\net8.0\DAL.pdb
+D:\API\WebTuiXachh - User\BLL\bin\Debug\net8.0\Model.pdb
+D:\API\WebTuiXachh - User\BLL\obj\Debug\net8.0\BLL.csproj.AssemblyReference.cache
+D:\API\WebTuiXachh - User\BLL\obj\Debug\net8.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+D:\API\WebTuiXachh - User\BLL\obj\Debug\net8.0\BLL.AssemblyInfoInputs.cache
+D:\API\WebTuiXachh - User\BLL\obj\Debug\net8.0\BLL.AssemblyInfo.cs
+D:\API\WebTuiXachh - User\BLL\obj\Debug\net8.0\BLL.csproj.CoreCompileInputs.cache
+D:\API\WebTuiXachh - User\BLL\obj\Debug\net8.0\BLL.csproj.Up2Date
+D:\API\WebTuiXachh - User\BLL\obj\Debug\net8.0\BLL.dll
+D:\API\WebTuiXachh - User\BLL\obj\Debug\net8.0\refint\BLL.dll
+D:\API\WebTuiXachh - User\BLL\obj\Debug\net8.0\BLL.pdb
+D:\API\WebTuiXachh - User\BLL\obj\Debug\net8.0\ref\BLL.dll

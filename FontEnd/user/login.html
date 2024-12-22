@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SULLY & BAG | Đăng nhập</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../userStyle/account.css">
+    <script src="/userJs/login.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="images/logo.png">
+    <script src="/angular/script.js"></script>
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular/global.js"></script>
+    <script src="/angular/user_login.js"></script>
+</head>
+<body ng-app="AppLogin" ng-controller="loginCtrl">
+    <div id="main">
+        <div class="login-container">
+            <div class="login-form">
+                <h2>ĐĂNG NHẬP</h2>
+                
+                <label for="username">Số điện thoại hoặc Email</label>
+                <input type="text" id="username" placeholder="Vd: 0123456789">
+                <span class="error" id="username-error"></span>
+        
+                <label for="password">Mật khẩu</label>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="Nhập mật khẩu">
+                    <span id="toggle-password" class="toggle-password">
+                        <img id="eye-icon" src="images/eye.png" alt="Show/Hide Password" />
+                    </span>
+                </div>
+                <span class="error" id="password-error"></span>
+        
+                <p class="forgot-password"><a href="#">Bạn quên mật khẩu?</a></p>
+        
+                <button type="button" id="login-btn" class="btn-login" ng-click="login()">Đăng nhập</button>
+        
+                <hr class="divider">
+                <p class="signup-prompt">Bạn chưa có tài khoản? <a href="/user/account.html">Đăng ký ngay</a></p>
+                <label id="err" style="color: red;"></label>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

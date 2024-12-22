@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family:Arial, Helvetica, sans-serif;
+}
+#main{
+    width: 100%;
+    background-color:  #FFF;
+}
+
+#header {
+    width: 100%;
+    height: 70px;
+
+}
+#header-top{
+    width: 100%;
+    height: 70px;
+    display: flex;
+}
+    .name {
+        width: 80%;
+        font-size: 65px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        margin-left: 40px;
+        color: black;
+        cursor: pointer;
+        
+    }
+    .icon{
+        width: 30px;
+        height: 30px; 
+        margin-top: 20px;
+        margin-right: 25px;
+        cursor: pointer; 
+        display: flex;
+
+    }
+      
+ /* Chỉnh sửa để ẩn menu dropdown mặc định */
+ #user-dropdown {
+    display: none;
+    position: absolute;
+    top: 60px; /* Điều chỉnh vị trí để nó xuất hiện dưới user-icon */
+    right: 0; /* Canh bên phải */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+/* Khi hover vào user-icon, hiển thị dropdown */
+#user-icon:hover + #user-dropdown {
+    display: block;
+}
+
+/* Các liên kết trong dropdown */
+#user-dropdown a {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+#user-dropdown a:hover {
+    background-color: #f1f1f1;
+}
+
+.xemthem{
+    float: right; 
+    margin-right: 35px; 
+    padding: 0 0 10px; 
+    color: gray;
+    cursor: pointer;
+}
+#content-news{
+    width: 100%;
+    height: 2400px;
+   
+
+}
+#news{
+    width: 96%;
+    height: 500px;
+    display: flex;
+    margin: 0px auto;
+}
+#detail-new{
+    width: 34%;
+    height: 500px;
+    cursor: pointer;
+  
+}
+.img-news{
+    width: 100%;
+    height: 350px;
+   
+}
+.content{
+    width: 100%;
+    height: 150px;
+   
+}
+
+#footer{
+    width: 90%;
+    height: 500px;
+    margin: 0px auto;
+}
+#footer-admin{
+    width: 90%;
+    height: 400px;
+    margin: 0px auto;
+    margin-top: 320px;
+}
+ul.link {
+    list-style-type: none; /* Loại bỏ dấu chấm tròn */
+    display: flex; /* Để các liên kết nằm trên cùng một dòng */
+    padding-left: 400px;
+    margin: 0;
+    text-transform: uppercase; /* Tất cả các chữ sẽ in hoa */
+    font-size: 14px;
+    
+}
+ul.link li {
+    margin-right: 20px; 
+    line-height: 40px;
+}
+ul.link li a {
+    color: gray; 
+    text-decoration: none;
+}
+.lienhe{
+    width:25%; 
+    height: 75%; 
+    padding: 30px 0px; 
+    float: left;
+
+}
+.noidung{
+    list-style: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: gray;
+   
+}
+.noidung li a {
+    text-decoration: none; /* Loại bỏ gạch dưới */
+    color: gray; 
+}
+ul.noidung li {
+    margin-top: 10px;
+}
+.search{
+    width: 400px; 
+    height: 30px;
+    text-align: left;
+    font-size: 13px;
+    margin-top: 20px;
+    margin-right: 30px;
+    
+    }

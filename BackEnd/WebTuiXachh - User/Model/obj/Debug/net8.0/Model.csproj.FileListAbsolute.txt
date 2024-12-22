@@ -1,0 +1,24 @@
+D:\API\WebTuiXachh\Model\bin\Debug\net8.0\Model.deps.json
+D:\API\WebTuiXachh\Model\bin\Debug\net8.0\Model.dll
+D:\API\WebTuiXachh\Model\bin\Debug\net8.0\Model.pdb
+D:\API\WebTuiXachh\Model\obj\Debug\net8.0\Model.csproj.AssemblyReference.cache
+D:\API\WebTuiXachh\Model\obj\Debug\net8.0\Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\API\WebTuiXachh\Model\obj\Debug\net8.0\Model.AssemblyInfoInputs.cache
+D:\API\WebTuiXachh\Model\obj\Debug\net8.0\Model.AssemblyInfo.cs
+D:\API\WebTuiXachh\Model\obj\Debug\net8.0\Model.csproj.CoreCompileInputs.cache
+D:\API\WebTuiXachh\Model\obj\Debug\net8.0\Model.dll
+D:\API\WebTuiXachh\Model\obj\Debug\net8.0\refint\Model.dll
+D:\API\WebTuiXachh\Model\obj\Debug\net8.0\Model.pdb
+D:\API\WebTuiXachh\Model\obj\Debug\net8.0\ref\Model.dll
+D:\API\WebTuiXachh - User\Model\bin\Debug\net8.0\Model.deps.json
+D:\API\WebTuiXachh - User\Model\bin\Debug\net8.0\Model.dll
+D:\API\WebTuiXachh - User\Model\bin\Debug\net8.0\Model.pdb
+D:\API\WebTuiXachh - User\Model\obj\Debug\net8.0\Model.csproj.AssemblyReference.cache
+D:\API\WebTuiXachh - User\Model\obj\Debug\net8.0\Model.GeneratedMSBuildEditorConfig.editorconfig
+D:\API\WebTuiXachh - User\Model\obj\Debug\net8.0\Model.AssemblyInfoInputs.cache
+D:\API\WebTuiXachh - User\Model\obj\Debug\net8.0\Model.AssemblyInfo.cs
+D:\API\WebTuiXachh - User\Model\obj\Debug\net8.0\Model.csproj.CoreCompileInputs.cache
+D:\API\WebTuiXachh - User\Model\obj\Debug\net8.0\Model.dll
+D:\API\WebTuiXachh - User\Model\obj\Debug\net8.0\refint\Model.dll
+D:\API\WebTuiXachh - User\Model\obj\Debug\net8.0\Model.pdb
+D:\API\WebTuiXachh - User\Model\obj\Debug\net8.0\ref\Model.dll

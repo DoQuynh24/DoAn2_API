@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xử lý đơn hàng | SULLY & BAG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../userStyle/checkout.css">
+    <script src="/userJs/cart.js" defer></script>
+    <script src="/userJs/main.js" defer></script>
+    <script src="/userJs/checkout.js" defer></script>
+    <link rel="icon" href="images/logo.png">
+</head>
+<body>
+    <div id="main">
+        <div id="header">
+            <div id="header-top"><button class="exit" id="exit"> 
+                <img src="images/exit.png" alt="Xem" style="width: 35px; height: 35px; "/>
+            </button>
+                <p id="name" class="name">SULLY & BAG</p>  
+            </div>
+        </div>
+        <div id="content">
+            <p class="lable">Chỉnh sửa địa chỉ thanh toán</p>
+            <p class="lable1">Để đặt hàng, trước tiên bạn phải điền đầy đủ thông tin tài khoản của mình. Bạn có thể sửa đổi các thông tin trong tài khoản bất kỳ lúc nào.</p>
+            <form class="form-container">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="first-name">Tên</label>
+                        <input type="text" id="first-name" placeholder="Nhập tên">
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Họ</label>
+                        <input type="text" id="last-name" placeholder="Nhập họ">
+                    </div>
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="province">Tỉnh</label>
+                        <select id="province">
+                            <option>--</option>
+                            <option>Hưng Yên</option>
+                            <option>Bắc Ninh</option>
+                            <option>Thái Bình</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Thành phố</label>
+                        <select id="city">
+                            <option>--</option>
+                            <option>TP-Hà Nội</option>
+                            <option>TP-Hải Phòng</option>
+                            <option>TP-Hồ Chí Minh</option>
+                        </select>
+                    </div>
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="address">Địa chỉ</label>
+                        <input type="text" id="address" placeholder="Nhập địa chỉ">
+                    </div>
+                    <div class="form-group">
+                        <label for="address2">Địa chỉ 2 (Tùy chọn)</label>
+                        <input type="text" id="address2" placeholder="Nhập địa chỉ bổ sung">
+                    </div>
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone-code">Mã quốc gia</label>
+                        <input type="text" id="phone-code" value="+84" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại</label>
+                        <input type="text" id="phone" placeholder="Nhập số điện thoại">
+                    </div>
+                </div>
+                <div id="payment-methods">
+                    <p class="payment-label">PHƯƠNG THỨC THANH TOÁN</p>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <img src="images/receive.png" alt="Visa">
+                            <p>KHI NHẬN HÀNG</p>
+                        </div>
+                        <div class="payment-option">
+                            <img src="images/visa.png" alt="Visa">
+                            <p>VISA</p>
+                        </div>
+                        <div class="payment-option">
+                            <img src="images/mastercard.png" alt="Mastercard">
+                            <p>MASTERCARD</p>
+                        </div>
+                        <div class="payment-option">
+                            <img src="images/american-express.png" alt="American Express">
+                            <p>AMERICAN EXPRESS</p>
+                        </div>
+                        <div class="payment-option">
+                            <img src="images/atm.png" alt="ATM Nội địa">
+                            <p>THẺ ATM NỘI ĐỊA</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+            
+        </div>
+    
+        <div id="footer" id="cart-summary" >
+            <lable class="total">Tổng: <span id="total-price">0</span> VNĐ <img style="width:15px" src="images/down.png"/></lable>
+            <button type="submit" class="btn-submit">THANH TOÁN</button>
+        </div>
+    </div>
+</body>
+</html>

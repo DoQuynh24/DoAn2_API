@@ -1,0 +1,262 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\API\\WebTuiXachh - User\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D059BD8A-D456-4AF2-9089-C468AEC0C1B1}|WebTuiXachh\\WebTuiXachh.csproj|d:\\api\\webtuixachh - user\\webtuixachh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D059BD8A-D456-4AF2-9089-C468AEC0C1B1}|WebTuiXachh\\WebTuiXachh.csproj|solutionrelative:webtuixachh\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D059BD8A-D456-4AF2-9089-C468AEC0C1B1}|WebTuiXachh\\WebTuiXachh.csproj|d:\\api\\webtuixachh - user\\webtuixachh\\controllers\\hoadoncontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D059BD8A-D456-4AF2-9089-C468AEC0C1B1}|WebTuiXachh\\WebTuiXachh.csproj|solutionrelative:webtuixachh\\controllers\\hoadoncontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FBFAA149-A16F-48B9-B983-018ED9D62E07}|DAL\\DAL.csproj|d:\\api\\webtuixachh - user\\dal\\hoadonrepsitory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FBFAA149-A16F-48B9-B983-018ED9D62E07}|DAL\\DAL.csproj|solutionrelative:dal\\hoadonrepsitory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FBFAA149-A16F-48B9-B983-018ED9D62E07}|DAL\\DAL.csproj|d:\\api\\webtuixachh - user\\dal\\tuixachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FBFAA149-A16F-48B9-B983-018ED9D62E07}|DAL\\DAL.csproj|solutionrelative:dal\\tuixachrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D059BD8A-D456-4AF2-9089-C468AEC0C1B1}|WebTuiXachh\\WebTuiXachh.csproj|d:\\api\\webtuixachh - user\\webtuixachh\\controllers\\usercontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D059BD8A-D456-4AF2-9089-C468AEC0C1B1}|WebTuiXachh\\WebTuiXachh.csproj|solutionrelative:webtuixachh\\controllers\\usercontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FBFAA149-A16F-48B9-B983-018ED9D62E07}|DAL\\DAL.csproj|d:\\api\\webtuixachh - user\\dal\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FBFAA149-A16F-48B9-B983-018ED9D62E07}|DAL\\DAL.csproj|solutionrelative:dal\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D059BD8A-D456-4AF2-9089-C468AEC0C1B1}|WebTuiXachh\\WebTuiXachh.csproj|d:\\api\\webtuixachh - user\\webtuixachh\\controllers\\tuixachcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D059BD8A-D456-4AF2-9089-C468AEC0C1B1}|WebTuiXachh\\WebTuiXachh.csproj|solutionrelative:webtuixachh\\controllers\\tuixachcontrollers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|d:\\api\\webtuixachh - user\\model\\hoadonmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|solutionrelative:model\\hoadonmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|d:\\api\\webtuixachh - user\\model\\chitiethoadonmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|solutionrelative:model\\chitiethoadonmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|d:\\api\\webtuixachh - user\\model\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|solutionrelative:model\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|d:\\api\\webtuixachh - user\\model\\chitietdonhangnhapmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|solutionrelative:model\\chitietdonhangnhapmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|d:\\api\\webtuixachh - user\\model\\nhacungcapmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|solutionrelative:model\\nhacungcapmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|d:\\api\\webtuixachh - user\\model\\donhangnhapmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|solutionrelative:model\\donhangnhapmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FBFAA149-A16F-48B9-B983-018ED9D62E07}|DAL\\DAL.csproj|d:\\api\\webtuixachh - user\\dal\\interfaces\\ihoadonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FBFAA149-A16F-48B9-B983-018ED9D62E07}|DAL\\DAL.csproj|solutionrelative:dal\\interfaces\\ihoadonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{041E05A5-1C5E-444B-8D19-D7AEB14E83EA}|BLL\\BLL.csproj|d:\\api\\webtuixachh - user\\bll\\interfaces\\ihoadonbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{041E05A5-1C5E-444B-8D19-D7AEB14E83EA}|BLL\\BLL.csproj|solutionrelative:bll\\interfaces\\ihoadonbusiness.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\Program.cs",
+              "RelativeDocumentMoniker": "WebTuiXachh\\Program.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\Program.cs",
+              "RelativeToolTip": "WebTuiXachh\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T03:24:18.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HoaDonRepsitory.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\DAL\\HoaDonRepsitory.cs",
+              "RelativeDocumentMoniker": "DAL\\HoaDonRepsitory.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\DAL\\HoaDonRepsitory.cs",
+              "RelativeToolTip": "DAL\\HoaDonRepsitory.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAIwBcAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T04:57:30.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HoaDonControllers.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\Controllers\\HoaDonControllers.cs",
+              "RelativeDocumentMoniker": "WebTuiXachh\\Controllers\\HoaDonControllers.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\Controllers\\HoaDonControllers.cs",
+              "RelativeToolTip": "WebTuiXachh\\Controllers\\HoaDonControllers.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAuwDsAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T05:16:44.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "HoaDonModel.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\Model\\HoaDonModel.cs",
+              "RelativeDocumentMoniker": "Model\\HoaDonModel.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\Model\\HoaDonModel.cs",
+              "RelativeToolTip": "Model\\HoaDonModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T05:31:26.397Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserControllers.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\Controllers\\UserControllers.cs",
+              "RelativeDocumentMoniker": "WebTuiXachh\\Controllers\\UserControllers.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\Controllers\\UserControllers.cs",
+              "RelativeToolTip": "WebTuiXachh\\Controllers\\UserControllers.cs",
+              "ViewState": "AgIAAFYAAAAAAAAAAAAgwHkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T11:04:35.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\DAL\\UserRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\UserRepository.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\DAL\\UserRepository.cs",
+              "RelativeToolTip": "DAL\\UserRepository.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAgwGAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-12T12:58:51.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TuiXachRepository.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\DAL\\TuiXachRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\TuiXachRepository.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\DAL\\TuiXachRepository.cs",
+              "RelativeToolTip": "DAL\\TuiXachRepository.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAhwIcAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-09T07:29:19.871Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TuiXachControllers.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\Controllers\\TuiXachControllers.cs",
+              "RelativeDocumentMoniker": "WebTuiXachh\\Controllers\\TuiXachControllers.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\Controllers\\TuiXachControllers.cs",
+              "RelativeToolTip": "WebTuiXachh\\Controllers\\TuiXachControllers.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAIA8wCAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T12:01:57.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "NhaCungCapModel.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\Model\\NhaCungCapModel.cs",
+              "RelativeDocumentMoniker": "Model\\NhaCungCapModel.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\Model\\NhaCungCapModel.cs",
+              "RelativeToolTip": "Model\\NhaCungCapModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T06:13:31.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ChiTietDonHangNhapModel.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\Model\\ChiTietDonHangNhapModel.cs",
+              "RelativeDocumentMoniker": "Model\\ChiTietDonHangNhapModel.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\Model\\ChiTietDonHangNhapModel.cs",
+              "RelativeToolTip": "Model\\ChiTietDonHangNhapModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T06:17:13.61Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UserModel.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\Model\\UserModel.cs",
+              "RelativeDocumentMoniker": "Model\\UserModel.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\Model\\UserModel.cs",
+              "RelativeToolTip": "Model\\UserModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T06:25:19.636Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ChiTietHoaDonModel.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\Model\\ChiTietHoaDonModel.cs",
+              "RelativeDocumentMoniker": "Model\\ChiTietHoaDonModel.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\Model\\ChiTietHoaDonModel.cs",
+              "RelativeToolTip": "Model\\ChiTietHoaDonModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T06:26:45.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DonHangNhapModel.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\Model\\DonHangNhapModel.cs",
+              "RelativeDocumentMoniker": "Model\\DonHangNhapModel.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\Model\\DonHangNhapModel.cs",
+              "RelativeToolTip": "Model\\DonHangNhapModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-10T06:06:12.925Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "IHoaDonRepository.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\DAL\\Interfaces\\IHoaDonRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\Interfaces\\IHoaDonRepository.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\DAL\\Interfaces\\IHoaDonRepository.cs",
+              "RelativeToolTip": "DAL\\Interfaces\\IHoaDonRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T05:29:25.07Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IHoaDonBusiness.cs",
+              "DocumentMoniker": "D:\\API\\WebTuiXachh - User\\BLL\\Interfaces\\IHoaDonBusiness.cs",
+              "RelativeDocumentMoniker": "BLL\\Interfaces\\IHoaDonBusiness.cs",
+              "ToolTip": "D:\\API\\WebTuiXachh - User\\BLL\\Interfaces\\IHoaDonBusiness.cs",
+              "RelativeToolTip": "BLL\\Interfaces\\IHoaDonBusiness.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T05:27:21.537Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

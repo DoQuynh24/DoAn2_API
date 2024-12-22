@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng | SULLY & BAG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="../userStyle/cart.css">
+    <script src="/userJs/main.js" defer></script>
+    <script src="/userJs/cart.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" href="images/logo.png">
+    <script src="/angular/script.js"></script>
+    <script src="/angular/angular.min.js"></script>
+    <script src="/angular/global.js"></script>
+    <script src="/angular/user_login.js"></script>
+</head>
+<body ng-app="AppLogin" ng-controller="loginCtrl" ng-init="loadCart()">
+    <div id="main">
+        <div id="header">
+            <div id="header-top">
+                <p id="name" class="name">SULLY & BAG</p>
+                <input class="search" type="text" placeholder=" 🔍Tìm kiếm sản phẩm"> 
+                <img class="icon" src="images/heart.png"/>
+                <img id="cart" class="icon" src="images/bag.png" alt="Giỏ hàng"/>
+
+                <img id="user-icon" style="width:30px; height:30px; margin-top: 20px; cursor: pointer;" src="images/use.png"/>
+                <div id="user-dropdown" class="dropdown-content">
+                    <a href="/user/infor.html">Thông tin tài khoản</a>
+                    <a href="#" id="logout-btn">Đăng xuất</a>
+                </div>
+                <span ng-if="HoTen" style="margin-left: 10px; margin-top: 30px;">{{ HoTen }}</span>
+              
+            </div>
+            <!-- Form đăng nhập -->
+            <div id="login-form" class="login-form">
+                <p style="text-align: center; font-size: 20px; font-weight: bold;">ĐĂNG NHẬP</p>
+                <br/>
+                <label for="username">Số điện thoại hoặc Email</label>
+                <input type="text" id="username" placeholder="Vd: 0123456789">
+                <span class="error" id="username-error"></span>
+                <br/>
+                
+                <label for="password">Mật khẩu</label>
+                <div class="password-container">
+                    <input type="password" id="password" placeholder="Nhập mật khẩu">
+                    <span id="toggle-password" class="toggle-password">
+                        <img id="eye-icon" src="images/eye.png" alt="Show/Hide Password" />
+                    </span>
+                </div>
+                <span class="error" id="password-error"></span>
+                <br/>
+
+                <p><a href="#">Bạn quên mật khẩu?</a></p>
+                <br/>
+                <button type="submit" id="login-btn">Đăng nhập</button>
+                <br/><br/><br/><hr/>
+                <p style="text-align: center; margin-top: 5px;">Bạn chưa có tài khoản? <a href="/user/account.html">Đăng ký ngay</a></p>
+            </div>
+        </div>
+        <div id="content">
+            <div class="cart-item" >
+                
+            </div>
+        </div>
+       <div id="footer">
+            <div id="cart-summary" >
+                <div id="lable">
+                    <p>Tổng số sản phẩm: <span id="total-quantity">0</span></p><br/>
+                    <p class="total">Tổng giá: <span id="total-price">0</span> VNĐ </p>
+                </div>
+                <button id="checkout-btn">TIẾP TỤC</button>
+            </div>
+       </div>
+    </div>
+    
+</body>
+</html>
