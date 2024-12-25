@@ -2692,11 +2692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\API\\WebTuiXachh\\WebTuiXachh\\WebTuiXachh.csproj",
+      "projectUniqueName": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\WebTuiXachh\\WebTuiXachh.csproj",
       "projectName": "WebTuiXachh",
-      "projectPath": "D:\\API\\WebTuiXachh\\WebTuiXachh\\WebTuiXachh.csproj",
+      "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\WebTuiXachh\\WebTuiXachh.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\API\\WebTuiXachh\\WebTuiXachh\\obj\\",
+      "outputPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\WebTuiXachh\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2717,11 +2717,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\API\\WebTuiXachh\\BLL\\BLL.csproj": {
-              "projectPath": "D:\\API\\WebTuiXachh\\BLL\\BLL.csproj"
+            "D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\BLL\\BLL.csproj": {
+              "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\BLL\\BLL.csproj"
             },
-            "D:\\API\\WebTuiXachh\\Model\\Model.csproj": {
-              "projectPath": "D:\\API\\WebTuiXachh\\Model\\Model.csproj"
+            "D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\Model\\Model.csproj": {
+              "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\Model\\Model.csproj"
             }
           }
         }

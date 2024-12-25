@@ -227,48 +227,171 @@ app.controller('loginCtrl', function ($scope, $http) {
 
     // Hàm thêm vào giỏ hàng
     $scope.addToCart = function () {
-        const taikhoan = localStorage.getItem('TaiKhoan'); 
+        const taikhoan = localStorage.getItem('TaiKhoan');
         if (!taikhoan) {
             alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!');
             return;
         }
-    
+
         // Lấy giỏ hàng hiện tại từ localStorage
         const cartKey = `${taikhoan}_cart`;
         let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-    
+
         // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
-        const existingProduct = cart.find(item => item.productId === $scope.productDetails.productId);
+        const existingProduct = cart.find(item => item.maSp === $scope.productDetails.maSp);
+
         if (existingProduct) {
-            existingProduct.quantity += 1; // Nếu có thì tăng số lượng
+            existingProduct.quantity += 1; // Nếu sản phẩm đã tồn tại, tăng số lượng
         } else {
             // Thêm sản phẩm mới vào giỏ hàng
             cart.push({
-                productId: $scope.productDetails.productId,
-                name: $scope.productDetails.tenSp,
-                price: $scope.productDetails.giaBan,
+                maSp: $scope.productDetails.maSp, 
+                tenSp: $scope.productDetails.tenSp,
+                giaBan: $scope.productDetails.giaBan,
                 quantity: 1,
-                image: $scope.productDetails.hinhAnh
+                hinhAnh: $scope.productDetails.hinhAnh,
+                tenMau: $scope.productDetails.tenMau,
+                maSize: $scope.productDetails.maSize,
+                khuyenMai: $scope.productDetails.khuyenMai
             });
         }
-    
+
         // Lưu giỏ hàng vào localStorage
         localStorage.setItem(cartKey, JSON.stringify(cart));
+
+        // Hiển thị thông báo
         alert('Sản phẩm đã được thêm vào giỏ hàng!');
     };
-    
+
+    // Hàm tải giỏ hàng từ localStorage
     $scope.loadCart = function () {
-        var taikhoan = localStorage.getItem('TaiKhoan'); 
-       
-    
-        // Lấy giỏ hàng từ localStorage
-        var cart = JSON.parse(localStorage.getItem(taikhoan + '_cart')) || [];
-        $scope.cart = cart;
-    
-        // Tính tổng số lượng và tổng giá
-        $scope.totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-        $scope.totalPrice = cart.reduce((sum, item) => sum + (item.quantity * item.price), 0);
+        const taikhoan = localStorage.getItem('TaiKhoan'); 
+        const cartKey = `${taikhoan}_cart`;
+        $scope.cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+
+        // Cập nhật tổng số lượng và tổng giá
+        $scope.updateCartSummary = function () {
+            let totalQuantity = 0;
+            let totalPrice = 0;
+        
+            // Duyệt qua tất cả sản phẩm trong giỏ hàng
+            $scope.cart.forEach(item => {
+                totalQuantity += item.quantity; // Cộng tổng số lượng
+                totalPrice += item.quantity * item.giaBan; // Cộng tổng tiền
+            });
+        
+            // Hiển thị tổng số lượng và tổng tiền lên giao diện
+            document.getElementById('total-quantity').textContent = totalQuantity;
+            document.getElementById('total-price').textContent = totalPrice.toLocaleString(); // Tổng tiền chưa dùng
+            document.getElementById('total').textContent = totalPrice.toLocaleString(); // Gán tổng tất cả dòng "tổng tiền"
+        };
+        
+        $scope.updateCartSummary(); // Cập nhật khi load
+        $scope.calculateTotal(); 
     };
+    $scope.calculateTotal = function () {
+        let totalAmount = 0;
+    
+        // Duyệt qua từng sản phẩm trong giỏ hàng để tính tổng tiền
+        $scope.cart.forEach(item => {
+            totalAmount += item.giaBan * item.quantity; // Tổng tiền của sản phẩm
+        });
+    
+        return totalAmount; // Trả về tổng thành tiền
+    };
+    
+    $scope.removeItem = function (item) {
+        const index = $scope.cart.indexOf(item);
+        if (index > -1) {
+            $scope.cart.splice(index, 1);
+        }
+        $scope.updateCartSummary();
+    };
+    $scope.increaseQuantity = function (item) {
+        item.quantity += 1;
+        $scope.updateCartSummary(); // Cập nhật tổng số lượng và giá
+    };
+    
+    $scope.decreaseQuantity = function (item) {
+        if (item.quantity > 1) {
+            item.quantity -= 1;
+            $scope.updateCartSummary(); // Cập nhật tổng số lượng và giá
+        }
+    };
+    $scope.goToCheckout = function () {
+        const taikhoan = localStorage.getItem('TaiKhoan');
+        if (!taikhoan) {
+            alert('Vui lòng đăng nhập để tiếp tục!');
+            return;
+        }
+        const cartKey = `${taikhoan}_cart`;
+        let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+        if (cart.length === 0) {
+            alert('Giỏ hàng trống, vui lòng thêm sản phẩm!');
+            return;
+        }
+        window.location.href = '/user/checkout.html'; // Chuyển đến trang checkout
+    };
+    
+    $scope.calculateTotalQuantity = function () {
+        const taikhoan = localStorage.getItem('TaiKhoan');
+        const cartKey = `${taikhoan}_cart`;
+        const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+        return cart.reduce((total, item) => total + item.quantity, 0);
+    };
+    
+    $scope.calculateTotalPrice = function () {
+        const taikhoan = localStorage.getItem('TaiKhoan');
+        const cartKey = `${taikhoan}_cart`;
+        const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+        return cart.reduce((total, item) => total + item.quantity * item.giaBan, 0);
+    };
+    
+    $scope.placeOrder = function () {
+        const taikhoan = localStorage.getItem('TaiKhoan');
+        const perId = localStorage.getItem("PerID");
+        const cartKey = `${taikhoan}_cart`;
+        const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+    
+        if (!cart.length) {
+            alert('Giỏ hàng trống!');
+            return;
+        }
+    
+        // Thông tin thanh toán
+        const orderData = {
+            PerID: perId, // Tài khoản người dùng
+            HoTen: document.getElementById('first-name').value,
+            DiaChi: `${document.getElementById('address').value}, ${document.getElementById('district').value}, ${document.getElementById('province').value}`,
+            SDT: document.getElementById('phone').value,
+            TrangThai: 'Đang xử lý',
+            ChiTietHoaDons: cart.map(item => ({
+                MaSp: item.maSp,
+                TenSp: item.tenSp,
+                TenMau: item.tenMau,
+                MaSize: item.maSize,
+                SoLuong: item.quantity,
+                GiaBan: item.giaBan,
+                GhiChu: '',
+                KhuyenMai: item.khuyenMai
+            }))
+        };
+    
+        // Gửi yêu cầu API
+        $http.post(current_url + '/api/HoaDon/Create', orderData)
+            .then(response => {
+                if (response.data) {
+                    alert('Đặt hàng thành công!');
+                    localStorage.removeItem(cartKey); // Xóa giỏ hàng sau khi đặt hàng
+                    window.location.href = '/user/cart.html';
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert('Đặt hàng thất bại, vui lòng thử lại!');
+            });
+    };
+    
     
     
     $scope.LoadProduct = function() {

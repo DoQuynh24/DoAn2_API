@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebTuiXach-Gateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbbe1c938de969f12dd0119df9947bb9374d660f")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebTuiXach-Gateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebTuiXach-Gateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

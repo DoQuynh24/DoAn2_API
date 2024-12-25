@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\WebTuiXachh.csproj": {}
+    "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\WebTuiXachh\\WebTuiXachh.csproj": {}
   },
   "projects": {
-    "D:\\API\\WebTuiXachh - User\\BLL\\BLL.csproj": {
+    "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\BLL\\BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\API\\WebTuiXachh - User\\BLL\\BLL.csproj",
+        "projectUniqueName": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\BLL\\BLL.csproj",
         "projectName": "BLL",
-        "projectPath": "D:\\API\\WebTuiXachh - User\\BLL\\BLL.csproj",
+        "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\BLL\\BLL.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\API\\WebTuiXachh - User\\BLL\\obj\\",
+        "outputPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,11 +32,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\API\\WebTuiXachh - User\\DAL\\DAL.csproj": {
-                "projectPath": "D:\\API\\WebTuiXachh - User\\DAL\\DAL.csproj"
+              "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\DAL.csproj": {
+                "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\DAL.csproj"
               },
-              "D:\\API\\WebTuiXachh - User\\Model\\Model.csproj": {
-                "projectPath": "D:\\API\\WebTuiXachh - User\\Model\\Model.csproj"
+              "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\Model.csproj": {
+                "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\Model.csproj"
               }
             }
           }
@@ -114,14 +114,14 @@
         }
       }
     },
-    "D:\\API\\WebTuiXachh - User\\DAL\\DAL.csproj": {
+    "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\API\\WebTuiXachh - User\\DAL\\DAL.csproj",
+        "projectUniqueName": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "D:\\API\\WebTuiXachh - User\\DAL\\DAL.csproj",
+        "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\DAL.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\API\\WebTuiXachh - User\\DAL\\obj\\",
+        "outputPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -142,8 +142,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\API\\WebTuiXachh - User\\Model\\Model.csproj": {
-                "projectPath": "D:\\API\\WebTuiXachh - User\\Model\\Model.csproj"
+              "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\Model.csproj": {
+                "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\Model.csproj"
               }
             }
           }
@@ -221,14 +221,14 @@
         }
       }
     },
-    "D:\\API\\WebTuiXachh - User\\Model\\Model.csproj": {
+    "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\API\\WebTuiXachh - User\\Model\\Model.csproj",
+        "projectUniqueName": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "D:\\API\\WebTuiXachh - User\\Model\\Model.csproj",
+        "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\Model.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\API\\WebTuiXachh - User\\Model\\obj\\",
+        "outputPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -324,14 +324,14 @@
         }
       }
     },
-    "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\WebTuiXachh.csproj": {
+    "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\WebTuiXachh\\WebTuiXachh.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\WebTuiXachh.csproj",
+        "projectUniqueName": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\WebTuiXachh\\WebTuiXachh.csproj",
         "projectName": "WebTuiXachh",
-        "projectPath": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\WebTuiXachh.csproj",
+        "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\WebTuiXachh\\WebTuiXachh.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\API\\WebTuiXachh - User\\WebTuiXachh\\obj\\",
+        "outputPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\WebTuiXachh\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -352,11 +352,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\API\\WebTuiXachh - User\\BLL\\BLL.csproj": {
-                "projectPath": "D:\\API\\WebTuiXachh - User\\BLL\\BLL.csproj"
+              "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\BLL\\BLL.csproj": {
+                "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\BLL\\BLL.csproj"
               },
-              "D:\\API\\WebTuiXachh - User\\Model\\Model.csproj": {
-                "projectPath": "D:\\API\\WebTuiXachh - User\\Model\\Model.csproj"
+              "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\Model.csproj": {
+                "projectPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\Model.csproj"
               }
             }
           }

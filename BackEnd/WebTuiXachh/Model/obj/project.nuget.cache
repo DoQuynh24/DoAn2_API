@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QIVQZewitz0=",
+  "dgSpecHash": "myi43XK+jQk=",
   "success": true,
-  "projectFilePath": "D:\\API\\WebTuiXachh\\Model\\Model.csproj",
+  "projectFilePath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\Model\\Model.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
