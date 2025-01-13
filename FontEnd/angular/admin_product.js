@@ -131,7 +131,7 @@ app.controller('productCtrl', function($scope, $http,) {
     $scope.LoadProduct = function() {
         $http({
             method: 'GET',
-            url: current_url + '/api/TuiXach/get-all',
+            url: 'https://localhost:44374/api/TuiXach/get-all',
         }).then(function (response){
             $scope.listProduct = response.data; 
             $scope.filteredProducts = $scope.listProduct; 
@@ -183,11 +183,25 @@ app.controller('productCtrl', function($scope, $http,) {
     
 
       // Mở modal và chuẩn bị dữ liệu
-    $scope.editProduct = function (product) {
+      $scope.editProduct = function (product) {
         $scope.isEditMode = true;
-        $scope.newProduct = angular.copy(product); // Sao chép dữ liệu để sửa
-        $scope.newProduct.imageUrl = $scope.getImageUrl(product.hinhAnh);
+        $scope.newProduct = angular.copy(product);
+        $scope.newProduct.imageUrl = $scope.getImageUrl(product.hinhAnh); // Đường dẫn hình ảnh hiện tại
     };
+    
+    
+    $scope.onFileChange = function (element) {
+        $scope.$apply(() => {
+            $scope.selectedFile = element.files[0]; // Lấy tệp hình ảnh đã chọn
+    
+            if ($scope.selectedFile) {
+                // Tạo URL hiển thị hình ảnh mới trong modal
+                $scope.newProduct.imageUrl = URL.createObjectURL($scope.selectedFile);
+            }
+        });
+    };
+    
+    
 
     $scope.clearFormProduct = function () {
         $scope.isEditMode = false;
@@ -245,7 +259,7 @@ app.controller('productCtrl', function($scope, $http,) {
     
     // phân trang
     $scope.currentPage = 1;
-    $scope.itemsPerPage = 7;
+    $scope.itemsPerPage = 5;
 
     $scope.paginatedProducts = function() {
         let startIndex = ($scope.currentPage - 1) * $scope.itemsPerPage;

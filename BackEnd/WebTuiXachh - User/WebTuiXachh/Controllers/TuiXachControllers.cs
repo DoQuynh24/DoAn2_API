@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Data;
 
+
 namespace API.Controllers
 {
     //[Authorize] // Bảo vệ tất cả các API trong controller này
@@ -132,7 +133,7 @@ namespace API.Controllers
         {
             try
             {
-                string path = Path.Combine("D:\\API\\WebTuiXachh\\images", fileName);
+                string path = Path.Combine("D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\images", fileName);
 
                 if (!System.IO.File.Exists(path))
                 {
@@ -173,6 +174,7 @@ namespace API.Controllers
                 throw;  // Ném lại lỗi để giữ nguyên thông tin
             }
         }
+        
 
     }
 }

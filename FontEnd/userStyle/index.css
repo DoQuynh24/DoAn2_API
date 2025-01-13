@@ -330,7 +330,7 @@
 #content-top-left{
     width: 30%;
     height: 250px;
-    padding-left: 80px;
+    padding-left: 50px;
     background-color: #FFF;
 }
 #content-top-right{
@@ -338,6 +338,7 @@
     height: 250px;
     display: flex;
     background-color: #FFF;
+    padding-right: 10px;
 }
     #details{
         width: 24%;

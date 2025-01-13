@@ -435,4 +435,10 @@ ul.noidung li {
   .pagination button:hover {
     background-color: #ddd;
   }
-  
+
+  .newbag.empty {
+    display: none; /* Ẩn hoàn toàn khối trống */
+}
+
+
+

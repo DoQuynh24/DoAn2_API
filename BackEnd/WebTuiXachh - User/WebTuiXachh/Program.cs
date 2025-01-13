@@ -27,8 +27,8 @@ builder.Services.AddTransient<ISizeRepository, SizeRepository>();
 builder.Services.AddTransient<ISizeBusiness, SizeBusiness>();
 //builder.Services.AddTransient<IChiTietHoaDonRepository, ChiTietHoaDonRepository>();
 //builder.Services.AddTransient<IChiTietHoaDonBusiness, ChiTietHoaDonBusiness>();
-//builder.Services.AddTransient<IBinhLuanBusiness, BinhLuanBusiness>();
-//builder.Services.AddTransient<IBinhLuanRepository, BinhLuanRepository>();
+builder.Services.AddTransient<IBinhLuanBusiness, BinhLuanBusiness>();
+builder.Services.AddTransient<IBinhLuanRepository, BinhLuanRepository>();
 //builder.Services.AddTransient<ITinTucBusiness, TinTucBusiness>();
 //builder.Services.AddTransient<ITinTucRepository, TinTucRepository>();
 

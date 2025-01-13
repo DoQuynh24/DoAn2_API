@@ -28,7 +28,8 @@
                         });
                     }
                 });</script>
-                <input class="search" type="text" placeholder=" 🔍Tìm kiếm sản phẩm"> 
+                <input class="search" type="text" placeholder=" 🔍Tìm kiếm sản phẩm" ng-model="searchQuery" ng-change="filterProducts()" />
+
                 <img class="icon" src="images/heart.png"/>
                 <img id="cart" class="icon" src="images/bag.png"/>
                 <script>document.addEventListener("DOMContentLoaded", function() {
@@ -144,14 +145,18 @@
             </div>
             <div id="content-newbag-1" ng-init="LoadProduct()">
                 <!-- Chia hàng với ng-repeat -->
-                <div class="row" ng-repeat="row in paginatedProducts()"  >
-                    <div class="newbag" ng-repeat="product in row" data-id="{{product.maSp}}"  ng-click="viewProductDetails(product)">
+                <div class="row" ng-repeat="row in paginatedProducts()">
+                    <div class="newbag"   ng-class="{'empty': !product}"  ng-repeat="product in row" data-id="{{product.maSp}}" ng-click="viewProductDetails(product)">
                         <img class="img-newbag" ng-src="{{ getImageUrl(product.hinhAnh) }}" />
                         <h4 style="text-align: center;">{{product.tenSp}}</h4>
                         <p class="product-price">{{product.giaBan | number:0}}₫</p>
                     </div>
+                    <!-- Các khối trống để lấp đầy hàng -->
+                    <div class="newbag empty" ng-repeat="n in [].constructor(productsPerRow - row.length) track by $index"></div>
                 </div>
             </div>
+            
+            
             <!-- Phân trang -->
             <div class="pagination">
                 <button ng-repeat="page in [].constructor(totalPages()) track by $index"
@@ -160,6 +165,7 @@
                     {{ $index + 1 }}
                 </button>
             </div>
+            
         <hr/> 
         <div id="footer">
             <br/>

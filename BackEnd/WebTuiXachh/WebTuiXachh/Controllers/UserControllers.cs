@@ -160,7 +160,7 @@ namespace API.Controllers
                 string hoten = searchRequest?.HoTen ?? string.Empty;
                 string diachi = searchRequest?.DiaChi ?? string.Empty;
                 int pageIndex = searchRequest?.PageIndex ?? 1; // Giá trị mặc định là 1
-                int pageSize = searchRequest?.PageSize ?? 6; // Giá trị mặc định là 10
+                int pageSize = searchRequest?.PageSize ?? 10; // Giá trị mặc định là 10
 
                 // Gọi đến tầng business để xử lý tìm kiếm
                 var users = _userBusiness.SearchUsers(pageIndex, pageSize, out long total, taikhoan, hoten, diachi);

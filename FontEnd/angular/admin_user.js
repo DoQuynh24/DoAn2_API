@@ -65,7 +65,7 @@ app.controller('userCtrl', function($scope, $http) {
         });
     };
 
-    $scope.paginatedHoaDon = function () {
+    $scope.paginatedNguoiDung = function () {
         let start = ($scope.currentPage - 1) * $scope.itemsPerPage;
         let end = start + $scope.itemsPerPage;
         return $scope.filteredHoaDon.slice(start, end);
@@ -118,6 +118,7 @@ app.controller('userCtrl', function($scope, $http) {
    
      // Hàm sửa người dùng
      $scope.editUser = function(user) {
+        $scope.clearForm();
         $scope.isEditMode = true;
         $scope.perid = user.perID;
         $scope.taikhoan = user.taiKhoan;
@@ -190,7 +191,7 @@ app.controller('userCtrl', function($scope, $http) {
         $scope.ngaysinh = '';
         $scope.gioitinh = '';
         $scope.diachi = '';
-        $scope.role = 'user'; // Default role là 'user'
+        $scope.role = 'Khách hàng';// Default role là 'user'
         $scope.isEditMode = false; // Chế độ thêm mới
     };
 

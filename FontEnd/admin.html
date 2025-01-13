@@ -420,38 +420,38 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row mb-2">
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <p><b>Mã Hóa Đơn:</b> {{selectedBill.maHD }}</p>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p><b>Ngày đặt hàng:</b> {{ selectedBill.ngayDatHang }}</p>
+                                        <div class="col-md-8">
+                                            <p><b>Ngày đặt hàng:</b> {{ selectedBill.ngayDatHang | date:'HH:mm dd/MM/yyyy' }}</p>
                                         </div>
                                     </div>
                                     <div class="row mb-2">
-                                        <div class="col-md-5">
+                                        <div class="col-md-4">
                                             <p><b>Khách hàng:</b> {{ selectedBill.perID }}
                                         </div>
-                                        <div class="col-md-7">
+                                        <div class="col-md-8">
                                             <p><b>Họ và Tên:</b> {{ selectedBill.hoTen }}</p>
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
-                                        <div class="col-md-5">
+                                    <div class="row mb-2"> 
+                                        <div class="col-md-4">
                                             <p><b>Số điện thoại:</b> {{ selectedBill.sdt }}</p>
                                         </div>
-                                        <div class="col-md-7">
+                                        <div class="col-md-8">
                                             <p><b>Địa Chỉ:</b> {{ selectedBill.diaChi }}</p>
                                         </div>
                                        
                                     </div>
                                     <div class="row mb-2">
-                                        <div class="col-md-5" ng-if="selectedBill.trangThai === 'Hoàn thành'">
+                                        <div class="col-md-4" ng-if="selectedBill.trangThai === 'Hoàn thành'">
                                             <p><b>Ngày nhận hàng:</b> {{ selectedBill.ngayNhanHang | date:'dd/MM/yyyy' }}</p>
                                         </div>
-                                        <div class="col-md-5" ng-if="selectedBill.trangThai !== 'Hoàn thành'">
+                                        <div class="col-md-4" ng-if="selectedBill.trangThai !== 'Hoàn thành'">
                                             <p><b>Ngày nhận hàng:</b>--</p>
                                         </div>
-                                        <div class="col-md-7">
+                                        <div class="col-md-8">
                                             <b>Trạng thái đơn hàng:</b>
                                             <select ng-model="selectedBill.trangThai "ng-disabled="selectedBill.trangThai === 'Hoàn thành'" >
                                                 <option value="Đang xử lý">Đang xử lý</option>
@@ -486,7 +486,6 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                    <p style="margin-top: 15px;"  ng-repeat="ct in listChiTiet">Ghi chú: {{ ct.ghiChu }}</p>
                                     <div style="float:right;">
                                         <lable>Tổng tiền hàng: ₫{{ tongTienHang | number }}</lable>
                                         <p>Phí vận chuyển: ₫{{ phiVanChuyen | number }}</p>

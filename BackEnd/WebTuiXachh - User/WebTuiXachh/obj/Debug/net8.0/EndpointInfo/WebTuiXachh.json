@@ -5,6 +5,175 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/BinhLuan/create": {
+      "post": {
+        "tags": [
+          "BinhLuan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BinhLuanModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BinhLuanModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BinhLuanModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BinhLuan/update": {
+      "put": {
+        "tags": [
+          "BinhLuan"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BinhLuanModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BinhLuanModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BinhLuanModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BinhLuan/delete/{id}": {
+      "delete": {
+        "tags": [
+          "BinhLuan"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BinhLuan/{id}": {
+      "get": {
+        "tags": [
+          "BinhLuan"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BinhLuan/all": {
+      "get": {
+        "tags": [
+          "BinhLuan"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/BinhLuan/search": {
+      "get": {
+        "tags": [
+          "BinhLuan"
+        ],
+        "parameters": [
+          {
+            "name": "pageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "maSP",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": ""
+            }
+          },
+          {
+            "name": "perID",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/DanhMucSanPham/{maDanhMuc}": {
       "get": {
         "tags": [
@@ -41,6 +210,37 @@
     },
     "/api/HoaDon/create": {
       "post": {
+        "tags": [
+          "HoaDon"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HoaDonModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/HoaDonModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/HoaDonModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/HoaDon/update": {
+      "put": {
         "tags": [
           "HoaDon"
         ],
@@ -124,6 +324,55 @@
             "required": true,
             "schema": {
               "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HoaDonModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HoaDonModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HoaDonModel"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/HoaDon/get-by-perid/{perID}": {
+      "get": {
+        "tags": [
+          "HoaDon"
+        ],
+        "parameters": [
+          {
+            "name": "perID",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
@@ -717,6 +966,32 @@
         },
         "additionalProperties": false
       },
+      "BinhLuanModel": {
+        "type": "object",
+        "properties": {
+          "maBinhLuan": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "perID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maSp": {
+            "type": "string",
+            "nullable": true
+          },
+          "noiDung": {
+            "type": "string",
+            "nullable": true
+          },
+          "ngayBinhLuan": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "ChiTietHoaDonModel": {
         "type": "object",
         "properties": {
@@ -755,6 +1030,10 @@
           "khuyenMai": {
             "type": "number",
             "format": "double"
+          },
+          "hinhAnh": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

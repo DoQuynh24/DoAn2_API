@@ -16,6 +16,7 @@ namespace BLL
 
         public int CreateHoaDon(HoaDonModel model) => _hoaDonRepository.Create(model);
         public bool UpdateTrangThaiHoaDon(HoaDonModel model) => _hoaDonRepository.UpdateTrangThai(model);
+        public bool Update(HoaDonModel model) => _hoaDonRepository.UpdateHoaDon(model);
         public List<HoaDonModel> GetByTrangThai(string trangThai)
         {
             try
@@ -32,7 +33,18 @@ namespace BLL
             return _hoaDonRepository.GetDatabyIDHD(maHD);
         }
 
-
+       
+        public List<HoaDonModel> GetHoaDonChiTietByPerID(int perID)
+        {
+            try
+            {
+                return _hoaDonRepository.GetHoaDonChiTietByPerID(perID);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy hóa đơn theo perID.", ex);
+            }
+        }
 
     }
 }

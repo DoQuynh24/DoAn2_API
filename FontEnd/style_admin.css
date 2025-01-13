@@ -1,124 +1,122 @@
-*{
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f7e9f3, #e3e3e3);
     margin: 0;
     padding: 0;
-    box-sizing: 0;
-    font-family:Arial, Helvetica, sans-serif;
-}
-#main{
-    width: 100%;
-    background-color:  #FFF;
-    height: 90%;
+    color: #333;
 }
 
-#header{
-    width:100%;
-    height:65px;
-    display:flex;
-    background-color: rgba(128, 128, 128, 0.199);
+#main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#header {
+    background: linear-gradient(90deg, #f8dff6, #e3e3e3);
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#name {
+font-size: 35px;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+color: black;
+cursor: pointer;
+
+}
+
+#header #search #text span {
+    margin-right: 40px;
+    font-size: 16px;
+    color: #555;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+#header #search #text span:hover {
+    color: #a64ca6;
+}
+
+#header #avt img {
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+#header #avt img:hover {
+    transform: scale(1.1);
+}
+
+#content {
+    display: flex;
+    flex: 1;
+}
+
+#content-left {
+    background: linear-gradient(135deg, #f7e9f3, #ececec);
+    padding: 20px;
+    width: 200px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    
     
 }
 
+#content-left .button {
+    background: linear-gradient(90deg, #e8d5ef, #f4e4f8);
+    border: none;
+    padding: 10px 12px;
+    text-align: left;
+    border-radius: 20px;
+    font-size: 16px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
 
-    #name{
-        width: 220px;
-        display:flex;
-        cursor: pointer;
-    }
-        .name{
-           
-            font-size: 43px; 
-            font-family: Georgia, 'Times New Roman', Times, serif; 
-        }
-       
-    #search{
-        width:950px;
-        display:flex;
-        cursor: pointer;
-        line-height: 20px;
-    }
-        .menu{
-            margin-top: 15px;
-            width:30px;
-            height:30px;
-            margin-left: 20px;
-           
-        }
-        
-    #text{
-        margin-top: 20px;
-        margin-left: 50px;
-        font-size: 20px;
-    } 
-    #avt{
-        display: flex;
-        cursor: pointer;
-    }
-    .avt{
-        width:50px;
-        height:45px;
-        border-radius: 100px;
-        margin-top: 10px;
-        
-    }
-    #content {
-        display: flex;
-        width: 100%;
-        height: 760px;
-        background-color: #f8f8f8;
-    }
-    
-    /* Sidebar (content-left) */
-    #content-left {
-        width: 230px;
-        background-color: rgba(128, 128, 128, 0.199);
-        padding: 20px;
-        height: 100%;
-    }
-    
-    .button {
-        width: 100%;
-        height: 45px;
-        background-color: #FFF;
-        border: none;
-        cursor: pointer;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        padding-left: 30px;
-        margin-bottom: 15px;
-        border-radius: 10px;
-        transition: background-color 0.3s ease;
-    }
-    
-    .button:hover {
-        background-color: rgba(0, 0, 255, 0.205);
-    }
-    
-    .icon {
-        width: 25px;
-        height: 25px;
-        margin-right: 10px;
-    }
-    
-    #sub-products {
-        display: none;
-        padding-left: 20px;
-    }
-    
-    #sub-products .button {
-        background-color: #FFF;
-    }
-    
-    #sub-products .button:hover {
-        background-color: rgba(0, 0, 255, 0.205);
-    }
-    
-    /* Content-right */
-    #content-right {
-        flex-grow: 1;
-        background-color: #f8f8f8;
-        padding: 0px;
-    }
+#content-left .button:hover {
+    background: linear-gradient(90deg, #d6a8e3, #efc8f7);
+    color: #fff;
+    transform: translateX(5px);
+}
+
+#content-left .icon {
+    width: 25px;
+    height: 25px;
+}
+
+#content-right {
+    flex: 1;
+    padding: 20px;
+    background: linear-gradient(135deg,#ececec, #f7e9f3);
+    border-radius: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background: #f8dff6;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+}
+
     #content-right-admin {
         padding: 0px;
         background-color: #fff;
@@ -139,7 +137,7 @@
     }
     
     .stat-item {
-        background-color: #f0f0f0;
+        background: linear-gradient(90deg, #e8d5ef, #f4e4f8);
         padding: 10px;
         border-radius: 10px;
         text-align: center;
@@ -158,6 +156,7 @@
         font-size: 24px;
         font-weight: bold;
         color: #333;
+        
     }
     
     .quick-actions {
@@ -208,7 +207,7 @@
 .add {
     width: 30px;
     height: 30px;
-    background-color: #f8f9fa;
+    background: linear-gradient(135deg,#ececec, #f7e9f3);
     }
 
 
@@ -308,7 +307,7 @@
  /* PRODUCT*/
   
  .product-header {
-    background-color: #f8f9fa;
+    background: linear-gradient(135deg,#ececec, #f7e9f3);
     padding: 10px;
     padding-left: 30px;
     height:40px;
@@ -318,13 +317,13 @@
     display: flex;
     align-items: center;
     background-color: #CCC;
-    margin-top: 10px;
+    border-radius: 7px;
 
 
 }
 .btn-add{
     width: 30px;
-    height: 28px;
+    height: 32px;
     border: none;
     background-color: #2C3E50;
     border-radius: 7px;
@@ -334,8 +333,8 @@
 .filters .form-select, .filters .form-control {
     width: 270px;
     margin-left: 50px;
-    height: 30px;
     font-size: 13px;
+    line-height: 20px;
 }
 .icon-pencil{
     width: 35px;
@@ -343,14 +342,16 @@
     border: none;
     background-color: transparent;
     }
-
+#product-table{
+    width: 100%;
+    height: 460px;
+}
     .product-table {
         width: 100%;
         border-collapse: collapse;
         text-align: center;
         font-size: 14px;
-        margin-top: 5px;
- 
+     
         
     }
     
@@ -361,8 +362,6 @@
         border: 1px solid #dee2e6;
         white-space: nowrap; 
     }
-    
-   
     
     .product-table tbody td {
         border: 1px solid #dee2e6;
@@ -427,7 +426,8 @@
     display: flex;
     align-items: center;
     background-color: #CCC;
-    margin-top: 10px
+    margin-top: 10px;
+    border-radius: 7px;
 }
 
 .search-icon {
@@ -469,12 +469,12 @@
 
 .menu-item.active {
     font-weight: bold;
-    color: #FFF;
-    background-color: cadetblue;
+    color:#a64ca6;
+    background: linear-gradient(90deg, #d6a8e3, #efc8f7);
 
 }
 .menu-item:hover{
-    background-color: cadetblue;
+    background: linear-gradient(90deg, #d6a8e3, #efc8f7);
 }
 
 .see-btn-hoadon, .delete-btn-hoadon {

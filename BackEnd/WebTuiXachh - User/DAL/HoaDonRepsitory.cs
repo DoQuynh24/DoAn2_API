@@ -73,6 +73,35 @@ namespace DAL
             }
         }
 
+        public bool UpdateHoaDon(HoaDonModel model)
+        {
+            string msgError = "";
+            try
+            {
+                // Gọi stored procedure để cập nhật thông tin
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction( out msgError, "sp_hoa_don_update",
+                    "@ma_hd", model.MaHD,
+                    "@ho_ten", model.HoTen,
+                    "@dia_chi", model.DiaChi,
+                    "@sdt", model.SDT
+                );
+
+                // Kiểm tra lỗi từ stored procedure
+                if (!string.IsNullOrEmpty(msgError))
+                {
+                    throw new Exception(msgError);
+                }
+
+                return true; 
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi và trả về thông báo
+                throw new Exception("Lỗi khi cập nhật hóa đơn.", ex);
+            }
+        }
+
+
         // Cập nhật thông tin hóa đơn chỉ cập nhật trạng thái
         public bool UpdateTrangThai(HoaDonModel model)
         {
@@ -127,7 +156,61 @@ namespace DAL
                 throw ex;
             }
         }
- 
+
+        public List<HoaDonModel> GetHoaDonChiTietByPerID(int perID)
+        {
+            try
+            {
+                // Gọi stored procedure
+                var dtResult = _dbHelper.ExecuteSProcedureReturnDataTable(out string msgError, "sp_get_HoaDon_ChiTiett", "@PerID", perID);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+
+                // Nhóm dữ liệu và chuyển đổi thành danh sách hóa đơn
+                return dtResult.AsEnumerable()
+                    .GroupBy(row => new
+                    {
+                        MaHD = row.Field<int>("MaHD"),
+                        PerID = row.Field<int>("PerID"),
+                        NgayDatHang = row.Field<DateTime>("NgayDatHang"),
+                        TrangThai = row.Field<string>("TrangThai"),
+                        NgayNhanHang = row.Field<DateTime?>("NgayNhanHang"),
+                        HoTen = row.Field<string>("HoTen"),
+                        DiaChi = row.Field<string>("DiaChi"),
+                        SDT = row.Field<string>("SDT")
+                    })
+                    .Select(group => new HoaDonModel
+                    {
+                        MaHD = group.Key.MaHD,
+                        PerID = group.Key.PerID,
+                        NgayDatHang = group.Key.NgayDatHang,
+                        TrangThai = group.Key.TrangThai,
+                        NgayNhanHang = group.Key.NgayNhanHang ?? default(DateTime),
+
+                        HoTen = group.Key.HoTen,
+                        DiaChi = group.Key.DiaChi,
+                        SDT = group.Key.SDT,
+                        ChiTietHoaDons = group.Select(row => new ChiTietHoaDonModel
+                        {
+                            MaSp = row.Field<string>("MaSp"),
+                            TenSp = row.Field<string>("TenSp"),
+                            TenMau = row.Field<string>("TenMau"),
+                            MaSize = row.Field<string>("MaSize"),
+                            SoLuong = row.Field<int>("SoLuong"),
+                            GiaBan = row.Field<decimal>("GiaBan"),
+                            GhiChu = row.Field<string>("GhiChu"),
+                            KhuyenMai = row.Field<decimal>("KhuyenMai"),
+                            HinhAnh = row.Field<string>("HinhAnh")
+                        }).ToList()
+                    })
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy dữ liệu hóa đơn: " + ex.Message);
+            }
+        }
+
         public List<HoaDonModel> GetByTrangThai(string trangThai)
         {
             string msgError = "";

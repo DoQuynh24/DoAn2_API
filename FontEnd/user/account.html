@@ -9,13 +9,10 @@
     <link rel="stylesheet" href="../userStyle/account.css">
     <script src="/userJs/main.js" defer></script>
     <link rel="icon" href="images/logo.png">
-
     <script src="/angular/script.js"></script>
     <script src="/angular/angular.min.js"></script>
     <script src="/angular/global.js"></script>
     <script src="/angular/user_login.js"></script>
-
-
 </head>
 <body ng-app="AppLogin" ng-controller="loginCtrl">
     <div id="main">
@@ -123,7 +120,6 @@
             loginTab.classList.toggle('active', form === 'login-form');
             registerTab.classList.toggle('active', form === 'register-form');
         }
-
         // Gán sự kiện khi nhấn vào các tab
         loginTab.addEventListener('click', function() {
             showForm('login-form');

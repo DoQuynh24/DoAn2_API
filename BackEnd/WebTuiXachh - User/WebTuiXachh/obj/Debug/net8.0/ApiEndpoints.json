@@ -1,5 +1,110 @@
 [
   {
+    "ContainingType": "API.Controllers.BinhLuanController",
+    "Method": "Get",
+    "RelativePath": "api/BinhLuan/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BinhLuanController",
+    "Method": "GetAll",
+    "RelativePath": "api/BinhLuan/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BinhLuanController",
+    "Method": "Create",
+    "RelativePath": "api/BinhLuan/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Model.BinhLuanModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BinhLuanController",
+    "Method": "Delete",
+    "RelativePath": "api/BinhLuan/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BinhLuanController",
+    "Method": "Search",
+    "RelativePath": "api/BinhLuan/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "maSP",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "perID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.BinhLuanController",
+    "Method": "Update",
+    "RelativePath": "api/BinhLuan/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Model.BinhLuanModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.DanhMucSanPhamController",
     "Method": "Get",
     "RelativePath": "api/DanhMucSanPham/{maDanhMuc}",
@@ -69,6 +174,32 @@
   },
   {
     "ContainingType": "WebTuiXachh.Controllers.HoaDonController",
+    "Method": "GetHoaDonPerID",
+    "RelativePath": "api/HoaDon/get-by-perid/{perID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "perID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Model.HoaDonModel, Model, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "WebTuiXachh.Controllers.HoaDonController",
     "Method": "GetById",
     "RelativePath": "api/HoaDon/get/{MaHD}",
     "HttpMethod": "GET",
@@ -78,6 +209,22 @@
       {
         "Name": "MaHD",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebTuiXachh.Controllers.HoaDonController",
+    "Method": "Update",
+    "RelativePath": "api/HoaDon/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Model.HoaDonModel",
         "IsRequired": true
       }
     ],

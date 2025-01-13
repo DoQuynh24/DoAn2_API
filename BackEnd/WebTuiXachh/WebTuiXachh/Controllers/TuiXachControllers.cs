@@ -168,7 +168,7 @@ namespace API.Controllers
         {
             try
             {
-                string path = Path.Combine("D:\\API\\WebTuiXachh\\images", fileName);
+                string path = Path.Combine("D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\images", fileName);
 
                 if (!System.IO.File.Exists(path))
                 {

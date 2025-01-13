@@ -17,7 +17,8 @@ namespace Model
         public int SoLuong { get; set; } 
         public decimal GiaBan { get; set; } 
         public string GhiChu { get; set; } 
-        public decimal KhuyenMai { get; set; } 
+        public decimal KhuyenMai { get; set; }
+        public string? HinhAnh { get; set; }
     }
 }
 

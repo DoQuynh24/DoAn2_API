@@ -24,7 +24,6 @@ app.controller('loginCtrl', function ($scope, $http) {
         }).then(function (response) {
             console.log(response);
             const user = response.data.user;
-            // Gán thông tin người dùng vào các biến trong scope
             $scope.taikhoan = user.taiKhoan;
             $scope.matkhau = user.matKhau;
             $scope.hoten = user.hoTen;
@@ -199,7 +198,148 @@ app.controller('loginCtrl', function ($scope, $http) {
             $scope.errorMessage = "Lỗi máy chủ. Vui lòng thử lại sau!";
         });
     };
+
+    $scope.tongTienHang = 0;
+    $scope.phiVanChuyen = 25000;
+    $scope.selectedStatus = 'Tất cả';
+
+    $scope.loadHoaDon = function (trangThai) {
+        $scope.selectedStatus = trangThai; // Cập nhật trạng thái
+        var perID = localStorage.getItem("PerID");
+        var url = `https://localhost:44367/api/HoaDon/get-by-perid/${perID}`;
+
+        // Thêm tham số lọc trạng thái vào URL nếu cần
+        if (trangThai && trangThai !== 'Tất cả') {
+            url += `?trangThai=${trangThai}`;
+        }
+
+        $http({
+            method: 'GET',
+            url: url,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(function (response) {
+            console.log(response.data);
+            $scope.hoaDons = response.data; // Danh sách hóa đơn đầy đủ
+            $scope.filteredHoaDons = $scope.hoaDons; // Lưu danh sách gốc để lọc
+
+            // Tính tổng tiền hàng cho từng hóa đơn
+            $scope.filteredHoaDons.forEach(hoaDon => {
+                hoaDon.tongTienHang = hoaDon.chiTietHoaDons.reduce((total, item) => {
+                    return total + (item.giaBan * item.soLuong);
+                }, 0);
+                $scope.calculateThanhTien(hoaDon);
+            });
+        }).catch(function (error) {
+            console.error("Đã xảy ra lỗi khi tải hóa đơn:", error);
+        });
+    };
+    $scope.viewOrderDetails = function (hoaDon) {
+        $scope.selectedOrder = hoaDon; // Lưu hóa đơn được chọn vào $scope
+    };
     
+    // Tính tổng tiền thanh toán
+    $scope.calculateThanhTien = function (hoaDon) {
+        hoaDon.thanhTien = hoaDon.tongTienHang + $scope.phiVanChuyen;
+    };
+
+    // Lọc hóa đơn theo trạng thái
+    $scope.filterHoaDonByStatus = function (status) {
+        if (status === 'Tất cả') {
+            $scope.filteredHoaDons = $scope.hoaDons;
+        } else {
+            $scope.filteredHoaDons = $scope.hoaDons.filter(hoaDon => hoaDon.trangThai === status);
+        }
+        $scope.selectedStatus = status; // Đánh dấu trạng thái đã chọn
+    };
+
+    // Tìm kiếm hóa đơn theo ID đơn hàng hoặc Tên sản phẩm
+    $scope.searchHoaDon = function (query) {
+        $scope.filteredHoaDons = $scope.hoaDons.filter(hoaDon => {
+            return hoaDon.MaHD.toString().includes(query) || 
+                hoaDon.ChiTietHoaDons.some(item => item.tenSp.toLowerCase().includes(query.toLowerCase()));
+        });
+    };
+
+    $scope.loadHoaDon('Tất cả');
+    // Hủy đơn hàng
+    $scope.cancelOrder = function(hoaDon) {
+        if (confirm("Bạn có chắc chắn muốn hủy đơn hàng này?")) {
+            hoaDon.trangThai = 'Đã hủy'; // Cập nhật trạng thái đơn hàng trong giao diện
+            $http({
+                method: 'PUT',
+                url: `https://localhost:44367/api/HoaDon/update-trang-thai/${hoaDon.maHD}`,
+                headers: { 'Content-Type': 'application/json' },
+                data: JSON.stringify('Đã hủy')
+            }).then(function(response) {
+                alert("Đơn hàng đã được hủy thành công!");
+            }).catch(function(error) {
+                console.error("Lỗi khi hủy đơn hàng:", error);
+            });
+        }
+    };
+
+    // Xác nhận đã nhận hàng
+    $scope.confirmReceived = function(hoaDon) {
+        if (confirm("Bạn có chắc chắn đã nhận được hàng?")) {
+            hoaDon.trangThai = 'Hoàn thành'; // Cập nhật trạng thái đơn hàng trong giao diện
+            $http({
+                method: 'PUT',
+                url: `https://localhost:44367/api/HoaDon/update-trang-thai/${hoaDon.maHD}`,
+                headers: { 'Content-Type': 'application/json' },
+                data: JSON.stringify('Hoàn thành')
+            }).then(function(response) {
+                alert("Đơn hàng đã được xác nhận là hoàn thành!");
+            }).catch(function(error) {
+                console.error("Lỗi khi xác nhận đã nhận hàng:", error);
+            });
+        }
+    };
+
+    // Đánh giá đơn hàng
+    $scope.rateOrder = function (hoaDon) {
+        $scope.selectedOrder = hoaDon; // Lưu hóa đơn được chọn để đánh giá
+        $scope.ratingData = {
+            perID: localStorage.getItem("PerID"),
+            maSp: '',
+            noiDung: ''
+        };
+    
+        // Hiển thị modal đánh giá
+        $('#rateOrderModal').modal('show');
+    };
+    
+    // Gửi đánh giá sản phẩm
+    $scope.submitRating = function () {
+        if (!$scope.ratingData.maSp || !$scope.ratingData.noiDung) {
+            alert("Vui lòng chọn sản phẩm và nhập nội dung đánh giá.");
+            return;
+        }
+    
+        // Tạo dữ liệu đánh giá
+        const data = {
+            perID: $scope.ratingData.perID,
+            maSp: $scope.ratingData.maSp,
+            noiDung: $scope.ratingData.noiDung,
+            ngayBinhLuan: new Date().toISOString() 
+        };
+    
+        $http({
+            method: 'POST',
+            url: 'https://localhost:44367/api/BinhLuan/create',
+            headers: { 'Content-Type': 'application/json' },
+            data: JSON.stringify(data)
+        }).then(function (response) {
+            alert("Đánh giá sản phẩm thành công!");
+            $('#rateOrderModal').modal('hide'); // Đóng modal
+            $scope.ratingData.noiDung = ''; // Xóa nội dung sau khi đánh giá
+        }).catch(function (error) {
+            console.error("Lỗi khi gửi đánh giá:", error);
+            alert("Không thể gửi đánh giá. Vui lòng thử lại sau.");
+        });
+    };
+    
+
+
     
     $scope.listProduct = []; // Khởi tạo mảng sản phẩm
     $scope.productDetails = {}; // Lưu trữ thông tin chi tiết sản phẩm
@@ -357,12 +497,16 @@ app.controller('loginCtrl', function ($scope, $http) {
             alert('Giỏ hàng trống!');
             return;
         }
-    
+         // Lấy thông tin từ các dropdown
+        const provinceElement = document.getElementById('province');
+        const districtElement = document.getElementById('district');
+        const provinceName = provinceElement.options[provinceElement.selectedIndex]?.text || '';
+        const districtName = districtElement.options[districtElement.selectedIndex]?.text || '';
         // Thông tin thanh toán
         const orderData = {
             PerID: perId, // Tài khoản người dùng
             HoTen: document.getElementById('first-name').value,
-            DiaChi: `${document.getElementById('address').value}, ${document.getElementById('district').value}, ${document.getElementById('province').value}`,
+            DiaChi: `${document.getElementById('address').value}, ${districtName}, ${provinceName}`, // Kết hợp địa chỉ cụ thể
             SDT: document.getElementById('phone').value,
             TrangThai: 'Đang xử lý',
             ChiTietHoaDons: cart.map(item => ({
@@ -391,20 +535,59 @@ app.controller('loginCtrl', function ($scope, $http) {
                 alert('Đặt hàng thất bại, vui lòng thử lại!');
             });
     };
+
+    $scope.isEditable = function (trangThai) {
+        return trangThai === 'Đang xử lý';  // Kiểm tra xem trạng thái đơn hàng có cho phép chỉnh sửa không
+    };
     
+    $scope.isEditing = false;  // Biến để theo dõi trạng thái chỉnh sửa
     
+    // Hàm để kích hoạt chế độ chỉnh sửa
+    $scope.editOrder = function () {
+        if ($scope.isEditable($scope.selectedOrder.trangThai)) {
+            $scope.isEditing = true;
+        } else {
+            alert('Chỉ có thể chỉnh sửa khi đơn hàng ở trạng thái "Đang xử lý".');
+        }
+    };
+    
+    // Hàm lưu thay đổi sau khi chỉnh sửa
+    $scope.saveOrder = function () {
+        const updateData = {
+            MaHD: $scope.selectedOrder.maHD,
+            HoTen: $scope.selectedOrder.hoTen,
+            DiaChi: $scope.selectedOrder.diaChi,
+            SDT: $scope.selectedOrder.sdt
+        };
+    
+        $http.put(current_url + '/api/HoaDon/Update', updateData)
+            .then(response => {
+                alert('Cập nhật thông tin hóa đơn thành công!');
+                $scope.isEditing = false; 
+            })
+            .catch(error => {
+                alert(error.data?.Message || 'Lỗi khi cập nhật thông tin đơn hàng!');
+            });
+    };
+    
+    // Hàm hủy bỏ chỉnh sửa
+    $scope.cancelEdit = function () {
+        $scope.isEditing = false;
+    };
+    
+
     
     $scope.LoadProduct = function() {
         $http({
             method: 'GET',
             url: current_url + '/api/TuiXach/get-all',
-        }).then(function (response){
-            $scope.listProduct = response.data;  
+        }).then(function(response) {
+            $scope.listProduct = response.data;
+            $scope.filteredProducts = $scope.listProduct; // Khởi tạo danh sách sản phẩm đã lọc
             console.log("Danh sách sản phẩm:", $scope.listProduct);
-           
-         // Chia nhỏ mảng sản phẩm theo hàng và trang
-         $scope.preparePaginatedProducts();
-
+    
+            // Chia nhỏ mảng sản phẩm theo hàng và trang
+            $scope.preparePaginatedProducts();
         });
     };
 
@@ -450,28 +633,35 @@ app.controller('loginCtrl', function ($scope, $http) {
     };
 
     // Chuẩn bị danh sách sản phẩm theo từng trang và từng hàng
-    $scope.preparePaginatedProducts = function () {
+    $scope.preparePaginatedProducts = function() {
         let paginated = [];
-        let totalItems = $scope.listProduct.length;
-
-        // Chia nhỏ sản phẩm theo trang
+        let totalItems = $scope.filteredProducts.length; // Sử dụng danh sách đã lọc
+    
         for (let i = 0; i < totalItems; i += $scope.itemsPerPage) {
-            let pageProducts = $scope.listProduct.slice(i, i + $scope.itemsPerPage);
-
-            // Chia nhỏ mỗi trang thành các hàng (4 sản phẩm một hàng)
+            let pageProducts = $scope.filteredProducts.slice(i, i + $scope.itemsPerPage);
+    
+            // Chia nhỏ mỗi trang thành các hàng
             let rows = [];
             for (let j = 0; j < pageProducts.length; j += $scope.productsPerRow) {
-                rows.push(pageProducts.slice(j, j + $scope.productsPerRow));
+                let row = pageProducts.slice(j, j + $scope.productsPerRow);
+    
+                // Thêm placeholder nếu số lượng sản phẩm trong hàng ít hơn $scope.productsPerRow
+                while (row.length < $scope.productsPerRow) {
+                    row.push({ placeholder: true }); // Thêm đối tượng rỗng
+                }
+    
+                rows.push(row);
             }
             paginated.push(rows);
         }
         $scope.paginatedProductsList = paginated;
     };
-
-    // Hàm trả về danh sách sản phẩm của trang hiện tại
-    $scope.paginatedProducts = function () {
+    
+    $scope.paginatedProducts = function() {
         return $scope.paginatedProductsList[$scope.currentPage - 1] || [];
     };
+    
+    
 
     // Hàm tính tổng số trang
     $scope.totalPages = function () {
@@ -485,7 +675,24 @@ app.controller('loginCtrl', function ($scope, $http) {
         }
     };
 
+    $scope.filterProducts = function() {
+        if (!$scope.searchQuery || $scope.searchQuery.trim() === '') {
+            $scope.filteredProducts = $scope.listProduct; // Nếu không có từ khóa tìm kiếm
+        } else {
+            const query = $scope.searchQuery.toLowerCase();
+            $scope.filteredProducts = $scope.listProduct.filter(function(product) {
+                return (
+                    (product.tenSp && product.tenSp.toLowerCase().includes(query)) || // Tìm kiếm theo tên sản phẩm
+                    (product.moTa && product.moTa.toLowerCase().includes(query))     // Tìm kiếm theo mô tả sản phẩm
+                );
+            });
+        }
+    
+        // Làm mới danh sách phân trang
+        $scope.preparePaginatedProducts();
+    };
 
+    
      // Lấy danh sách danh mục từ API
     $scope.loadCategories = function () {
         $http({
@@ -553,4 +760,10 @@ app.controller('loginCtrl', function ($scope, $http) {
             });
     };
 
+
+        
+   
+
+   
+ 
 });

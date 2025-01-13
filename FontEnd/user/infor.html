@@ -11,7 +11,6 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="icon" href="images/logo.png">
-   
 
     <script src="/angular/angular.min.js"></script>
     <script src="/angular/script.js"></script>
@@ -20,6 +19,9 @@
 
     <script src="/js/admin.js" defer></script>
     <script src="/userJs/login.js" defer></script>
+     <!-- Bootstrap 5.3.3 -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </head>
 <body ng-app="AppLogin" ng-controller="loginCtrl">
     <div id="main">
@@ -46,7 +48,7 @@
             </div>
 
             <!-- Tab contents -->
-            <div id="account-info" class="tab-content active">
+            <div id="account-info" class="tab-content ">
                 <p style="font-size: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 130px;">Hồ sơ của tôi</p>
             <p class="lable1">Quản lý thông tin hồ sơ để bảo mật tài khoản.</p>
                 <form class="form-container">
@@ -63,7 +65,7 @@
                                     <img id="eye-icon" src="images/eye.png" alt="eye" style="width: 20px; height: 20px;">
                                 </button>
                             </div>
-                        </div>
+                        </div>                        
                     </div>
                     <div class="form-row">
                         <div class="form-group">
@@ -94,10 +96,190 @@
                     </div>
                 </form>
             </div>
+            
+           <div id="order-info" class="tab-content active">
+                <div class="header-hoadon">
+                    <!-- Thanh trạng thái -->
+                    <div id="menu">
+                        <div class="menu-item" ng-class="{'active': selectedStatus === 'Tất cả'}" ng-click="filterHoaDonByStatus('Tất cả')">Tất cả</div>
+                        <div class="menu-item" ng-class="{'active': selectedStatus === 'Đang xử lý'}" ng-click="filterHoaDonByStatus('Đang xử lý')">Đang xử lý</div>
+                        <div class="menu-item" ng-class="{'active': selectedStatus === 'Đang lấy hàng'}" ng-click="filterHoaDonByStatus('Đang lấy hàng')">Đang lấy hàng</div>
+                        <div class="menu-item" ng-class="{'active': selectedStatus === 'Chờ giao hàng'}" ng-click="filterHoaDonByStatus('Chờ giao hàng')">Chờ giao hàng</div>
+                        <div class="menu-item" ng-class="{'active': selectedStatus === 'Hoàn thành'}" ng-click="filterHoaDonByStatus('Hoàn thành')">Hoàn thành</div>
+                        <div class="menu-item" ng-class="{'active': selectedStatus === 'Đã hủy'}" ng-click="filterHoaDonByStatus('Đã hủy')">Đã hủy</div>
+                    </div>      
+                    <!-- Thanh tìm kiếm -->
+                    <div class="search-container-hoadon">
+                        <div class="search-icon">
+                            <img src="/images/search.png" alt="Search" />
+                        </div>
+                        <input style="background-color: #CCC; font-size: 13px;"   type="text" ng-model="searchQuery" placeholder="Bạn có thể tìm kiếm theo ID đơn hàng hoặc Tên sản phẩm" 
+                            ng-change="search('hoadons', searchQuery)" class="form-control" 
+                        />
+                    </div>
+                </div>
 
-            <div id="order-info" class="tab-content">
-                    
-            </div>
+                <div class="order-list" >
+                    <div class="order-item" ng-repeat="hoaDon in filteredHoaDons">
+                        <div class="order-header">
+                            <p>Ngày đặt: {{hoaDon.ngayDatHang | date:'dd/MM/yyyy'}}</p>
+                            <label style="display:flex">  
+                                <img style="width:25px; height:25px; margin-right: 10px;" src="images/car.png"/>
+                                <p style="margin-right: 20px;" ng-class="{
+                                    'trang-thai-dang-xu-ly': hoaDon.trangThai === 'Đang xử lý',
+                                    'trang-thai-dang-lay-hang': hoaDon.trangThai === 'Đang lấy hàng',
+                                    'trang-thai-cho-giao-hang': hoaDon.trangThai === 'Chờ giao hàng',
+                                    'trang-thai-hoan-thanh': hoaDon.trangThai === 'Hoàn thành',
+                                    'trang-thai-da-huy': hoaDon.trangThai === 'Đã hủy'
+                                }">
+                                    {{ hoaDon.trangThai }} 
+                                </p>
+                                <p style="font-size: 13px; margin-right: 25px; cursor: pointer;color: gray;" ng-click="viewOrderDetails(hoaDon)" data-bs-toggle="modal" data-bs-target="#orderModal">|&emsp;Xem chi tiết</p>
+                            </label>
+                        </div>
+                     
+                        <div class="cart-item" ng-repeat="ct in hoaDon.chiTietHoaDons">
+                            <img ng-src="{{ getImageUrl(ct.hinhAnh) }}" alt="{{ ct.tenSp }}" class="bill-item-image">
+                            <div class="cart-item-info">
+                                <p style="font-size: 17px">{{ ct.tenSp }} | {{ ct.tenMau }}</p>
+                                <lable style="font-size: 13px">x{{ ct.soLuong }}</lable>
+                                <lable style="float:right; color: orangered;font-size: 14px;margin-right:20px">{{ ct.giaBan | number: 0 }}₫</lable>
+                            </div>
+                        </div>
+                        <div class="order-footer" >
+                            <p>Thành tiền: <lable style="font-size: 17px;color: orangered;font-weight: bold;">{{ hoaDon.thanhTien  | number:0 }}₫</lable></p>
+                            <button class="cancel" ng-if="hoaDon.trangThai === 'Đang xử lý'" ng-click="cancelOrder(hoaDon)">Hủy đơn hàng</button>
+                            <button class="cancel" ng-if="hoaDon.trangThai === 'Chờ giao hàng'" ng-click="confirmReceived(hoaDon)">Đã nhận hàng</button>
+                            <button class="cancel" ng-if="hoaDon.trangThai === 'Hoàn thành'" ng-click="rateOrder(hoaDon)">Đánh giá</button>
+                        </div>
+                        <div class="modal fade" id="rateOrderModal" tabindex="-1" aria-labelledby="rateOrderModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="rateOrderModalLabel">Đánh giá sản phẩm</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <label for="maSp">Chọn sản phẩm:</label>
+                                            <select id="maSp" class="form-control" ng-model="ratingData.maSp">
+                                                <option ng-repeat="sp in selectedOrder.chiTietHoaDons" value="{{sp.maSp}}">
+                                                    {{sp.tenSp}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="mt-3">
+                                            <label for="noiDung">Nội dung đánh giá:</label>
+                                            <textarea id="noiDung" class="form-control" ng-model="ratingData.noiDung" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                        <button type="button" class="btn btn-primary" ng-click="submitRating()">Gửi đánh giá</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <label style="font-size: 14px;" >  
+                                    Mã đơn hàng: 241212JG526TFV{{selectedOrder.maHD}}
+                                </label>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            
+                            <div class="modal-body">
+                                <table style="width: 100%; border: 1px solid #CCC ; border-collapse: collapse;">
+                                    <tr>
+                                        <td class="order-info" style="border-right: 1px solid #CCC; width: 65%;">
+                                            
+                                            <div style="display: flex;">
+                                                <p style="font-size: 16px;"><strong>Địa chỉ nhận hàng</strong></p>
+                                                <button 
+                                                style="border:none; font-size: 12px; margin-left: 300px; background-color: transparent;" 
+                                                ng-click="editOrder()" 
+                                                ng-disabled="!isEditable(selectedOrder.trangThai)">
+                                                Sửa
+                                                </button>                                                      
+                                            </div>
+                                            <p>{{selectedOrder.hoTen}}</p>
+                                            <p>(84+) {{selectedOrder.sdt}}</p>
+                                            <p>{{ selectedOrder.diaChi }}</p>
+                                            <!-- Form chỉnh sửa địa chỉ nhận hàng (ẩn/hiện khi nhấn "Sửa") -->
+                                            <div style="margin-left: 20px;" ng-show="isEditing">
+                                                <label for="editHoTen">Họ tên:</label>
+                                                <input style="width:95%; height:30px; font-size: 14px; " type="text" id="editHoTen" ng-model="selectedOrder.hoTen" class="form-control">
+                                                
+                                                <label for="editSDT">Số điện thoại:</label>
+                                                <input style="width:95%; height:30px; font-size: 14px; "type="text" id="editSDT" ng-model="selectedOrder.sdt" class="form-control">
+                                                
+                                                <label for="editDiaChi">Địa chỉ:</label>
+                                                <input style="width:95%; height:30px; font-size: 14px; "type="text" id="editDiaChi" ng-model="selectedOrder.diaChi" class="form-control">
+
+                                                <button ng-click="cancelEdit()" class="btn-cancel">Hủy</button>
+                                                <button ng-click="saveOrder()" class="btn-save">Lưu</button>
+                                            </div>
+                                        </td>
+                                        <td class="order-info">
+                                            <p style="margin-left: 20px;">Ngày đặt hàng:&emsp;{{selectedOrder.ngayDatHang | date:'HH:mm dd/MM/yyyy'}}</p>
+                                            <p style="margin-left: 20px;">Ngày nhận hàng:&emsp;
+                                                <span ng-if="selectedOrder.trangThai === 'Hoàn thành'">
+                                                    {{ selectedOrder.ngayNhanHang | date:'dd/MM/yyyy' }}
+                                                </span>
+                                                <span ng-if="selectedOrder.trangThai !== 'Hoàn thành'">
+                                                    {{ selectedOrder.trangThai }}
+                                                </span>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="order-items">
+                                <div class="cart-item" ng-repeat="ct in selectedOrder.chiTietHoaDons">
+                                    <img ng-src="{{ getImageUrl(ct.hinhAnh) }}" alt="{{ ct.tenSp }}" class="bill-item-image">
+                                    <div class="cart-item-info">
+                                        <lable style="font-size: 17px">{{ ct.tenSp }} | {{ ct.tenMau }}</lable><br/>
+                                        <lable style="font-size: 13px">x{{ ct.soLuong }}</lable>
+                                        <lable style="float:right; color: orangered;font-size: 14px; margin-right: 20px;">{{ ct.giaBan | number: 0 }}₫</lable>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-footer">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td style="font-size: 14px;color:#4e4e4e">Tổng tiền hàng</td>
+                                            <td class="price">{{ selectedOrder.tongTienHang | number: 0 }}₫</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 14px;color:#4e4e4e">Phí vận chuyển</td>
+                                            <td class="price">{{ phiVanChuyen | number: 0 }}₫</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="font-size: 14px;color:#4e4e4e">Giảm giá</td>
+                                            <td class="price">0₫</td>
+                                        </tr>
+                                        <tr class="total">
+                                            <td style="font-size: 14px;color:#4e4e4e">Thành tiền</td>
+                                            <td style="color: orangered; font-size: 16px;padding-right: 20px;">{{ selectedOrder.thanhTien | number: 0 }}₫</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p style="font-size: 14px;color:#4e4e4e; text-align: center;"><img style="width:25px;height:25px" src="/user/images/bell.png" /> Vui lòng thanh toán <lable style="color:orangered;font-size: 14px; ">{{ selectedOrder.thanhTien | number: 0 }}₫</lable> khi nhận hàng</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>      
         </div>
     </div>
 

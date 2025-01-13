@@ -52,8 +52,34 @@ namespace WebTuiXachh.Controllers
             }
         }
 
+        [HttpPut("update")]
+        public IActionResult Update([FromBody] HoaDonModel model)
+        {
+            try
+            {
+                // Kiểm tra nếu model không hợp lệ
+                if (model == null || model.MaHD == 0)
+                {
+                    return BadRequest(new { Message = "Dữ liệu không hợp lệ." });
+                }
 
-       
+                // Gọi phương thức cập nhật hóa đơn từ Business Layer
+                bool isUpdated = _hoaDonBusiness.Update(model);
+
+                if (!isUpdated)
+                {
+                    return NotFound(new { Message = "Hóa đơn không tồn tại hoặc không thể cập nhật." });
+                }
+
+                return Ok(new { Message = "Cập nhật hóa đơn thành công." });
+            }
+            catch (Exception ex)
+            {
+                // Trả về lỗi khi cập nhật hóa đơn
+                return StatusCode(500, new { Message = "Lỗi khi cập nhật hóa đơn.", detail = ex.Message });
+            }
+        }
+
         [HttpPut("update-trang-thai/{maHD}")]
         public IActionResult UpdateTrangThai(int maHD, [FromBody] string trangThai)
         {
@@ -93,18 +119,24 @@ namespace WebTuiXachh.Controllers
             return Ok(hoaDons);
         }
 
-      
+        [HttpGet("get-by-perid/{perID}")]
+        public ActionResult<List<HoaDonModel>> GetHoaDonPerID(int perID)
+        {
+            var hoaDons = _hoaDonBusiness.GetHoaDonChiTietByPerID(perID);
+            return Ok(hoaDons);
+        }
+
 
         [HttpGet("get/{MaHD}")]
         public IActionResult GetById(int MaHD)
         {
             try
             {
-                var donHangNhap = _hoaDonBusiness.GetHoaDonById(MaHD);
+                var hoadon  = _hoaDonBusiness.GetHoaDonById(MaHD);
 
-                if (donHangNhap != null)
+                if (hoadon != null)
                 {
-                    return Ok(donHangNhap);
+                    return Ok(hoadon);
                 }
                 else
                 {
@@ -117,7 +149,9 @@ namespace WebTuiXachh.Controllers
             }
         }
 
-      
+       
 
     }
+
 }
+

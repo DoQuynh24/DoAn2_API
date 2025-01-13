@@ -11,7 +11,7 @@ app.controller('billsCtrl', function($scope, $http, $timeout) {
     $scope.selectedStatus = 'Tất cả'; 
 
     $scope.currentPage = 1; 
-    $scope.itemsPerPage = 10; 
+    $scope.itemsPerPage = 8; 
 
     // URL API
     var current_url = "https://localhost:44366"; 
@@ -68,12 +68,6 @@ app.controller('billsCtrl', function($scope, $http, $timeout) {
     });
     };
 
-
-
-  
-
-    
-
     // Gọi hàm tải hóa đơn khi trang được tải
     $scope.LoadHoaDon('Tất cả'); // Mặc định tải tất cả hóa đơn
 
@@ -126,32 +120,9 @@ app.controller('billsCtrl', function($scope, $http, $timeout) {
         }
     };
 
-    $scope.addBill = function() {
-        const newBill = {
-            maHd: $scope.maHd,
-            perId: $scope.perId,
-            ngayDatHang: $scope.ngayDatHang,
-            trangThai: $scope.trangThai || "Đang xử lý", // Gán giá trị mặc định nếu không có
-            ngayNhanHang: $scope.ngayNhanHang
-        };
-    
-        $http.post(current_url + '/api/HoaDon/create', newBill)
-            .then(function(response) {
-                console.log('Thêm hóa đơn thành công:', response.data);
-            })
-            .catch(function(error) {
-                console.error('Lỗi thêm hóa đơn:', error);
-            });
-    };
     
     // Gọi hàm tải hóa đơn khi trang được tải
     $scope.LoadHoaDon();
-
-    // Hàm sửa hóa đơn (ví dụ)
-    $scope.editBill = function(bill) {
-        console.log('Chỉnh sửa hóa đơn:', bill);
-        // Bạn có thể gán dữ liệu hóa đơn vào các trường trong modal sửa tại đây.
-    };
 
     // Hàm xóa hóa đơn (ví dụ)
     $scope.deleteProduct = function(maHD) {

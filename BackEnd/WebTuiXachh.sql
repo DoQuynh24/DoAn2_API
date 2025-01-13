@@ -695,8 +695,8 @@ select * from TuiXach
 	BEGIN
 		UPDATE TuiXach
 		SET SoLuotDanhGia = SoLuotDanhGia + 1
-		FROM TuiXach
-		INNER JOIN inserted i ON TuiXach.MaSp = i.MaSp;
+		FROM ChiTietDonHangNhap
+		INNER JOIN inserted i ON ChiTietDonHangNhap.MaSp = i.MaSp;
 	END
 	GO
 
@@ -907,54 +907,62 @@ select * from HoaDon
 DELETE FROM HoaDon
 WHERE MaHD =2;
 	--thêm hóa đơn
-CREATE PROCEDURE sp_hoa_don_create
-    @per_id INT,
-    @ho_ten NVARCHAR(50),
-    @dia_chi NVARCHAR(225),
-    @sdt NVARCHAR(15),
-    @trang_thai NVARCHAR(50) = N'Đang xử lý',
-    @ngay_nhanhang DATE = NULL
-AS
-BEGIN
-    SET NOCOUNT ON;
+	CREATE PROCEDURE sp_hoa_don_create
+		@per_id INT,
+		@ho_ten NVARCHAR(50),
+		@dia_chi NVARCHAR(225),
+		@sdt NVARCHAR(15),
+		@trang_thai NVARCHAR(50) = N'Đang xử lý',
+		@ngay_nhanhang DATE = NULL
+	AS
+	BEGIN
+		SET NOCOUNT ON;
 
-    BEGIN TRY
-        -- Thêm hóa đơn (NgayDatHang sẽ tự động lấy giá trị từ DEFAULT)
-        INSERT INTO HoaDon (PerID, HoTen, DiaChi, SDT, TrangThai, NgayNhanHang)
-        VALUES (@per_id, @ho_ten, @dia_chi, @sdt, @trang_thai, 
-                CASE WHEN @trang_thai = N'Hoàn thành' THEN GETDATE() ELSE NULL END);
+		BEGIN TRY
+			-- Thêm hóa đơn (NgayDatHang sẽ tự động lấy giá trị từ DEFAULT)
+			INSERT INTO HoaDon (PerID, HoTen, DiaChi, SDT, TrangThai, NgayNhanHang)
+			VALUES (@per_id, @ho_ten, @dia_chi, @sdt, @trang_thai, 
+					CASE WHEN @trang_thai = N'Hoàn thành' THEN GETDATE() ELSE NULL END);
 
-        -- Trả về mã hóa đơn vừa tạo
-        SELECT SCOPE_IDENTITY() AS MaHD;
-    END TRY
-    BEGIN CATCH
-        -- Bắt lỗi và trả về thông báo lỗi
-        DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
-        RAISERROR(@ErrorMessage, 16, 1);
-    END CATCH
-END;
-GO
+			-- Trả về mã hóa đơn vừa tạo
+			SELECT SCOPE_IDENTITY() AS MaHD;
+		END TRY
+		BEGIN CATCH
+			-- Bắt lỗi và trả về thông báo lỗi
+			DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+			RAISERROR(@ErrorMessage, 16, 1);
+		END CATCH
+	END;
+	GO
 
 
 	--cập nhập hóa đơn
 	CREATE PROCEDURE sp_hoa_don_update
-    @ma_hd INT,
-	@ho_ten NVARCHAR(50) ,
-	@dia_chi NVARCHAR(225) ,
-	@sdt NVARCHAR(15) ,
-    @trang_thai NVARCHAR(50),
-    @ngay_nhanhang DATETIME = NULL
+		@ma_hd INT,
+		@ho_ten NVARCHAR(50),
+		@dia_chi NVARCHAR(225),
+		@sdt NVARCHAR(15)
 	AS
 	BEGIN
-		UPDATE HoaDon
-		SET HoTen = @ho_ten,
-			DiaChi = @dia_chi,
-			SDT = @sdt,
-			TrangThai = @trang_thai,
-			NgayNhanHang = @ngay_nhanhang
-		WHERE MaHD = @ma_hd;
+		IF EXISTS (
+			SELECT 1 
+			FROM HoaDon 
+			WHERE MaHD = @ma_hd AND TrangThai = N'Đang xử lý'
+		)
+		BEGIN
+			UPDATE HoaDon
+			SET HoTen = @ho_ten,
+				DiaChi = @dia_chi,
+				SDT = @sdt
+			WHERE MaHD = @ma_hd;
+		END
+		ELSE
+		BEGIN
+			RAISERROR (N'Hóa đơn không ở trạng thái "Đang xử lý", không thể cập nhật!', 16, 1);
+		END
 	END
 	GO
+
 
 	--cập nhậ trạng thái
 	CREATE PROCEDURE sp_hoa_don_update_trang_thai
@@ -962,35 +970,49 @@ GO
     @trang_thai NVARCHAR(50)
 	AS
 	BEGIN
-		UPDATE HoaDon
-		SET TrangThai = @trang_thai
-		WHERE MaHD = @ma_hd;
-	END
+		SET NOCOUNT ON;
+
+		BEGIN TRY
+			-- Nếu trạng thái là "Hoàn thành", cập nhật ngày nhận hàng
+			IF @trang_thai = N'Hoàn thành'
+			BEGIN
+				UPDATE HoaDon
+				SET TrangThai = @trang_thai,
+					NgayNhanHang = COALESCE(NgayNhanHang, GETDATE())
+				WHERE MaHD = @ma_hd;
+			END
+			ELSE IF @trang_thai = N'Đã hủy'
+			BEGIN
+				-- Cập nhật trạng thái đơn hàng
+				UPDATE HoaDon
+				SET TrangThai = @trang_thai
+				WHERE MaHD = @ma_hd;
+
+				-- Cộng lại số lượng sản phẩm vào tồn kho
+				UPDATE TuiXach
+				SET TonKho = TonKho + CT.SoLuong
+				FROM TuiXach TX
+				JOIN ChiTietHoaDon CT ON TX.MaSp = CT.MaSp
+				WHERE CT.MaHD = @ma_hd;
+			END
+			ELSE
+			BEGIN
+				-- Cập nhật trạng thái khác
+				UPDATE HoaDon
+				SET TrangThai = @trang_thai
+				WHERE MaHD = @ma_hd;
+			END
+		END TRY
+		BEGIN CATCH
+			-- Bắt lỗi và trả về thông báo
+			DECLARE @ErrorMessage NVARCHAR(4000) = ERROR_MESSAGE();
+			DECLARE @ErrorSeverity INT = ERROR_SEVERITY();
+			DECLARE @ErrorState INT = ERROR_STATE();
+			RAISERROR (@ErrorMessage, @ErrorSeverity, @ErrorState);
+		END CATCH
+	END;
 	GO
-	-- Cập nhật trạng thái và ngày nhận hàng nếu trạng thái là "Hoàn thành"
-	CREATE PROCEDURE sp_hoa_don_update_trang_thai
-		@ma_hd INT,
-		@trang_thai NVARCHAR(50)
-	AS
-	BEGIN
-		-- Kiểm tra nếu trạng thái là "Hoàn thành"
-		IF @trang_thai = N'Hoàn thành'
-		BEGIN
-			-- Cập nhật trạng thái và Ngày nhận hàng
-			UPDATE HoaDon
-			SET TrangThai = @trang_thai,
-				NgayNhanHang = COALESCE(NgayNhanHang, GETDATE()) -- Thay giá trị NULL bằng thời gian hiện tại
-			WHERE MaHD = @ma_hd;
-		END
-		ELSE
-		BEGIN
-			-- Nếu trạng thái không phải "Hoàn thành", chỉ cập nhật trạng thái
-			UPDATE HoaDon
-			SET TrangThai = @trang_thai
-			WHERE MaHD = @ma_hd;
-		END
-	END
-	GO
+
 
 	-- xóa hóa đơn
 	CREATE PROCEDURE sp_hoa_don_delete
@@ -1094,7 +1116,19 @@ GO
 		END CATCH
 	END
 	GO
-
+	--lấy hóa đơn- chitiet theo PerID 
+	CREATE PROCEDURE sp_get_HoaDon_ChiTiett
+		@PerID INT
+	AS
+	BEGIN
+		-- Lấy thông tin hóa đơn và chi tiết hóa đơn kết hợp
+		SELECT   h.MaHD, h.PerID, h.NgayDatHang, h.TrangThai, h.NgayNhanHang, h.HoTen,  h.DiaChi,  h.SDT,c.MaSp,  c.TenSp,c.TenMau, c.MaSize,c.SoLuong,c.GiaBan,c.GhiChu,c.KhuyenMai, t.HinhAnh 
+		FROM HoaDon h
+		INNER JOIN ChiTietHoaDon c ON h.MaHD = c.MaHD
+		INNER JOIN TuiXach t ON c.MaSp = t.MaSp
+		WHERE h.PerID = @PerID;
+	END;
+	EXEC sp_get_HoaDon_ChiTiett @PerID = 12; 
 
 -- Bảng ChiTietHoaDon (Chi tiết đơn đặt hàng)
 CREATE TABLE ChiTietHoaDon
@@ -1199,6 +1233,21 @@ CREATE TABLE BinhLuan
     MaSp CHAR(10),
     NoiDung NVARCHAR(MAX),
     NgayBinhLuan DATETIME DEFAULT GETDATE(),
-    FOREIGN KEY (PerID) REFERENCES Users(PerID), -- Tham chiếu đến bảng Users
+    FOREIGN KEY (PerID) REFERENCES Users(PerID), 
     FOREIGN KEY (MaSp) REFERENCES ChiTietDonHangNhap(MaSp)
 );
+select*from BinhLuan
+-- Thêm bình luận
+	CREATE PROCEDURE sp_binh_luan_create
+		@per_id INT, 
+		@ma_sp CHAR(10),
+		@noi_dung NVARCHAR(MAX)
+	AS
+	BEGIN
+		SET NOCOUNT ON;
+
+		INSERT INTO BinhLuan (PerID, MaSp, NoiDung)
+		VALUES (@per_id, @ma_sp, @noi_dung);
+
+		SELECT SCOPE_IDENTITY() AS MaBinhLuan;
+	END

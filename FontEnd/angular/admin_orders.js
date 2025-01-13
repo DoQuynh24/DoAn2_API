@@ -1,6 +1,5 @@
 app.controller('ordersCtrl', function($scope, $http,) { 
-    $scope.listOrder = []; 
-    
+    $scope.listOrder = [];   
     $scope.newOrder = {};
     $scope.currentOrder = {}; 
     $scope.isEditMode = false;
