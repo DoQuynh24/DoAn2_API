@@ -26,6 +26,7 @@ namespace DAL
         TuiXachModel GetBySize(string maSize);
 
         // Tìm kiếm túi xách theo các tiêu chí (ví dụ: tên sản phẩm, màu sắc, kích thước, giá tiền)
-        List<TuiXachModel> Search(int pageIndex, int pageSize, out long total, string item_group_id, string item_name, string size, decimal? minPrice, decimal? maxPrice);
+        List<TuiXachModel> Search(int pageIndex,int pageSize,  out long total,string madanhmuc = "",string masp = "",string tensp = "",string tenmau = "",string masize = "",decimal? giabanMin = null,decimal? giabanMax = null);
+
     }
 }

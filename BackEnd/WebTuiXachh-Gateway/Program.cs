@@ -39,8 +39,7 @@ builder.Services.AddAuthentication(x =>
         IssuerSigningKey = new SymmetricSecurityKey(key),
         ValidateIssuer = false,
         ValidateAudience = false,
-        //ValidIssuer = "https://yourapi.com",  // Thay b?ng issuer c?a b?n
-        //ValidAudience = "https://yourapi.com",  // Thay b?ng audience c?a b?n
+        //ValidIssuer = "https://yourapi.com", 
     };
 });
 

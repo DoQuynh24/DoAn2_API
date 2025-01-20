@@ -37,6 +37,7 @@ app.controller('ordersCtrl', function($scope, $http,) {
             $scope.listOrder = response.data;
             $scope.totalPages = Math.ceil(response.data.total / $scope.itemsPerPage);
             createPagination($scope.totalPages);  
+            $scope.LoadAllChiTietDonHangNhap();
             
         });
     };
@@ -56,6 +57,7 @@ app.controller('ordersCtrl', function($scope, $http,) {
         }).then(function (response) {
             if (response.data) {
                 $scope.listChiTiet  = response.data.chiTietDonHangNhaps || [];
+                //console.log("Chi tiết đơn hàng nhập:", $scope.listChiTiet);
             } else {
                 console.error("Dữ liệu chi tiết đơn hàng không hợp lệ:");
             }
@@ -67,7 +69,29 @@ app.controller('ordersCtrl', function($scope, $http,) {
             console.error('Lỗi khi tải chi tiết đơn hàng nhập:', error);
         });
     };
+    $scope.LoadAllChiTietDonHangNhap = function() {
+        // Lặp qua tất cả các đơn hàng trong listOrder
+        $scope.listChiTiet = []; // Reset listChiTiet trước khi tải lại
+        $scope.listOrder.forEach(function(donHangNhap) {
+            // Gọi API để lấy chi tiết của từng đơn hàng nhập
+            $http({
+                method: 'GET',
+                url: current_url + '/api/DonHangNhap/get/' + donHangNhap.maDHN,
+            }).then(function (response) {
+                if (response.data) {
+                    // Gộp các chi tiết vào listChiTiet
+                    $scope.listChiTiet = $scope.listChiTiet.concat(response.data.chiTietDonHangNhaps || []);
+                   // console.log(" tất cả Chi tiết đơn hàng nhập:", response.data.chiTietDonHangNhaps);
+                } else {
+                    console.error("Dữ liệu chi tiết đơn hàng không hợp lệ cho đơn hàng với mã:", donHangNhap.maDHN);
+                }
+            }).catch(function (error) {
+                console.error('Lỗi khi tải chi tiết đơn hàng nhập cho mã đơn hàng:', donHangNhap.maDHN, error);
+            });
+        });
+    };
 
+    
     $scope.addChiTiet = function () {
         // Kiểm tra dữ liệu
         if (!$scope.newChiTiet.tenSp || !$scope.newChiTiet.maSp || !$scope.newChiTiet.giaNhap || !$scope.newChiTiet.soLuong) {

@@ -35,11 +35,15 @@ namespace BLL
        
 
         public TuiXachModel GetBySize(string maSize) => _tuiXachRepository.GetBySize(maSize);
-      
-        public List<TuiXachModel> SearchTuiXachs(int pageIndex, int pageSize, out long total, string searchTerm = "", string color = "", string size = "", decimal? minPrice = null, decimal? maxPrice = null)
-      => _tuiXachRepository.Search(pageIndex, pageSize, out total, searchTerm, color, size, minPrice, maxPrice);
 
-        
-       
+        public List<TuiXachModel> SearchTuiXachs(int pageIndex, int pageSize, out long total, string madanhmuc = "", string masp = "", string tensp = "", string tenmau = "", string masize = "", decimal? giabanMin = null, decimal? giabanMax = null)
+        {
+            return _tuiXachRepository.Search(pageIndex, pageSize, out total, madanhmuc, masp, tensp, tenmau, masize, giabanMin, giabanMax);
+        }
+
+
+
+
+
     }
 }

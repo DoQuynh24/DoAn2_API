@@ -6,6 +6,8 @@
     <title>SULLY & BAG | Việt Nam</title>
     <link rel="stylesheet" href="./style_admin.css">
     <link rel="icon" href="images/logo.png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <script src="angular/global.js"></script>
@@ -102,12 +104,12 @@
                         <div class="product-header d-flex justify-content-between align-items-center mb-3">
                             <div class="filters d-flex gap-3">
                                 <div>
-                                    <select id="filterCategory" class="form-select"  ng-model="selectedCategory" ng-change="filterProducts()"> 
+                                    <select id="filterCategory" class="form-select" ng-model="selectedCategory" ng-change="filterProducts()"> 
                                         <option value="">Lọc sản phẩm theo danh mục</option>
                                         <option ng-repeat="category in categories" value="{{ category.maDanhMuc }}">
                                             {{ category.tenDanhMuc }}
                                         </option>
-                                    </select> 
+                                    </select>
                                 </div>
                                 <button class="icon-pencil" ng-click="editCategory(category)">✏️</button> 
                                 <button class="btn-add" data-bs-toggle="modal" data-bs-target="#CategoryModal"> ➕︎ </button>
@@ -140,13 +142,14 @@
                                         </div>
                                     </div>
                                 </div>
-                     
+                                
+
                                 <!-- Lọc theo màu sắc -->
                                 <div>
                                     <select id="filterColor" class="form-select" ng-model="selectedColor" ng-change="filterProducts()">
                                         <option value="">Lọc sản phẩm theo màu sắc</option>
-                                        <option ng-repeat="color in colors" value="{{color.maMau}}">
-                                            {{ color.tenMau }}
+                                        <option ng-repeat="mauSac in mauSacs" value="{{mauSac.maMau}}">
+                                            {{ mauSac.tenMau }}
                                         </option>
                                     </select>
                                 </div>                           
@@ -194,8 +197,8 @@
                     <table class="product-table" >
                         <thead>
                             <tr>
-                                <th>ID </th>
-                                <th>Loại Túi</th>
+                                <th>Mã sản phẩm </th>
+                                <th>Phân loại</th>
                                 <th>Tên Sản Phẩm</th>
                                 <th>Giá Bán</th>
                                 <th>Màu sắc</th>
@@ -209,7 +212,7 @@
                         <tbody >
                             <tr ng-repeat="p in paginatedProducts()">
                                 <td>{{p.maSp}}</td>
-                                <td>{{p.maDanhMuc}}</td>
+                                <td>{{category(p.maDanhMuc)}}</td>
                                 <td>{{p.tenSp}}</td>
                                 <td>{{p.giaBan  | number: 0}}</td>
                                 <td>{{p.tenMau}}</td>
@@ -242,7 +245,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                             <h1 class="modal-title fs-5" id="productModalLabel">
-                                {{ isEditMode ? 'Cập nhật Sản Phẩm' : 'Thêm Sản Phẩm' }}
+                                {{ isEditProductMode ? 'Cập nhật Sản Phẩm' : 'Thêm Sản Phẩm' }}
                             </h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
@@ -252,12 +255,17 @@
                                         <!-- Mã Danh Mục -->
                                         <div class="col-md-6">
                                             <label for="maDanhMuc" class="form-label">Mã Danh Mục:</label>
-                                            <input type="text" id="maDanhMuc" ng-model="newProduct.maDanhMuc" class="form-control" required>
+                                            <select class="form-control" id="maDanhMuc" ng-model="newProduct.maDanhMuc" required>
+                                                <option ng-repeat="category in categories" value="{{category.maDanhMuc}}">
+                                                    {{category.tenDanhMuc}}
+                                                </option>
+                                            </select>
                                         </div>
+
                                         <!-- Mã Sản Phẩm -->
                                         <div class="col-md-6">
                                             <label for="maSp" class="form-label">Mã Sản Phẩm:</label>
-                                            <input type="text" id="maSp" ng-model="newProduct.maSp" class="form-control" required>
+                                            <input type="text" id="maSp" ng-model="newProduct.maSp" class="form-control"required />
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -288,8 +296,8 @@
                                         <!-- Màu Sắc -->
                                         <div class="col-md-6">
                                             <label for="mauSac" class="form-label">Màu Sắc:</label>
-                                            <select class="form-control" id="color" ng-model="newProduct.tenMau" required>
-                                                <option ng-repeat="color in colors" value="{{color.tenMau}}">{{color.tenMau}}</option>
+                                            <select class="form-control" id="mauSac" ng-model="newProduct.tenMau" required>
+                                                <option ng-repeat="mauSac in mauSacs" value="{{mauSac.tenMau}}">{{mauSac.tenMau}}</option>
                                             </select>
                                         </div>
                                         <!-- Size -->
@@ -309,12 +317,26 @@
                                     </div>
                                     <div class="row mb-3">
                                         <div class="col-12">
-                                            <label for="hinhAnh" class="form-label">Hình Ảnh:</label>
-                                            
-                                            <input type="file"id="productImage" onchange="angular.element(this).scope().onFileChange(this)" />
-                                            <img ng-src="{{newProduct.imageUrl}}" alt="Ảnh sản phẩm"style="width:100px; height:100px" />
+                                            <label for="hinhAnhFile" class="form-label">Hình Ảnh:</label>
+                                            <!-- Input chọn ảnh -->
+                                            <input 
+                                                type="file" 
+                                                id="fileInput" 
+                                                class="form-control" 
+                                                onchange="angular.element(this).scope().onFileChange(this)" 
+                                                required 
+                                            />
+
+                                            <!-- Hiển thị ảnh -->
+                                            <img 
+                                                ng-src="{{newProduct.imageUrl}}" 
+                                                alt="Ảnh sản phẩm" 
+                                                class="img-thumbnail mt-2" 
+                                                style="width: 100px; height: 100px;" 
+                                            />
                                         </div>
-                                    </div>   
+                                    </div>
+                                      
                                 </form>
                                 
                             </div>
@@ -751,14 +773,14 @@
                     </table>
         
                     <lable style=" margin-top: 10px;"> {{ listUser.length }}<a> Người dùng</a> </lable>
-                     <!-- Phân trang -->
+                     <!-- Phân trang
                     <div class="pagination">
                         <button ng-repeat="page in [].constructor(totalPages()) track by $index"
                                 ng-class="{'active': currentPage === $index + 1}"
                                 ng-click="setPage($index + 1)">
                             {{ $index + 1 }}
                         </button>
-                    </div>
+                    </div> -->
         
         
                     <!-- Modal Thêm/Sửa Người Dùng -->

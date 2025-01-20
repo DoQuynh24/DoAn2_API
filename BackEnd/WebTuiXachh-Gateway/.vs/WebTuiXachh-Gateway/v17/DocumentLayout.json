@@ -7,40 +7,32 @@
       "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:ocelot.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\helpers\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:helpers\\appsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\webtuixachh-gateway.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:webtuixachh-gateway.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:jwtmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\webtuixachh-gateway.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:webtuixachh-gateway.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\model\\webtuixachcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:model\\webtuixachcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\model\\chitietdonhangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:model\\chitietdonhangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\model\\tuixach.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|solutionrelative:model\\tuixach.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1F5735DA-7304-4B3E-AD5C-E1FADED135AA}|WebTuiXachh-Gateway.csproj|d:\\doan2_api\\backend\\webtuixachh-gateway\\model\\binhluan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -90,11 +82,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 17,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\User.cs",
               "RelativeDocumentMoniker": "Model\\User.cs",
@@ -111,15 +103,65 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ChiTietDonHangNhap.cs",
-              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\ChiTietDonHangNhap.cs",
-              "RelativeDocumentMoniker": "Model\\ChiTietDonHangNhap.cs",
-              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\ChiTietDonHangNhap.cs",
-              "RelativeToolTip": "Model\\ChiTietDonHangNhap.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAoAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "WebTuiXachh-Gateway.http",
+              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\WebTuiXachh-Gateway.http",
+              "RelativeDocumentMoniker": "WebTuiXachh-Gateway.http",
+              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\WebTuiXachh-Gateway.http",
+              "RelativeToolTip": "WebTuiXachh-Gateway.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-01-17T04:27:07.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAABkAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T13:57:31.732Z"
+              "WhenOpened": "2025-01-03T13:36:40.462Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-04T15:15:41.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ocelot.json",
+              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\ocelot.json",
+              "RelativeDocumentMoniker": "ocelot.json",
+              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\ocelot.json",
+              "RelativeToolTip": "ocelot.json",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAAYAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-09T07:32:55.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-04T15:15:46.085Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -129,31 +171,19 @@
               "RelativeDocumentMoniker": "Model\\WebTuiXachContext.cs",
               "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\WebTuiXachContext.cs",
               "RelativeToolTip": "Model\\WebTuiXachContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA1wAgAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-03T13:35:08.708Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAewBkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T13:36:40.462Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "JwtMiddleware.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\JwtMiddleware.cs",
               "RelativeDocumentMoniker": "JwtMiddleware.cs",
               "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\JwtMiddleware.cs",
               "RelativeToolTip": "JwtMiddleware.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAQwCMAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAA1wCMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-04T13:48:58.073Z"
             },
@@ -171,56 +201,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-01-04T15:15:41.449Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ocelot.json",
-              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\ocelot.json",
-              "RelativeDocumentMoniker": "ocelot.json",
-              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\ocelot.json",
-              "RelativeToolTip": "ocelot.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-01-09T07:32:55.903Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-01-04T15:15:46.085Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "WebTuiXachh-Gateway.csproj",
-              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\WebTuiXachh-Gateway.csproj",
-              "RelativeDocumentMoniker": "WebTuiXachh-Gateway.csproj",
-              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\WebTuiXachh-Gateway.csproj",
-              "RelativeToolTip": "WebTuiXachh-Gateway.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-01-03T13:28:00.22Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 8,
               "Title": "BinhLuan.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\BinhLuan.cs",
               "RelativeDocumentMoniker": "Model\\BinhLuan.cs",
@@ -232,7 +213,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 9,
               "Title": "DonHangNhap.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\DonHangNhap.cs",
               "RelativeDocumentMoniker": "Model\\DonHangNhap.cs",
@@ -244,7 +225,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 11,
               "Title": "ChiTietHoaDon.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\ChiTietHoaDon.cs",
               "RelativeDocumentMoniker": "Model\\ChiTietHoaDon.cs",
@@ -256,7 +237,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 10,
               "Title": "MauSac.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\MauSac.cs",
               "RelativeDocumentMoniker": "Model\\MauSac.cs",
@@ -268,19 +249,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "TuiXach.cs",
-              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\TuiXach.cs",
-              "RelativeDocumentMoniker": "Model\\TuiXach.cs",
-              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\TuiXach.cs",
-              "RelativeToolTip": "Model\\TuiXach.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAADwvxQAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-03T13:34:54.683Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 12,
               "Title": "DanhMucSanPham.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\DanhMucSanPham.cs",
               "RelativeDocumentMoniker": "Model\\DanhMucSanPham.cs",
@@ -292,7 +261,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 13,
               "Title": "HoaDon.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\HoaDon.cs",
               "RelativeDocumentMoniker": "Model\\HoaDon.cs",
@@ -304,7 +273,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 14,
               "Title": "NhaCungCap.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\NhaCungCap.cs",
               "RelativeDocumentMoniker": "Model\\NhaCungCap.cs",
@@ -316,7 +285,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 15,
               "Title": "TinTuc.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\TinTuc.cs",
               "RelativeDocumentMoniker": "Model\\TinTuc.cs",
@@ -328,7 +297,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 16,
               "Title": "Size.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh-Gateway\\Model\\Size.cs",
               "RelativeDocumentMoniker": "Model\\Size.cs",

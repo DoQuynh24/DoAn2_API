@@ -1,10 +1,7 @@
 
 var app = angular.module('AppLogin', []);
-
-// Khởi tạo controller loginCtrl
 app.controller('loginCtrl', function ($scope, $http) {
     var current_url = "https://localhost:44367"; 
-
 
     // Hàm tải thông tin người dùng
      $scope.loadUserInfo = function () {
@@ -55,9 +52,9 @@ app.controller('loginCtrl', function ($scope, $http) {
     // Chuẩn bị dữ liệu để gửi lên API
     var formData = new FormData();
     
-    formData.append("PerID", perId); // PerID lấy từ localStorage
-    formData.append("TaiKhoan", $scope.taikhoan); // Tài khoản readonly
-    formData.append("MatKhau", $scope.matkhau); // Mật khẩu có thể để trống nếu không thay đổi
+    formData.append("PerID", perId); 
+    formData.append("TaiKhoan", $scope.taikhoan); 
+    formData.append("MatKhau", $scope.matkhau);
     formData.append("HoTen", $scope.hoten);
     const localDate = new Date($scope.ngaysinh);
     localDate.setMinutes(localDate.getMinutes() - localDate.getTimezoneOffset());
@@ -67,16 +64,16 @@ app.controller('loginCtrl', function ($scope, $http) {
 
     $http({
         method: 'PUT',
-        url: `${current_url}/api/User/update-user`, // URL API cập nhật
+        url: `${current_url}/api/User/update-user`, 
         headers: {
-            'Content-Type': undefined // Gửi dữ liệu dưới dạng FormData
+            'Content-Type': undefined 
         },
         data: formData
     }).then(function (response) {
         if (response.data && response.data.success) {
             alert("Cập nhật thông tin thành công!");
-            // Có thể reload hoặc cập nhật giao diện tùy ý
-            $scope.loadUserInfo(); // Gọi lại hàm tải thông tin
+
+            $scope.loadUserInfo();
         } else {
             alert("Không thể cập nhật thông tin. Vui lòng thử lại sau!");
         }
@@ -86,11 +83,9 @@ app.controller('loginCtrl', function ($scope, $http) {
     });
     };
     
-    // Gọi hàm loadUserInfo để tải thông tin khi trang được tải
     $scope.loadUserInfo();
     
 
- // Lấy HoTen từ localStorage khi tải trang
     $scope.HoTen = localStorage.getItem("HoTen");
     $scope.TaiKhoan = localStorage.getItem("TaiKhoan");
     $scope.login = function () {
@@ -100,7 +95,7 @@ app.controller('loginCtrl', function ($scope, $http) {
         var password = document.getElementById('password').value;
       
 
-        // Kiểm tra dữ liệu nhập vào
+
         if (!username || !password) {
             $scope.errorMessage = "Vui lòng nhập đầy đủ thông tin!";
             return;
@@ -119,10 +114,10 @@ app.controller('loginCtrl', function ($scope, $http) {
             }
         }).then(function (response) {
             console.log(response.data);
-            // Kiểm tra token và role trong response
+       
             if (response.data && response.data.token && response.data.user_id && response.data.hoten) {
                 alert("Đăng nhập thành công!");
-                // Lưu token vào localStorage
+            
                 localStorage.setItem("token", response.data.token);
                 localStorage.setItem("PerID", response.data.user_id);
                 localStorage.setItem("HoTen", response.data.hoten);
@@ -131,7 +126,6 @@ app.controller('loginCtrl', function ($scope, $http) {
                 $scope.HoTen = response.data.hoten;
                 $scope.TaiKhoan = response.data.taikhoan;
 
-                //Kiểm tra Role
                 if (response.data.role === "Admin") {
                     // Chuyển hướng đến trang admin
                     window.location.href = "http://127.0.0.1:5500/admin.html";
@@ -147,7 +141,6 @@ app.controller('loginCtrl', function ($scope, $http) {
                 console.error("Dữ liệu không hợp lệ:", response.data);
             }
         }).catch(function (error) {
-            // Xử lý lỗi
             console.error("Đã xảy ra lỗi khi đăng nhập:", error);
             if (error.status === -1) {
                 $scope.errorMessage = "Không thể kết nối tới máy chủ. Vui lòng kiểm tra lại!";
@@ -159,14 +152,13 @@ app.controller('loginCtrl', function ($scope, $http) {
 
      
     $scope.registerUser = function () {
-        // Kiểm tra các trường bắt buộc
+      
         if (!$scope.taikhoan || !$scope.matkhau || !$scope.hoten ) {
             alert("Vui lòng điền đầy đủ thông tin.");
             return;
         }
         
-    
-        // Kiểm tra đồng ý với các điều khoản
+
         if (!$scope.agree) {
             $scope.errorMessage = "Bạn cần đồng ý với Điều khoản và Chính sách Quyền riêng tư!";
             return;
@@ -355,12 +347,10 @@ app.controller('loginCtrl', function ($scope, $http) {
     var current_url = "https://localhost:44367"; 
 
 
-    // Hàm tạo URL ảnh
     $scope.getImageUrl = function (fileName) {
         return current_url + '/api/TuiXach/get-img/' + fileName;
     };
     $scope.viewProductDetails = function (product) {
-        // Chuyển hướng đến trang chi tiết sản phẩm với mã sản phẩm trong URL
         window.location.href = '/user/details.html?maSp=' + product.maSp;
     };
 
@@ -381,9 +371,9 @@ app.controller('loginCtrl', function ($scope, $http) {
         const existingProduct = cart.find(item => item.maSp === $scope.productDetails.maSp);
 
         if (existingProduct) {
-            existingProduct.quantity += 1; // Nếu sản phẩm đã tồn tại, tăng số lượng
+            existingProduct.quantity += 1; 
         } else {
-            // Thêm sản phẩm mới vào giỏ hàng
+           
             cart.push({
                 maSp: $scope.productDetails.maSp, 
                 tenSp: $scope.productDetails.tenSp,
@@ -580,7 +570,7 @@ app.controller('loginCtrl', function ($scope, $http) {
     $scope.LoadProduct = function() {
         $http({
             method: 'GET',
-            url: current_url + '/api/TuiXach/get-all',
+            url: 'https://localhost:44374/api/TuiXach/get-all',
         }).then(function(response) {
             $scope.listProduct = response.data;
             $scope.filteredProducts = $scope.listProduct; // Khởi tạo danh sách sản phẩm đã lọc
@@ -593,7 +583,6 @@ app.controller('loginCtrl', function ($scope, $http) {
 
     // Hàm lấy chi tiết sản phẩm theo mã sản phẩm
     $scope.ProductDetails = function () {
-        // Lấy mã sản phẩm từ URL
         const urlParams = new URLSearchParams(window.location.search);
         const maSp = urlParams.get('maSp');
         console.log("maSp:", maSp);

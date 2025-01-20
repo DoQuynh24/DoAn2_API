@@ -12,6 +12,116 @@
                 {
                     "Host": "localhost",
                     "Port": 44366
+                },
+                {
+                    "Host": "localhost",
+                    "Port": 44367
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/api/MauSac/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "DownstreamPathTemplate": "/api/MauSac/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44366
+                },
+                {
+                    "Host": "localhost",
+                    "Port": 44367
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/api/User/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "DownstreamPathTemplate": "/api/User/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44366
+                },
+                {
+                    "Host": "localhost",
+                    "Port": 44367
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/api/DanhMucSanPham/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "DownstreamPathTemplate": "/api/DanhMucSanPham/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44366
+                },
+                {
+                    "Host": "localhost",
+                    "Port": 44367
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/api/DonHangNhap/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "DownstreamPathTemplate": "/api/DonHangNhap/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44366
+                }
+
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/api/HoaDon/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "DownstreamPathTemplate": "/api/HoaDon/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44366
+                },
+                {
+                    "Host": "localhost",
+                    "Port": 44367
+                }
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/api/NhaCungCap/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "DownstreamPathTemplate": "/api/NhaCungCap/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44366
+                }
+
+            ]
+        },
+        {
+            "UpstreamPathTemplate": "/api/Size/{everything}",
+            "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+            "DownstreamPathTemplate": "/api/Size/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": 44366
+                },
+                {
+                    "Host": "localhost",
+                    "Port": 44367
                 }
             ]
         }

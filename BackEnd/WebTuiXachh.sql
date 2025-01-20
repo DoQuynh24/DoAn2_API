@@ -855,34 +855,79 @@ select * from TuiXach
 	END
 	GO
 	
-
-	--tìm kiếm sp
-	CREATE PROCEDURE sp_tui_xach_search
+CREATE PROCEDURE sp_tui_xach_search
     @page_index INT,
-    @page_size INT,
-    @name NVARCHAR(255),
-    @color NVARCHAR(30),
-    @size NVARCHAR(30),
-    @min_price DECIMAL(10, 2),
-		@max_price DECIMAL(10, 2)
-	AS
-	BEGIN
-		SELECT * FROM TuiXach
-		WHERE (TenSp LIKE '%' + @name + '%' OR @name = '')
-		  AND (TenMau LIKE '%' + @color + '%' OR @color = '')
-		  AND (MaSize = @size OR @size = '')
-		  AND (GiaSp BETWEEN @min_price AND @max_price)
-		ORDER BY MaSp
-		OFFSET @page_index * @page_size ROWS FETCH NEXT @page_size ROWS ONLY;
+    @page_size INT = 6,
+    @madanhmuc CHAR(10) = '',
+    @masp CHAR(10) = '',
+    @tensp NVARCHAR(255) = '',
+    @tenmau NVARCHAR(30) = '',
+    @masize NVARCHAR(30) = '',
+    @giaban_min DECIMAL(10, 2) = NULL,
+    @giaban_max DECIMAL(10, 2) = NULL
+AS
+BEGIN
+    DECLARE @startRow INT;
+    SET @startRow = (@page_index - 1) * @page_size;
 
-		SELECT COUNT(*) AS TotalCount
-		FROM TuiXach
-		WHERE (TenSp LIKE '%' + @name + '%' OR @name = '')
-		  AND (TenMau LIKE '%' + @color + '%' OR @color = '')
-		  AND (MaSize = @size OR @size = '')
-		  AND (GiaSp BETWEEN @min_price AND @max_price);
-	END
-	GO
+    -- Kiểm tra tính hợp lệ của các tham số phân trang
+    IF @page_index < 1 OR @page_size < 1
+    BEGIN
+        RAISERROR('page_index và page_size phải lớn hơn 0', 16, 1);
+        RETURN;
+    END
+
+    DECLARE @totalRecords INT;
+
+    -- Đếm tổng số bản ghi phù hợp với điều kiện
+    SELECT @totalRecords = COUNT(*)
+    FROM TuiXach
+    WHERE
+        (@madanhmuc = '' OR MaDanhMuc = @madanhmuc)
+        AND (@masp = '' OR MaSp LIKE '%' + @masp + '%')
+        AND (@tensp = '' OR TenSp LIKE '%' + @tensp + '%')
+        AND (@tenmau = '' OR TenMau = @tenmau)
+        AND (@masize = '' OR MaSize = @masize)
+        AND (@giaban_min IS NULL OR GiaBan >= @giaban_min)
+        AND (@giaban_max IS NULL OR GiaBan <= @giaban_max);
+
+    -- Truy vấn dữ liệu phân trang
+    SELECT 
+        MaDanhMuc,
+        MaSp,
+        TenSp,
+        TenMau,
+        MaSize,
+        GiaBan,
+        KhuyenMai,
+        TonKho,
+        MoTa,
+        HinhAnh,
+        SoLuotDanhGia,
+        @totalRecords AS TotalRecords
+    FROM TuiXach
+    WHERE
+        (@madanhmuc = '' OR MaDanhMuc = @madanhmuc)
+        AND (@masp = '' OR MaSp LIKE '%' + @masp + '%')
+        AND (@tensp = '' OR TenSp LIKE '%' + @tensp + '%')
+        AND (@tenmau = '' OR TenMau = @tenmau)
+        AND (@masize = '' OR MaSize = @masize)
+        AND (@giaban_min IS NULL OR GiaBan >= @giaban_min)
+        AND (@giaban_max IS NULL OR GiaBan <= @giaban_max)
+    ORDER BY MaSp, TenMau, MaSize
+    OFFSET @startRow ROWS FETCH NEXT @page_size ROWS ONLY;
+END;
+
+EXEC sp_tui_xach_search
+    @page_index = 1, 
+    @page_size = 10, 
+	@madanhmuc = '',
+    @masp = '',
+    @tensp = 'Medusa',
+    @tenmau= '',
+    @masize = '',
+    @giaban_min = NULL,
+    @giaban_max = NULL
 
 
 -- Bảng HoaDon (Quản lý đơn đặt hàng)

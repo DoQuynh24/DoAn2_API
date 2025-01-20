@@ -68,8 +68,7 @@ app.controller('billsCtrl', function($scope, $http, $timeout) {
     });
     };
 
-    // Gọi hàm tải hóa đơn khi trang được tải
-    $scope.LoadHoaDon('Tất cả'); // Mặc định tải tất cả hóa đơn
+    $scope.LoadHoaDon('Tất cả'); 
 
 
     // Xem hóa đơn (hàm khi nhấn nút see-btn)
@@ -120,23 +119,16 @@ app.controller('billsCtrl', function($scope, $http, $timeout) {
         }
     };
 
-    
-    // Gọi hàm tải hóa đơn khi trang được tải
     $scope.LoadHoaDon();
 
-    // Hàm xóa hóa đơn (ví dụ)
-    $scope.deleteProduct = function(maHD) {
-        console.log('Xóa hóa đơn có mã:', maHD);
-        // Thực hiện xóa hóa đơn bằng API tại đây
-    };
 
-    // Hàm tính tổng tiền hàng
+   ;
+
+
     $scope.calculateTongTienHang = function () {
         $scope.tongTienHang = $scope.listChiTiet.reduce((total, item) => total + (item.giaBan * item.soLuong), 0);
         $scope.calculateThanhTien(); // Cập nhật thành tiền
     };
-
-    // Hàm tính thành tiền
     $scope.calculateThanhTien = function () {
         $scope.thanhTien = $scope.tongTienHang + $scope.phiVanChuyen;
     };

@@ -1249,65 +1249,29 @@
       }
     },
     "/api/TuiXach/search": {
-      "get": {
+      "post": {
         "tags": [
           "TuiXach"
         ],
-        "parameters": [
-          {
-            "name": "pageIndex",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "searchCriteria",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "color",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "size",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "minPrice",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
-            }
-          },
-          {
-            "name": "maxPrice",
-            "in": "query",
-            "schema": {
-              "type": "number",
-              "format": "double"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TuiXachSearchRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TuiXachSearchRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TuiXachSearchRequest"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -1753,6 +1717,50 @@
         "properties": {
           "maSize": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TuiXachSearchRequest": {
+        "type": "object",
+        "properties": {
+          "pageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "maDanhMuc": {
+            "type": "string",
+            "nullable": true
+          },
+          "maSp": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenSp": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenMau": {
+            "type": "string",
+            "nullable": true
+          },
+          "maSize": {
+            "type": "string",
+            "nullable": true
+          },
+          "giaBanMin": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "giaBanMax": {
+            "type": "number",
+            "format": "double",
             "nullable": true
           }
         },

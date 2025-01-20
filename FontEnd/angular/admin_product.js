@@ -1,6 +1,6 @@
 app.controller('productCtrl', function($scope, $http,) {
     $scope.listProduct = []; // Khởi tạo mảng sản phẩm
-    $scope.isEditMode = false; // Kiểm tra trạng thái sửa hay thêm
+    $scope.isEditProductMode = false; // Kiểm tra trạng thái sửa hay thêm
     $scope.newProduct = {};// Sản phẩm mới để thêm hoặc sửa
     $scope.currentProduct = {}; 
 
@@ -19,7 +19,7 @@ app.controller('productCtrl', function($scope, $http,) {
     $scope.totalProducts = 0; // Tổng số sản phẩm
 
     // URL API
-    var current_url = "https://localhost:44366"; 
+    var current_url = "https://localhost:44374"; 
 
    // Hàm kiểm tra mã danh mục có tồn tại không
    $scope.checkCategoryExist = function() {
@@ -120,6 +120,16 @@ app.controller('productCtrl', function($scope, $http,) {
           
         });
     };
+   
+    
+    // Hàm tra cứu tên danh mục từ ID
+    $scope.category = function (categoryId) {
+        var category = $scope.categories.find(function (cat) {
+            return cat.maDanhMuc === categoryId;
+        });
+        return category ? category.tenDanhMuc : 'Chưa xác định';  // Trả về tên danh mục hoặc 'Chưa xác định' nếu không tìm thấy
+    };
+    
 
 //PRODUCT
     // Hàm tạo URL ảnh
@@ -127,7 +137,7 @@ app.controller('productCtrl', function($scope, $http,) {
         return current_url + '/api/TuiXach/get-img/' + fileName;
     };
 
-  
+    
     $scope.LoadProduct = function() {
         $http({
             method: 'GET',
@@ -137,117 +147,160 @@ app.controller('productCtrl', function($scope, $http,) {
             $scope.filteredProducts = $scope.listProduct; 
             $scope.totalProducts = $scope.listProduct.length; 
             console.log("Danh sách sản phẩm:", $scope.listProduct);
+    
            
         })
-        };
-       
-    $scope.addProduct = function() {
-    formData.append('product', $scope.newProduct);  
-    formData.append("MaDanhMuc", $scope.maDanhMuc);
-    formData.append("TenSp", $scope.tenSp);
-    formData.append("GiaBan", $scope.giaBan);
-    formData.append("KhuyenMai", $scope.khuyenMai);
-    formData.append("TonKho",$scope.tonKho);
-    formData.append("MauSac",$scope.tenMau);
-    formData.append("Size",$scope.maSize);
-    formData.append("MoTa", $scope.moTa);
-
-    if ($scope.newProduct.selectedFile) {
-        formData.append("HinhAnh", $scope.newProduct.selectedFile);
-    }
-
-    $http({
-        method: 'POST',
-        url: current_url + '/api/TuiXach/create',
-        headers: { 'Content-Type': undefined },
-        data: formData
-    }).then(function(response) {
-        alert("Thêm sản phẩm thành công!");
-        $scope.LoadProduct();
-        $scope.clearFormProduct();
-    }, function(error) {
-        alert("Thêm sản phẩm thất bại!");
-    });
     };
+    
+       
+    $scope.addProduct = function () {
+        var formData = new FormData();  
+        var fileInput = document.getElementById('fileInput');
+        
+        formData.append("MaDanhMuc", $scope.newProduct.maDanhMuc);
+        formData.append("MaSp", $scope.newProduct.maSp);
+        formData.append("TenSp", $scope.newProduct.tenSp);
+        formData.append("GiaBan", $scope.newProduct.giaBan);
+        formData.append("KhuyenMai", $scope.newProduct.khuyenMai);
+        formData.append("TonKho", $scope.newProduct.tonKho);
+        formData.append("TenMau", $scope.newProduct.tenMau);  
+        formData.append("MaSize", $scope.newProduct.maSize);   
+        formData.append("MoTa", $scope.newProduct.moTa);
+    
+        // Kiểm tra nếu có tệp hình ảnh
+        if (fileInput.files && fileInput.files[0]) {
+            formData.append('hinhAnhFile', fileInput.files[0]); // Thêm tệp hình ảnh
+            formData.append('HinhAnh', fileInput.files[0].name); // Thêm tên tệp
+        } else {
+            alert("Vui lòng chọn tệp hình ảnh!");
+            return; // Dừng lại nếu chưa có tệp hình ảnh
+        }
 
 
+    
+        // Gửi FormData tới API
+        $http({
+            method: 'POST',
+            url: current_url + '/api/TuiXach/create',
+            headers: { 'Content-Type': undefined }, // Để trình duyệt tự đặt `Content-Type` cho `FormData`
+            data: formData
+        }).then(function (response) {
+            alert("Thêm sản phẩm thành công!");
+            $scope.LoadProduct(); // Tải lại danh sách sản phẩm
+            $scope.clearFormProduct(); // Xóa dữ liệu trong form
+        }, function (error) {
+            alert("Thêm sản phẩm thất bại!");
+            console.error("Lỗi API:", error.data);
+        });
+    };
+    
+
+    // $scope.onFileChange = function (element) {
+    //     $scope.selectedFile = element.files[0]; // Lấy tệp hình ảnh đã chọn
+    
+    //     // Nếu có tệp mới, tạo URL mới cho hình ảnh
+    //     if ($scope.selectedFile) {
+    //         // Tạo URL hiển thị hình ảnh mới trong modal (trong trường hợp ảnh chưa được upload)
+    //         $scope.newProduct.imageUrl = URL.createObjectURL($scope.selectedFile);
+    //     }
+    // };
+    
     $scope.onFileChange = function (element) {
         $scope.selectedFile = element.files[0]; // Lấy tệp hình ảnh đã chọn
     
-        // Nếu có tệp mới, tạo URL mới cho hình ảnh
         if ($scope.selectedFile) {
-            // Tạo URL hiển thị hình ảnh mới trong modal (trong trường hợp ảnh chưa được upload)
+            // Hiển thị ảnh đã chọn trong giao diện
             $scope.newProduct.imageUrl = URL.createObjectURL($scope.selectedFile);
+            $scope.$apply(); // Cập nhật AngularJS
         }
     };
     
-
       // Mở modal và chuẩn bị dữ liệu
-      $scope.editProduct = function (product) {
-        $scope.isEditMode = true;
-        $scope.newProduct = angular.copy(product);
+      $scope.editProduct = function(product) {
+        $scope.isEditProductMode = true; // Đặt chế độ sửa
+        $scope.newProduct = angular.copy(product); // Sao chép dữ liệu sản phẩm
         $scope.newProduct.imageUrl = $scope.getImageUrl(product.hinhAnh); // Đường dẫn hình ảnh hiện tại
+        $('#productModal').modal('show'); // Hiển thị modal
     };
     
     
-    $scope.onFileChange = function (element) {
-        $scope.$apply(() => {
-            $scope.selectedFile = element.files[0]; // Lấy tệp hình ảnh đã chọn
     
-            if ($scope.selectedFile) {
-                // Tạo URL hiển thị hình ảnh mới trong modal
-                $scope.newProduct.imageUrl = URL.createObjectURL($scope.selectedFile);
-            }
-        });
-    };
+    // $scope.onFileChange = function (element) {
+    //     // Kiểm tra xem người dùng có chọn tệp không
+    //     if (element.files && element.files[0]) {
+    //         var reader = new FileReader();
+    //         reader.onload = function (e) {
+    //             // Lưu thông tin tệp vào đối tượng newProduct và hiển thị ảnh
+    //             $scope.newProduct.selectedFile = element.files[0];
+    //             $scope.newProduct.imageUrl = e.target.result;  // Lưu URL ảnh để hiển thị
+    //             $scope.$apply();  // Cập nhật AngularJS
+    //         };
+    //         reader.readAsDataURL(element.files[0]);  // Đọc tệp dưới dạng URL để hiển thị
+    //     }
+    // };
+    
+    
     
     
 
     $scope.clearFormProduct = function () {
-        $scope.isEditMode = false;
-        $scope.newProduct = {}; // Reset form
+        $scope.isEditProductMode = false; // Đặt lại chế độ thêm
+        $scope.newProduct = {}; // Xóa dữ liệu sản phẩm hiện tại
     };
+    
 
-     // Thêm hoặc sửa sản phẩm
-     $scope.saveProduct = function () {
+    $scope.saveProduct = function () {
+        var fileInput = document.getElementById('fileInput');
+        // Tạo đối tượng FormData
         var formData = new FormData();
-        // formData.append("MaDanhMuc", $scope.maDanhMuc);
-        // formData.append("TenSp", $scope.tenSp);
-        // formData.append("GiaBan", $scope.giaBan);
-        // formData.append("KhuyenMai", $scope.khuyenMai);
-        // formData.app("TonKho",$scope.tonKho);
-        // formData.app("MauSac",$scope.tenMau);
-        // formData.app("Size",$scope.maSize);
-        // formData.append("MoTa", $scope.moTa);
+    
+        formData.append("MaDanhMuc", $scope.newProduct.maDanhMuc);
+        formData.append("MaSp", $scope.newProduct.maSp);
+        formData.append("TenSp", $scope.newProduct.tenSp);
+        formData.append("GiaBan", $scope.newProduct.giaBan);
+        formData.append("KhuyenMai", $scope.newProduct.khuyenMai);
+        formData.append("TonKho", $scope.newProduct.tonKho);
+        formData.append("TenMau", $scope.newProduct.tenMau);  
+        formData.append("MaSize", $scope.newProduct.maSize);   
+        formData.append("MoTa", $scope.newProduct.moTa);
+    
+        // Kiểm tra nếu có tệp hình ảnh
 
-        // if ($scope.newProduct.selectedFile) {
-        //     formData.append("HinhAnh", $scope.newProduct.selectedFile);
-        // }
-        var url = $scope.isEditMode ? '/api/TuiXach/update'  + $scope.newProduct.maSp : '/api/TuiXach/create';
-        var method = $scope.isEditMode ? 'PUT' : 'POST'; 
+        formData.append('HinhAnh', fileInput.files[0].name);  
+
+        console.log("Dữ liệu FormData chuẩn bị gửi lên API:");
+        for (var pair of formData.entries()) {
+            console.log(pair[0] + ": " + pair[1]);
+        }
+    
+        var url = $scope.isEditProductMode ? '/api/TuiXach/update' : '/api/TuiXach/create';
+        var method = $scope.isEditProductMode ? 'PUT' : 'POST';
+    
         $http({
             method: method,
             url: current_url + url,
             headers: { 'Content-Type': undefined },
-            data: $scope.newProduct,
-        }).then(function(response) {
-            alert($scope.isEditMode ? "Cập nhật sản phẩm thành công!" : "Thêm sản phẩm mới thành công!");
-            $scope.LoadUser(); 
-            $scope.clearForm();
-        }, function(error) {
-            console.error("Lỗi cập nhật:", error.data);
-            alert($scope.isEditMode ? "Cập nhật sản phẩm thất bại!" : "Thêm sản phẩm mớithất bại!");
+            data: formData
+        }).then(function (response) {
+            alert($scope.isEditProductMode ? "Cập nhật sản phẩm thành công!" : "Thêm sản phẩm mới thành công!");
+            $scope.newProduct.imageUrl = response.data.imageUrl;
+            $scope.LoadProduct(); 
+      
+        }, function (error) {
+            console.log($scope.newProduct.selectedFile);
+            alert($scope.isEditProductMode ? "Cập nhật sản phẩm thất bại!" : "Thêm sản phẩm thất bại!");
+            console.error("Lỗi:", error.data);
+            
         });
-       
     };
-
+    
 
     $scope.deleteProduct = function(productID) {
         var confirmation = confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?");
         if (confirmation) {
             $http.delete(current_url + '/api/TuiXach/delete/' + productID).then(function(response) {
                 alert("Xóa sản phẩm thành công!");
-                $scope.LoadProduct(); // Reload danh sách sản phẩm sau khi xóa
+                $scope.LoadProduct(); 
             }, function(error) {
                 alert("Xóa sản phẩm thất bại!");
             });
@@ -276,15 +329,23 @@ app.controller('productCtrl', function($scope, $http,) {
             $scope.currentPage = page;
         }
     };
-    
+  
+    $('#productModal').on('shown.bs.modal', function () {
+        $(this).find('button').focus();  
+    });
+
+    $('#productModal').on('hidden.bs.modal', function () {
+        $('#previousElement').focus(); 
+    });
+
     // Lấy bảng màu từ API
     $scope.loadColor = function () {
         $http({
             method: 'GET',
-            url: current_url + '/api/MauSac/all',
+            url: 'https://localhost:44374/api/MauSac/all',
         }).then(function (response){
-                $scope.colors = response.data; 
-                console.log("Mausac:", $scope.colors);
+                $scope.mauSacs = response.data; 
+                console.log("Mausac:", $scope.mauSacs);
             });
     };
      // Hàm thêm màu sắc mới

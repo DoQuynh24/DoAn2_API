@@ -36,7 +36,7 @@ app.controller('userCtrl', function($scope, $http) {
                 $scope.totalRecords = response.data.totalRecords;  
                 $scope.totalPages = response.data.totalPages;  
                 $scope.currentPage = response.data.currentPage;  
-                createPagination($scope.totalPages);  
+              
             } else {
                 console.error('Tìm kiếm thất bại:', response.data.message);  
             }
@@ -71,9 +71,14 @@ app.controller('userCtrl', function($scope, $http) {
         return $scope.filteredHoaDon.slice(start, end);
     };
     
-    $scope.totalPages = function () {
-        return Math.ceil($scope.filteredHoaDon.length / $scope.itemsPerPage);
+    $scope.totalPages = function() {
+        if ($scope.items && $scope.items.length > 0) {
+            return Math.ceil($scope.items.length / itemsPerPage);
+        } else {
+            return 0;
+        }
     };
+    
     
     $scope.setPage = function (page) {
         if (page >= 1 && page <= $scope.totalPages()) {

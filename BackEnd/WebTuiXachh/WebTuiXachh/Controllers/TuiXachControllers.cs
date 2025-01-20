@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Data;
+using static API.Controllers.UserController;
 
 namespace API.Controllers
 {
@@ -141,7 +142,7 @@ namespace API.Controllers
                 if (hinhAnhFile != null && hinhAnhFile.Length > 0)
                 {
                     var uniqueFileName = $"{Guid.NewGuid()}_{hinhAnhFile.FileName}";
-                    var filePath = Path.Combine(@"D:\API\WebTuiXachh\images", uniqueFileName);
+                    var filePath = Path.Combine(@"D:\DOAN2_API\BackEnd\WebTuiXachh\images", uniqueFileName);
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await hinhAnhFile.CopyToAsync(stream);
@@ -208,7 +209,7 @@ namespace API.Controllers
                 if (hinhAnhFile != null && hinhAnhFile.Length > 0)
                 {
                     var uniqueFileName = $"{Guid.NewGuid()}_{hinhAnhFile.FileName}";
-                    var filePath = Path.Combine(@"D:\API\WebTuiXachh\images", uniqueFileName);
+                    var filePath = Path.Combine(@"D:\DOAN2_API\BackEnd\WebTuiXachh\images", uniqueFileName);
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await hinhAnhFile.CopyToAsync(stream);
@@ -249,24 +250,81 @@ namespace API.Controllers
                 Console.WriteLine($"Error in GetDataAll: {ex.Message}");
                 throw;  // Ném lại lỗi để giữ nguyên thông tin
             }
-        }  
+        }
+        public class TuiXachSearchRequest : PagedRequest
+        {
+            public string MaDanhMuc { get; set; }
+            public string MaSp { get; set; }
+            public string TenSp { get; set; }
+            public string TenMau { get; set; }
+            public string MaSize { get; set; }
+            public decimal? GiaBanMin { get; set; }
+            public decimal? GiaBanMax { get; set; }
 
-        // API: Tìm kiếm túi xách
-        [HttpGet("search")]
-        public IActionResult Search(int pageIndex, int pageSize, string searchCriteria, string color, string size, decimal? minPrice, decimal? maxPrice)
+
+
+        }
+        [HttpPost("search")]
+        public IActionResult SearchTuiXachs([FromBody] TuiXachSearchRequest searchRequest)
         {
             try
             {
-                long total;
-                var sizes = _tuiXachBusiness.SearchTuiXachs(pageIndex, pageSize, out total, searchCriteria, color, size, minPrice, maxPrice);
-                return Ok(new { Total = total, Data = sizes });  // Trả về kết quả tìm kiếm với tổng số
+                // Lấy dữ liệu từ request body
+                int pageIndex = searchRequest?.PageIndex ?? 1; // Giá trị mặc định là 1
+                int pageSize = searchRequest?.PageSize ?? 10; // Giá trị mặc định là 10
+                string madanhmuc = searchRequest?.MaDanhMuc ?? string.Empty;
+                string masp = searchRequest?.MaSp ?? string.Empty;
+                string tensp = searchRequest?.TenSp ?? string.Empty;
+                string tenmau = searchRequest?.TenMau ?? string.Empty;
+                string masize = searchRequest?.MaSize ?? string.Empty;
+                decimal? giabanMin = searchRequest?.GiaBanMin;
+                decimal? giabanMax = searchRequest?.GiaBanMax;
+
+                // Gọi tầng business để tìm kiếm
+                var tuiXachs = _tuiXachBusiness.SearchTuiXachs(pageIndex, pageSize, out long total, madanhmuc, masp, tensp, tenmau, masize, giabanMin, giabanMax);
+
+                // Tạo đối tượng kết quả phân trang
+                var result = new PagedResult<TuiXachModel>
+                {
+                    Success = true,
+                    TotalRecords = total,
+                    TotalPages = (int)Math.Ceiling((double)total / pageSize),
+                    CurrentPage = pageIndex,
+                    Data = tuiXachs ?? new List<TuiXachModel>() // Nếu không có dữ liệu, trả về danh sách rỗng
+                };
+
+                // Trả về kết quả
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in GetDataAll: {ex.Message}");
-                throw;  // Ném lại lỗi để giữ nguyên thông tin
+                // Xử lý ngoại lệ và trả về lỗi
+                return StatusCode(500, new
+                {
+                    Success = false,
+                    Message = "Lỗi khi tìm kiếm túi xách",
+                    Details = ex.Message
+                });
             }
         }
+
+
+        // API: Tìm kiếm túi xách
+        //[HttpGet("search")]
+        //public IActionResult Search(int pageIndex, int pageSize, string searchCriteria, string color, string size, decimal? minPrice, decimal? maxPrice)
+        //{
+        //    try
+        //    {
+        //        long total;
+        //        var sizes = _tuiXachBusiness.SearchTuiXachs(pageIndex, pageSize, out total, searchCriteria, color, size, minPrice, maxPrice);
+        //        return Ok(new { Total = total, Data = sizes });  // Trả về kết quả tìm kiếm với tổng số
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error in GetDataAll: {ex.Message}");
+        //        throw;  // Ném lại lỗi để giữ nguyên thông tin
+        //    }
+        //}
 
     }
 }

@@ -18,7 +18,7 @@ namespace BLL
         TuiXachModel GetByMauSac(string tenMau);
         TuiXachModel GetBySize(string maSize);
         List<TuiXachModel> GetDataAll();
-        List<TuiXachModel> SearchTuiXachs(int pageIndex, int pageSize, out long total, string searchTerm = "", string color = "", string size = "", decimal? minPrice = null, decimal? maxPrice = null);
-  
+        List<TuiXachModel> SearchTuiXachs(int pageIndex, int pageSize, out long total, string madanhmuc = "", string masp = "", string tensp = "", string tenmau = "", string masize = "", decimal? giabanMin = null, decimal? giabanMax = null);
+
     }
 }

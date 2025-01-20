@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|d:\\doan2_api\\backend\\webtuixachh - user\\model\\authenticatemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02CC580C-A81B-4C5D-BCB3-5BF927BFE387}|Model\\Model.csproj|solutionrelative:model\\authenticatemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{FBFAA149-A16F-48B9-B983-018ED9D62E07}|DAL\\DAL.csproj|d:\\doan2_api\\backend\\webtuixachh - user\\dal\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FBFAA149-A16F-48B9-B983-018ED9D62E07}|DAL\\DAL.csproj|solutionrelative:dal\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -58,7 +62,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "HoaDonRepsitory.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\HoaDonRepsitory.cs",
               "RelativeDocumentMoniker": "DAL\\HoaDonRepsitory.cs",
@@ -76,19 +80,31 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\UserRepository.cs",
-              "RelativeDocumentMoniker": "DAL\\UserRepository.cs",
-              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\UserRepository.cs",
-              "RelativeToolTip": "DAL\\UserRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAArAAAAAAAAAA==",
+              "Title": "AuthenticateModel.cs",
+              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\AuthenticateModel.cs",
+              "RelativeDocumentMoniker": "Model\\AuthenticateModel.cs",
+              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\AuthenticateModel.cs",
+              "RelativeToolTip": "Model\\AuthenticateModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-11T03:55:12.459Z",
+              "WhenOpened": "2025-01-17T09:04:37.051Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\UserRepository.cs",
+              "RelativeDocumentMoniker": "DAL\\UserRepository.cs",
+              "ToolTip": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\UserRepository.cs",
+              "RelativeToolTip": "DAL\\UserRepository.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAgwA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T03:55:12.459Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "UserControllers.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\WebTuiXachh\\Controllers\\UserControllers.cs",
               "RelativeDocumentMoniker": "WebTuiXachh\\Controllers\\UserControllers.cs",
@@ -100,7 +116,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TuiXachControllers.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\WebTuiXachh\\Controllers\\TuiXachControllers.cs",
               "RelativeDocumentMoniker": "WebTuiXachh\\Controllers\\TuiXachControllers.cs",
@@ -112,7 +128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "BinhLuanModel.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\Model\\BinhLuanModel.cs",
               "RelativeDocumentMoniker": "Model\\BinhLuanModel.cs",
@@ -124,7 +140,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "WebTuiXachh.csproj",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\WebTuiXachh\\WebTuiXachh.csproj",
               "RelativeDocumentMoniker": "WebTuiXachh\\WebTuiXachh.csproj",
@@ -136,7 +152,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\WebTuiXachh\\appsettings.json",
               "RelativeDocumentMoniker": "WebTuiXachh\\appsettings.json",
@@ -148,7 +164,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "HoaDonControllers.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\WebTuiXachh\\Controllers\\HoaDonControllers.cs",
               "RelativeDocumentMoniker": "WebTuiXachh\\Controllers\\HoaDonControllers.cs",
@@ -160,7 +176,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "IHoaDonRepository.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\DAL\\Interfaces\\IHoaDonRepository.cs",
               "RelativeDocumentMoniker": "DAL\\Interfaces\\IHoaDonRepository.cs",
@@ -172,7 +188,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "HoaDonBusiness.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\BLL\\HoaDonBusiness.cs",
               "RelativeDocumentMoniker": "BLL\\HoaDonBusiness.cs",
@@ -184,7 +200,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "IHoaDonBusiness.cs",
               "DocumentMoniker": "D:\\DOAN2_API\\BackEnd\\WebTuiXachh - User\\BLL\\Interfaces\\IHoaDonBusiness.cs",
               "RelativeDocumentMoniker": "BLL\\Interfaces\\IHoaDonBusiness.cs",

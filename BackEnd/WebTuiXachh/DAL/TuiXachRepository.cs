@@ -82,7 +82,7 @@ namespace DAL
                     hinhAnhFileName = Path.GetFileName(hinhAnhFile.FileName);
 
                     // Lưu ảnh vào thư mục trên server
-                    var filePath = Path.Combine("D:\\API\\WebTuiXachh\\images", hinhAnhFileName);
+                    var filePath = Path.Combine("D:\\DOAN2_API\\BackEnd\\WebTuiXachh\\images", hinhAnhFileName);
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         hinhAnhFile.CopyTo(stream);
@@ -243,38 +243,83 @@ namespace DAL
             }
         }
 
-        // Phương thức tìm kiếm sản phẩm túi xách theo các tiêu chí
-        public List<TuiXachModel> Search(int pageIndex, int pageSize, out long total, string name, string color, string size, decimal? minPrice, decimal? maxPrice)
+        // Phương thức tìm kiếm người dùng với phân trang
+
+        public List<TuiXachModel> Search(int pageIndex, int pageSize, out long total, string madanhmuc, string masp, string tensp, string tenmau, string masize, decimal? giabanMin, decimal? giabanMax)
         {
             string msgError = "";
             try
             {
+                // Gọi stored procedure và lấy kết quả dưới dạng DataTable
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_tui_xach_search",
                     "@page_index", pageIndex,
                     "@page_size", pageSize,
-                    "@name", name ?? string.Empty,
-                    "@color", color ?? string.Empty,
-                    "@size", size ?? string.Empty,
-                    "@min_price", minPrice ?? 0,
-                    "@max_price", maxPrice ?? decimal.MaxValue);
+                    "@madanhmuc", madanhmuc ?? string.Empty,
+                    "@masp", masp ?? string.Empty,
+                    "@tensp", tensp ?? string.Empty,
+                    "@tenmau", tenmau ?? string.Empty,
+                    "@masize", masize ?? string.Empty,
+                    "@giaban_min", giabanMin ?? (object)DBNull.Value,
+                    "@giaban_max", giabanMax ?? (object)DBNull.Value);
 
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
 
-                total = dt.Rows.Count; // Tổng số kết quả tìm kiếm
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    total = 0;
+                    return new List<TuiXachModel>();
+                }
 
-                return dt.ConvertTo<TuiXachModel>().ToList();
+                // Lấy tổng số bản ghi từ cột TotalRecords của dòng đầu tiên
+                total = Convert.ToInt64(dt.Rows[0]["TotalRecords"]);
+
+                // Chuyển đổi DataTable sang danh sách TuiXachModel
+                var tuiXachs = dt.ConvertTo<TuiXachModel>().ToList();
+                return tuiXachs;
             }
             catch (Exception ex)
             {
                 total = 0;
-                throw ex;
+                throw new Exception("Lỗi khi thực hiện tìm kiếm: " + ex.Message);
             }
         }
 
 
-        
 
-       
+
+        // Phương thức tìm kiếm sản phẩm túi xách theo các tiêu chí
+        //public List<TuiXachModel> Search(int pageIndex, int pageSize, out long total, string name, string color, string size, decimal? minPrice, decimal? maxPrice)
+        //{
+        //    string msgError = "";
+        //    try
+        //    {
+        //        var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_tui_xach_search",
+        //            "@page_index", pageIndex,
+        //            "@page_size", pageSize,
+        //            "@name", name ?? string.Empty,
+        //            "@color", color ?? string.Empty,
+        //            "@size", size ?? string.Empty,
+        //            "@min_price", minPrice ?? 0,
+        //            "@max_price", maxPrice ?? decimal.MaxValue);
+
+        //        if (!string.IsNullOrEmpty(msgError))
+        //            throw new Exception(msgError);
+
+        //        total = dt.Rows.Count; // Tổng số kết quả tìm kiếm
+
+        //        return dt.ConvertTo<TuiXachModel>().ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        total = 0;
+        //        throw ex;
+        //    }
+        //}
+
+
+
+
+
     }
 }

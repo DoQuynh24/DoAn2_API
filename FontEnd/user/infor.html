@@ -48,7 +48,7 @@
             </div>
 
             <!-- Tab contents -->
-            <div id="account-info" class="tab-content ">
+            <div id="account-info" class="tab-content active ">
                 <p style="font-size: 20px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 130px;">Hồ sơ của tôi</p>
             <p class="lable1">Quản lý thông tin hồ sơ để bảo mật tài khoản.</p>
                 <form class="form-container">
@@ -97,7 +97,7 @@
                 </form>
             </div>
             
-           <div id="order-info" class="tab-content active">
+           <div id="order-info" class="tab-content ">
                 <div class="header-hoadon">
                     <!-- Thanh trạng thái -->
                     <div id="menu">
@@ -283,7 +283,6 @@
         </div>
     </div>
 
-    <!-- JavaScript for Tab switching -->
     <script>
         document.getElementById('account-tab').addEventListener('click', function() {
             document.getElementById('account-info').classList.add('active');
